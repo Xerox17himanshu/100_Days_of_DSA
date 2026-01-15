@@ -275,7 +275,7 @@ function renderDays() {
                 
                 <div class="question">
                     <div class="question-header">
-                        <span class="question-num">Question 1 - </span>
+                        <span class="question-num">Question 1 - Practice and push to github</span>
                         <span class="difficulty easy">Practice</span>
                     </div>
                     <div class="question-name">${day.question1.title}</div>
