@@ -358,13 +358,12 @@
       "description": "Problem: Merge Two Sorted Linked Lists - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers (first list)\n- Third line: integer m\n- Fourth line: m space-separated integers (second list)\n\nOutput:\n- Print the merged linked list elements, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n4\n15 25 35 45\n\nOutput:\n10 15 20 25 30 35 40 45 50\n\nExplanation:\nCompare nodes of both lists, append smaller to result, continue until all nodes are merged."
     },
     "question2": {
-      "name": "Merge Two Sorted Lists",
-      "link": "https://leetcode.com/problems/merge-two-sorted-lists/",
+      "name": "List Cycle Detection",
+      "link": "https://leetcode.com/problems/linked-list-cycle/description/s",
       "difficulty": "Easy"
     },
     "topics": [
-      "Linked List",
-      "Merge Operation"
+      "Linked List"
     ]
   },
   {
@@ -425,13 +424,12 @@
       "description": "Problem: Find Intersection Point of Two Linked Lists - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers (first list)\n- Third line: integer m\n- Fourth line: m space-separated integers (second list)\n\nOutput:\n- Print value of intersection node or 'No Intersection'\n\nExample:\nInput:\n5\n10 20 30 40 50\n4\n15 25 30 40 50\n\nOutput:\n30\n\nExplanation:\nCalculate lengths, advance pointer in longer list, traverse both simultaneously. First common node is intersection."
     },
     "question2": {
-      "name": "Intersection of Two Linked Lists",
-      "link": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
+      "name": "Remove Cycle in Linked List",
+      "link": "https://www.geeksforgeeks.org/problems/remove-loop-in-linked-list/1",
       "difficulty": "Easy"
     },
     "topics": [
-      "Linked List",
-      "Intersection"
+      "Linked List"
     ]
   },
   {
@@ -442,12 +440,12 @@
       "description": "Problem: Circular Linked List Creation and Traversal - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the circular linked list elements starting from head, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n10 20 30 40 50\n\nExplanation:\nLast node's next points to head. Traverse from head until returning to head to avoid infinite loop."
     },
     "question2": {
-      "name": "Insert into a Sorted Circular Linked List",
-      "link": "https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/",
+      "name": "Palindrome Linked List",
+      "link": "https://leetcode.com/problems/palindrome-linked-list/description/",
       "difficulty": "Medium"
     },
     "topics": [
-      "Circular Linked List"
+      "Linked List"
     ]
   },
   {
@@ -458,8 +456,8 @@
       "description": "Problem: Rotate Linked List Right by k Places - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n- Third line: integer k\n\nOutput:\n- Print the linked list elements after rotation, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n2\n\nOutput:\n40 50 10 20 30\n\nExplanation:\nConnect last node to head forming circular list. Traverse to (n-k)th node, set next to NULL, update head to (n-k+1)th node."
     },
     "question2": {
-      "name": "Rotate a Linked List",
-      "link": "https://practice.geeksforgeeks.org/problems/rotate-a-linked-list/1",
+      "name": "Add Two Numbers",
+      "link": "https://leetcode.com/problems/add-two-numbers/description/",
       "difficulty": "Medium"
     },
     "topics": [
