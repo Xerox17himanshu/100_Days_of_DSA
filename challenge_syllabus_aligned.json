@@ -1,0 +1,1505 @@
+[
+  {
+    "day": 1,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Insert an Element in an Array",
+      "description": "Problem: Write a C program to insert an element x at a given 1-based position pos in an array of n integers. Shift existing elements to the right to make space.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers (the array)\n- Third line: integer pos (1-based position)\n- Fourth line: integer x (element to insert)\n\nOutput:\n- Print the updated array (n+1 integers) in a single line, space-separated\n\nExample:\nInput:\n5\n1 2 4 5 6\n3\n3\n\nOutput:\n1 2 3 4 5 6\n\nExplanation: Insert 3 at position 3, elements [4,5,6] shift right"
+    },
+    "question2": {
+      "name": "Two Sum",
+      "link": "https://leetcode.com/problems/two-sum/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Array Basics",
+      "Hash Tables"
+    ]
+  },
+  {
+    "day": 2,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Delete an Element from an Array",
+      "description": "Problem: Write a C program to delete the element at a given 1-based position pos from an array of n integers. Shift remaining elements to the left.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n- Third line: integer pos (1-based position to delete)\n\nOutput:\n- Print the updated array with (n-1) elements, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n2\n\nOutput:\n10 30 40 50\n\nExplanation: Delete position 2 (element 20), remaining elements shift left"
+    },
+    "question2": {
+      "name": "Best Time to Buy and Sell Stock",
+      "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Array Operations",
+      "Math"
+    ]
+  },
+  {
+    "day": 3,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Linear Search with Comparison Count",
+      "description": "Problem: Implement linear search to find key k in an array. Count and display the number of comparisons performed.\n\nInput:\n- First line: integer n (array size)\n- Second line: n space-separated integers\n- Third line: integer k (key to search)\n\nOutput:\n- Line 1: \"Found at index i\" OR \"Not Found\"\nLine 2: \"Comparisons = c\"\n\nExample:\nInput:\n5\n10 20 30 40 50\n30\n\nOutput:\nFound at index 2\nComparisons = 3\n\nExplanation: Compared with 10, 20, 30 (found at index 2 with 3 comparisons)"
+    },
+    "question2": {
+      "name": "Missing number in array",
+      "link": "https://practice.geeksforgeeks.org/problems/missing-number-in-array/0",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Array Searching"
+    ]
+  },
+  {
+    "day": 4,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Reverse an Array In-Place",
+      "description": "Problem: Given an array of n integers, reverse the array in-place using two-pointer approach.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the reversed array, space-separated\n\nExample:\nInput:\n5\n1 2 3 4 5\n\nOutput:\n5 4 3 2 1\n\nExplanation: Swap pairs from both ends: (1,5), (2,4), middle 3 stays"
+    },
+    "question2": {
+      "name": "Remove Element",
+      "link": "https://leetcode.com/problems/remove-element/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Array Reversal",
+      "Two Pointers"
+    ]
+  },
+  {
+    "day": 5,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Arrange Arrival Logs",
+      "description": "Problem: A system receives two separate logs of user arrival times from two different servers. Each log is already sorted in ascending order. Your task is to create a single chronological log that preserves the correct order of arrivals.\n\nInput:\n- First line: integer p (number of entries in server log 1)\n- Second line: p sorted integers representing arrival times from server 1\n- Third line: integer q (number of entries in server log 2)\n- Fourth line: q sorted integers representing arrival times from server 2)\n\nOutput:\n- Print a single line containing all arrival times in chronological order, separated by spaces\n\nExample:\nInput:\n5\n10 20 30 50 70\n4\n15 25 40 60\n\nOutput:\n10 15 20 25 30 40 50 60 70\n\nExplanation: Compare the next unprocessed arrival time from both logs and append the earlier one to the final log until all entries are processed"
+    },
+
+    "question2": {
+      "name": "Merge Sorted Array",
+      "link": "https://leetcode.com/problems/merge-sorted-array/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Array Merge",
+      "Two Pointers"
+    ]
+  },
+  {
+    "day": 6,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Remove Duplicates from Sorted Array",
+      "description": "Problem: Given a sorted array of n integers, remove duplicates in-place. Print only unique elements in order.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers (sorted array)\n\nOutput:\n- Print unique elements only, space-separated\n\nExample:\nInput:\n6\n1 1 2 2 3 3\n\nOutput:\n1 2 3\n\nExplanation: Keep first occurrence of each element: 1, 2, 3"
+    },
+    "question2": {
+      "name": "Move Zeroes",
+      "link": "https://leetcode.com/problems/move-zeroes/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Array Cleanup"
+    ]
+  },
+  {
+    "day": 7,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Recursive Fibonacci",
+      "description": "Problem: Write a recursive function fib(n) to compute the n-th Fibonacci number where fib(0)=0 and fib(1)=1.\n\nInput:\n- Single integer n\n\nOutput:\n- Print the n-th Fibonacci number\n\nExample:\nInput:\n6\n\nOutput:\n8\n\nExplanation: Sequence: 0,1,1,2,3,5,8 at positions 0,1,2,3,4,5,6"
+    },
+    "question2": {
+      "name": "Fibonacci Number",
+      "link": "https://leetcode.com/problems/fibonacci-number/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Recursion"
+    ]
+  },
+  {
+    "day": 8,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Compute Power Using Recursion",
+      "description": "Problem: Given integers a and b, compute a^b using recursion without using pow() function.\n\nInput:\n- Two space-separated integers a and b\n\nOutput:\n- Print a raised to power b\n\nExample:\nInput:\n2 5\n\nOutput:\n32\n\nExplanation: 2^5 = 2 * 2 * 2 * 2 * 2 = 32"
+    },
+    "question2": {
+      "name": "Power of Two",
+      "link": "https://leetcode.com/problems/power-of-two/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Recursion",
+      "Math"
+    ]
+  },
+  {
+    "day": 9,
+    "unit": "Unit I: Introduction",
+    "question1": {
+    "title": "Mirror the Code Name",
+    "description": "Problem: A secret system stores code names in forward order. To display them in mirror format, you must transform the given code name so that its characters appear in the opposite order.\n\nInput:\n- Single line: a lowercase string containing only alphabetic characters (no spaces)\n\nOutput:\n- Print the transformed code name after applying the mirror operation\n\nExample:\nInput:\nhello\n\nOutput:\nolleh\n\nExplanation: The first character moves to the last position, the second to the second-last, and so on until the entire string is mirrored"
+  },
+
+    "question2": {
+      "name": "Reverse String",
+      "link": "https://leetcode.com/problems/reverse-string/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "String",
+      "Two Pointers"
+    ]
+  },
+  {
+    "day": 10,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Check Palindrome",
+      "description": "Problem: Read a string and check if it is a palindrome using two-pointer comparison.\n\nInput:\n- Single line: string s\n\nOutput:\n- Print YES if palindrome, otherwise NO\n\nExample:\nInput:\nlevel\n\nOutput:\nYES\n\nExplanation: String reads same forwards and backwards"
+    },
+    "question2": {
+      "name": "Intersection of two arrays",
+      "link": "https://leetcode.com/problems/intersection-of-two-arrays-ii/description/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Palindrome Check",
+      "Array"
+    ]
+  },
+  {
+    "day": 11,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Matrix Addition",
+      "description": "Problem: Write a program to perform addition of two matrices having the same dimensions. The sum of two matrices is obtained by adding corresponding elements of the matrices.\n\nInput:\n- First line: two integers m and n representing the number of rows and columns\n- Next m lines: n integers each representing the elements of the first matrix\n- Next m lines: n integers each representing the elements of the second matrix\n\nOutput:\n- Print the resultant matrix after addition, with each row on a new line and elements separated by spaces\n\nExample:\nInput:\n3 3\n1 2 3\n4 5 6\n7 8 9\n9 8 7\n6 5 4\n3 2 1\n\nOutput:\n10 10 10\n10 10 10\n10 10 10\n\nExplanation:\nEach element of the result matrix is the sum of the corresponding elements from the two input matrices.\n\nTest Cases:\n\nTest Case 1:\nInput:\n2 2\n1 2\n3 4\n5 6\n7 8\nOutput:\n6 8\n10 12\n\nTest Case 2:\nInput:\n1 3\n10 20 30\n1 2 3\nOutput:\n11 22 33\n\nTest Case 3:\nInput:\n3 1\n1\n2\n3\n4\n5\n6\nOutput:\n5\n7\n9"
+    },
+
+    "question2": {
+      "name": "Transpose Matrix",
+      "link": "https://leetcode.com/problems/transpose-matrix/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Matrix"
+    ]
+  },
+  {
+    "day": 12,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Check Symmetric Matrix",
+      "description": "Problem: Write a program to check whether a given matrix is symmetric. A matrix is said to be symmetric if it is a square matrix and is equal to its transpose (i.e., element at position [i][j] is equal to element at position [j][i] for all valid i and j).\n\nInput:\n- First line: two integers m and n representing the number of rows and columns\n- Next m lines: n integers each representing the elements of the matrix\n\nOutput:\n- Print \"Symmetric Matrix\" if the given matrix is symmetric\n- Otherwise, print \"Not a Symmetric Matrix\"\n\nExample:\nInput:\n3 3\n1 2 3\n2 4 5\n3 5 6\n\nOutput:\nSymmetric Matrix\n\nExplanation:\nThe matrix is square (3 × 3) and for every i and j, element[i][j] = element[j][i].\n\nTest Cases:\n\nTest Case 1:\nInput:\n2 2\n1 2\n2 1\nOutput:\nSymmetric Matrix\n\nTest Case 2:\nInput:\n3 3\n1 0 1\n2 3 4\n1 4 5\nOutput:\nNot a Symmetric Matrix\n\nTest Case 3:\nInput:\n2 3\n1 2 3\n4 5 6\nOutput:\nNot a Symmetric Matrix"
+    },
+
+    "question2": {
+      "name": "Toeplitz Matrix",
+      "link": "https://leetcode.com/problems/toeplitz-matrix/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Matrix Diagonal"
+    ]
+  },
+  {
+    "day": 13,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Boundary-to-Center Matrix Walk",
+      "description": "Problem: You are given a rectangular matrix of integers. Starting from the outer boundary, traverse the matrix in a clockwise manner and continue moving inward layer by layer until all elements are visited.\n\nInput:\n- First line: two integers r and c representing the number of rows and columns\n- Next r lines: c integers each representing the matrix elements\n\nOutput:\n- Print all visited elements in the order of traversal, separated by spaces\n\nExample:\nInput:\n3 3\n1 2 3\n4 5 6\n7 8 9\n\nOutput:\n1 2 3 6 9 8 7 4 5\n\nExplanation:\nThe traversal begins along the top row, proceeds down the rightmost column, then moves across the bottom row in reverse, and finally goes up the leftmost column. The same pattern repeats for the inner submatrix.\n\nTest Cases:\n\nTest Case 1:\nInput:\n2 3\n1 2 3\n4 5 6\nOutput:\n1 2 3 6 5 4\n\nTest Case 2:\nInput:\n3 1\n7\n8\n9\nOutput:\n7 8 9"
+    },
+    "question2": {
+      "name": "Spiral Matrix",
+      "link": "https://leetcode.com/problems/spiral-matrix/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Matrix Spiral"
+    ]
+  },
+    {
+    "day": 14,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Check Identity Matrix",
+      "description": "Problem: Write a program to check whether a given square matrix is an Identity Matrix. An identity matrix is a square matrix in which all diagonal elements are 1 and all non-diagonal elements are 0.\n\nInput:\n- First line: integer n representing number of rows and columns\n- Next n lines: n integers each representing the matrix elements\n\nOutput:\n- Print \"Identity Matrix\" if the matrix satisfies the condition\n- Otherwise, print \"Not an Identity Matrix\"\n\nExample:\nInput:\n3\n1 0 0\n0 1 0\n0 0 1\n\nOutput:\nIdentity Matrix"
+    },
+    "question2": {
+      "name": "Rotate Image",
+      "link": "https://leetcode.com/problems/rotate-image/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Matrix Properties"]
+  },
+  {
+    "day": 15,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Matrix Diagonal Sum",
+      "description": "Problem: Given a matrix, calculate the sum of its primary diagonal elements. The primary diagonal consists of elements where row index equals column index.\n\nInput:\n- First line: two integers m and n\n- Next m lines: n integers each\n\nOutput:\n- Print the sum of the primary diagonal elements\n\nExample:\nInput:\n3 3\n1 2 3\n4 5 6\n7 8 9\n\nOutput:\n15\n\nExplanation:\n1 + 5 + 9 = 15"
+    },
+    "question2": {
+      "name": "Set Matrix Zeroes",
+      "link": "https://leetcode.com/problems/set-matrix-zeroes/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Matrix"]
+  },
+  {
+    "day": 16,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Frequency Counter in Array",
+      "description": "Problem: Given an array of integers, count the frequency of each distinct element and print the result.\n\nInput:\n- First line: integer n (size of array)\n- Second line: n integers\n\nOutput:\n- Print each element followed by its frequency in the format element:count\n\nExample:\nInput:\n5\n1 2 2 3 1\n\nOutput:\n1:2 2:2 3:1"
+    },
+    "question2": {
+      "name": "Rotate Array",
+      "link": "https://leetcode.com/problems/rotate-array/description/",
+      "difficulty": "Easy"
+    },
+    "topics": ["Array Count", "HashMap Logic"]
+  },
+  {
+    "day": 17,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Find Maximum and Minimum Element",
+      "description": "Problem: Write a program to find the maximum and minimum values present in a given array of integers.\n\nInput:\n- First line: integer n\n- Second line: n integers\n\nOutput:\n- Print the maximum and minimum elements\n\nExample:\nInput:\n6\n3 5 1 9 2 8\n\nOutput:\nMax: 9\nMin: 1"
+    },
+    "question2": {
+      "name": "Maximum Subarray",
+      "link": "https://leetcode.com/problems/maximum-subarray/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Kadane", "DP Intro"]
+  },
+  {
+    "day": 18,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Rotate Array by K Positions",
+      "description": "Problem: Given an array of integers, rotate the array to the right by k positions.\n\nInput:\n- First line: integer n\n- Second line: n integers\n- Third line: integer k\n\nOutput:\n- Print the rotated array\n\nExample:\nInput:\n5\n1 2 3 4 5\n2\n\nOutput:\n4 5 1 2 3"
+    },
+    "question2": {
+      "name": "Product of Array Except Self",
+      "link": "https://leetcode.com/problems/product-of-array-except-self/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Prefix Suffix", "Array"]
+  },
+  {
+    "day": 19,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Check Pair with Given Sum",
+      "description": "Problem: Given an array of integers and a target sum, determine whether any two elements form the given sum.\n\nInput:\n- First line: integer n\n- Second line: n integers\n- Third line: integer target\n\nOutput:\n- Print \"Yes\" if a pair exists, otherwise print \"No\"\n\nExample:\nInput:\n5\n2 4 7 11 15\n9\n\nOutput:\nYes"
+    },
+    "question2": {
+      "name": "Maximum Subarray Sum",
+      "link": "https://leetcode.com/problems/maximum-subarray/description/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Two Pointers"]
+  },
+  {
+    "day": 20,
+    "unit": "Unit I: Introduction",
+    "question1": {
+      "title": "Count Zero-Sum Subarrays",
+      "description": "Problem: Given an array of integers, count the number of subarrays whose sum is equal to zero.\n\nInput:\n- First line: integer n\n- Second line: n integers\n\nOutput:\n- Print the count of subarrays having sum zero\n\nExample:\nInput:\n6\n1 -1 2 -2 3 -3\n\nOutput:\n6"
+    },
+    "question2": {
+      "name": "3Sum",
+      "link": "https://leetcode.com/problems/3sum/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Sorting", "Two Pointers"]
+  },
+    {
+    "day": 21,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Create and Traverse Singly Linked List",
+      "description": "Problem: Create and Traverse Singly Linked List - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the linked list elements, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n10 20 30 40 50\n\nExplanation:\nCreate nodes dynamically and link them. Traverse from head to last node printing values."
+    },
+    "question2": {
+      "name": "Middle of the Linked List",
+      "link": "https://leetcode.com/problems/middle-of-the-linked-list/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Linked List Basics",
+      "Traversal"
+    ]
+  },
+  {
+    "day": 22,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Reverse a Singly Linked List (Iterative)",
+      "description": "Problem: Reverse a Singly Linked List (Iterative) - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the linked list elements, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n50 40 30 20 10\n\nExplanation:\nUse three pointers (prev, curr, next) to reverse links iteratively. Prev becomes new head."
+    },
+    "question2": {
+      "name": "Reverse Linked List",
+      "link": "https://leetcode.com/problems/reverse-linked-list/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Linked List",
+      "Reversal"
+    ]
+  },
+  {
+    "day": 23,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Merge Two Sorted Linked Lists",
+      "description": "Problem: Merge Two Sorted Linked Lists - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers (first list)\n- Third line: integer m\n- Fourth line: m space-separated integers (second list)\n\nOutput:\n- Print the merged linked list elements, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n4\n15 25 35 45\n\nOutput:\n10 15 20 25 30 35 40 45 50\n\nExplanation:\nCompare nodes of both lists, append smaller to result, continue until all nodes are merged."
+    },
+    "question2": {
+      "name": "Merge Two Sorted Lists",
+      "link": "https://leetcode.com/problems/merge-two-sorted-lists/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Linked List",
+      "Merge Operation"
+    ]
+  },
+  {
+    "day": 24,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Delete First Occurrence of a Key",
+      "description": "Problem: Delete First Occurrence of a Key - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n- Third line: integer key\n\nOutput:\n- Print the linked list elements after deletion, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n30\n\nOutput:\n10 20 40 50\n\nExplanation:\nTraverse list, find first node with key, remove it by adjusting previous node's next pointer."
+    },
+    "question2": {
+      "name": "Remove Linked List Elements",
+      "link": "https://leetcode.com/problems/remove-linked-list-elements/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Deletion",
+      "Linked List"
+    ]
+  },
+  {
+    "day": 25,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Count Occurrences of an Element in Linked List",
+      "description": "Problem: Count Occurrences of an Element in Linked List - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n (number of nodes)\n- Second line: n space-separated integers (linked list elements)\n- Third line: integer key (element to be counted)\n\nOutput:\n- Print the number of times the key appears in the linked list\n\nExample:\nInput:\n6\n10 20 30 20 40 20\n20\n\nOutput:\n3\n\nExplanation:\nTraverse the linked list from head to end. Each time a node’s data matches the given key, increment a counter. After traversal, print the final count."
+    },
+    "question2": {
+      "name": "Linked List Cycle",
+      "link": "https://leetcode.com/problems/linked-list-cycle/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Cycle Detection",
+      "Linked List"
+    ]
+  },
+  {
+    "day": 26,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Doubly Linked List Insertion and Traversal",
+      "description": "Problem: Doubly Linked List Insertion and Traversal - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the linked list elements in forward order, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n10 20 30 40 50\n\nExplanation:\nEach node has data, next, prev. Insert nodes sequentially, traverse from head using next pointer."
+    },
+    "question2": {
+      "name": "Design Linked List",
+      "link": "https://leetcode.com/problems/design-linked-list/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Doubly Linked List"
+    ]
+  },
+  {
+    "day": 27,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Find Intersection Point of Two Linked Lists",
+      "description": "Problem: Find Intersection Point of Two Linked Lists - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers (first list)\n- Third line: integer m\n- Fourth line: m space-separated integers (second list)\n\nOutput:\n- Print value of intersection node or 'No Intersection'\n\nExample:\nInput:\n5\n10 20 30 40 50\n4\n15 25 30 40 50\n\nOutput:\n30\n\nExplanation:\nCalculate lengths, advance pointer in longer list, traverse both simultaneously. First common node is intersection."
+    },
+    "question2": {
+      "name": "Intersection of Two Linked Lists",
+      "link": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Linked List",
+      "Intersection"
+    ]
+  },
+  {
+    "day": 28,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Circular Linked List Creation and Traversal",
+      "description": "Problem: Circular Linked List Creation and Traversal - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the circular linked list elements starting from head, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n10 20 30 40 50\n\nExplanation:\nLast node's next points to head. Traverse from head until returning to head to avoid infinite loop."
+    },
+    "question2": {
+      "name": "Insert into a Sorted Circular Linked List",
+      "link": "https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Circular Linked List"
+    ]
+  },
+  {
+    "day": 29,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Rotate Linked List Right by k Places",
+      "description": "Problem: Rotate Linked List Right by k Places - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n- Third line: integer k\n\nOutput:\n- Print the linked list elements after rotation, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n2\n\nOutput:\n40 50 10 20 30\n\nExplanation:\nConnect last node to head forming circular list. Traverse to (n-k)th node, set next to NULL, update head to (n-k+1)th node."
+    },
+    "question2": {
+      "name": "Rotate a Linked List",
+      "link": "https://practice.geeksforgeeks.org/problems/rotate-a-linked-list/1",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Rotation",
+      "Linked List"
+    ]
+  },
+  {
+    "day": 30,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Polynomial Using Linked List",
+      "description": "Problem: Polynomial Using Linked List - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n (number of terms)\n- Next n lines: two integers (coefficient and exponent)\n\nOutput:\n- Print polynomial in standard form, e.g., 10x^4 + 20x^3 + 30x^2 + 40x + 50\n\nExample:\nInput:\n5\n10 4\n20 3\n30 2\n40 1\n50 0\n\nOutput:\n10x^4 + 20x^3 + 30x^2 + 40x + 50\n\nExplanation:\nEach node stores coefficient and exponent. Traverse nodes to print polynomial in decreasing exponent order."
+    },
+    "question2": {
+      "name": "Add Two Numbers II",
+      "link": "https://leetcode.com/problems/add-two-numbers-ii/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Polynomial LL",
+      "Representation"
+    ]
+  },
+  {
+    "day": 31,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Implement Stack Using Array",
+      "description": "Problem: Implement Stack Using Array - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print stack elements from top to bottom, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n50 40 30 20 10\n\nExplanation:\nUse array and top pointer. Push inserts at top, pop removes from top. Print elements from top to bottom."
+    },
+    "question2": {
+      "name": "Valid Parentheses",
+      "link": "https://leetcode.com/problems/valid-parentheses/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Stack",
+      "Array Implementation"
+    ]
+  },
+  {
+    "day": 32,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Implement Stack Using Linked List",
+      "description": "Problem: Implement Stack Using Linked List - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print stack elements from top to bottom, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n50 40 30 20 10\n\nExplanation:\nPush inserts at head, pop removes head. Traverse linked list from head to print stack."
+    },
+    "question2": {
+      "name": "Implement Stack Using Queues",
+      "link": "https://leetcode.com/problems/implement-stack-using-queues/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Stack",
+      "Linked List"
+    ]
+  },
+  {
+    "day": 33,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Infix to Postfix Conversion",
+      "description": "Problem: Infix to Postfix Conversion - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n (length of expression)\n- Second line: infix expression\n\nOutput:\n- Print postfix expression\n\nExample:\nInput:\n5\nA + B * C\n\nOutput:\nA B C * +\n\nExplanation:\nUse stack for operators, output operands directly, push operators considering precedence, pop remaining operators at end."
+    },
+    "question2": {
+      "name": "Basic Calculator II",
+      "link": "https://leetcode.com/problems/basic-calculator-ii/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Stack",
+      "Expression Parsing"
+    ]
+  },
+  {
+    "day": 34,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Evaluate Postfix Expression",
+      "description": "Problem: Evaluate Postfix Expression - Implement using linked list with dynamic memory allocation.\n\nInput:\n- Postfix expression with operands and operators\n\nOutput:\n- Print the integer result\n\nExample:\nInput:\n2 3 1 * + 9 -\n\nOutput:\n-4\n\nExplanation:\nUse stack to store operands, apply operators by popping operands, push result back. Final stack top is result."
+    },
+    "question2": {
+      "name": "Evaluate Reverse Polish Notation",
+      "link": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Expression Evaluation"
+    ]
+  },
+  {
+    "day": 35,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Queue Using Array",
+      "description": "Problem: Queue Using Array - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n (number of elements)\n- Second line: n space-separated integers\n\nOutput:\n- Print queue elements from front to rear, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n10 20 30 40 50\n\nExplanation:\nUse array and front/rear pointers. Enqueue inserts at rear, dequeue removes from front. Display from front to rear."
+    },
+    "question2": {
+      "name": "Number of Recent Calls",
+      "link": "https://leetcode.com/problems/number-of-recent-calls/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Queue",
+      "Array"
+    ]
+  },
+  {
+    "day": 36,
+    "unit": "Unit II: Linked List",
+    "question1": {
+      "title": "Circular Queue Using Array",
+      "description": "Problem: Circular Queue Using Array - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n (number of elements to enqueue)\n- Second line: n space-separated integers\n- Third line: integer m (number of dequeue operations)\n\nOutput:\n- Print queue elements from front to rear after operations, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n2\n\nOutput:\n30 40 50 10 20\n\nExplanation:\nUse array and front/rear pointers. Rear wraps around to start after reaching array end. Dequeue removes elements from front. Display remaining elements in correct order."
+    },
+    "question2": {
+      "name": "Design Circular Deque",
+      "link": "https://leetcode.com/problems/design-circular-deque/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Circular Queue"
+    ]
+  },
+   {
+    "day": 37,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Double Ended Queue (Deque)",
+      "description": "Problem Statement:\nImplement a Double Ended Queue (Deque) that supports insertion and deletion from both ends.\n\nSupported Operations:\n- pushFront x\n- pushRear x\n- popFront\n- popRear\n- peekFront\n- peekRear\n\nInput Format:\n- First line contains integer N (number of operations)\n- Next N lines contain one operation per line\n\nOutput Format:\n- Print the result of pop and peek operations\n- Print -1 if operation cannot be performed\n\nExample:\nInput:\n6\npushFront 10\npushRear 20\npeekFront\npopRear\npeekRear\npopFront\n\nOutput:\n10\n20\n10"
+    },
+    "question2": {
+      "name": "Min Stack",
+      "link": "https://leetcode.com/problems/min-stack/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Deque", "Double Ended Queue"]
+  },
+  {
+    "day": 38,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Priority Queue Using Array",
+      "description": "Problem Statement:\nImplement a Priority Queue using an array. An element with smaller value has higher priority.\n\nSupported Operations:\n- insert x\n- delete\n- peek\n\nInput Format:\n- First line contains integer N\n- Next N lines contain operations\n\nOutput Format:\n- Print the deleted or peeked element\n- Print -1 if the queue is empty\n\nExample:\nInput:\n5\ninsert 30\ninsert 10\ninsert 20\ndelete\npeek\n\nOutput:\n10\n20"
+    },
+    "question2": {
+      "name": "Kth Largest Element in a Stream",
+      "link": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
+      "difficulty": "Easy"
+    },
+    "topics": ["Priority Queue"]
+  },
+  {
+    "day": 39,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Min Heap Implementation",
+      "description": "Problem Statement:\nImplement a Min Heap using an array where the smallest element is always at the root.\n\nSupported Operations:\n- insert x\n- extractMin\n- peek\n\nInput Format:\n- First line contains integer N\n- Next N lines contain heap operations\n\nOutput Format:\n- Print results of extractMin and peek\n- Print -1 if operation cannot be performed\n\nExample:\nInput:\n6\ninsert 40\ninsert 10\ninsert 30\npeek\nextractMin\npeek\n\nOutput:\n10\n10\n30"
+    },
+    "question2": {
+      "name": "Top K Frequent Elements",
+      "link": "https://leetcode.com/problems/top-k-frequent-elements/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Heap", "Priority Queue"]
+  },
+  {
+    "day": 40,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Heap Sort Using Max-Heap",
+      "description": "Problem Statement:\nImplement Heap Sort using a Max Heap to sort an array in ascending order.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n\nOutput Format:\n- Print the sorted array\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
+    },
+    "question2": {
+      "name": "Daily Temperatures",
+      "link": "https://leetcode.com/problems/daily-temperatures/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Heap Sort", "Sorting"]
+  },
+  {
+    "day": 41,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Queue Using Linked List",
+      "description": "Problem Statement:\nImplement a Queue using a linked list supporting enqueue and dequeue operations.\n\nInput Format:\n- First line contains integer N\n- Next N lines contain queue operations\n\nOutput Format:\n- Print dequeued elements\n- Print -1 if dequeue is attempted on an empty queue\n\nExample:\nInput:\n5\nenqueue 10\nenqueue 20\ndequeue\nenqueue 30\ndequeue\n\nOutput:\n10\n20"
+    },
+    "question2": {
+      "name": "Task Scheduler",
+      "link": "https://leetcode.com/problems/task-scheduler/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Queue", "Linked List Implementation"]
+  },
+  {
+    "day": 42,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Reverse a Queue Using Stack",
+      "description": "Problem Statement:\nGiven a queue of integers, reverse the queue using a stack.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n\nOutput Format:\n- Print the reversed queue\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n50 40 30 20 10"
+    },
+    "question2": {
+      "name": "Find Median from Data Stream",
+      "link": "https://leetcode.com/problems/find-median-from-data-stream/",
+      "difficulty": "Hard"
+    },
+    "topics": ["Queue", "Stack", "Reversal"]
+  },
+  {
+    "day": 43,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Binary Tree Construction (Level Order)",
+      "description": "Problem Statement:\nConstruct a Binary Tree from the given level-order traversal.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers (-1 represents NULL)\n\nOutput Format:\n- Print inorder traversal of the constructed tree\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 6\n\nOutput:\n4 2 5 1 3 6"
+    },
+    "question2": {
+      "name": "Binary Tree Inorder Traversal",
+      "link": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+      "difficulty": "Easy"
+    },
+    "topics": ["Binary Tree", "Construction"]
+  },
+  {
+    "day": 44,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Binary Tree Traversals",
+      "description": "Problem Statement:\nPerform inorder, preorder, and postorder traversals of a given binary tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n\nOutput Format:\n- Print inorder, preorder, and postorder traversals\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n4 2 5 1 6 3 7\n1 2 4 5 3 6 7\n4 5 2 6 7 3 1"
+    },
+    "question2": {
+      "name": "Binary Tree Preorder Traversal",
+      "link": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+      "difficulty": "Easy"
+    },
+    "topics": ["Tree Traversal"]
+  },
+  {
+    "day": 45,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Height of a Binary Tree",
+      "description": "Problem Statement:\nFind the height (maximum depth) of a given binary tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n\nOutput Format:\n- Print the height of the tree\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 -1\n\nOutput:\n3"
+    },
+    "question2": {
+      "name": "Maximum Depth of Binary Tree",
+      "link": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+      "difficulty": "Easy"
+    },
+    "topics": ["Binary Tree", "Recursion"]
+  },
+  {
+    "day": 46,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Count Leaf Nodes",
+      "description": "Problem Statement:\nCount the number of leaf nodes in a given binary tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n\nOutput Format:\n- Print the number of leaf nodes\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 6\n\nOutput:\n3"
+    },
+    "question2": {
+      "name": "Diameter of Binary Tree",
+      "link": "https://leetcode.com/problems/diameter-of-binary-tree/",
+      "difficulty": "Easy"
+    },
+    "topics": ["Binary Tree", "Leaf Count"]
+  },
+  {
+    "day": 47,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Count Leaf Nodes in Binary Tree",
+      "description": "Problem Statement:\nCount the total number of leaf nodes in a binary tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n\nOutput Format:\n- Print the count of leaf nodes\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 -1\n\nOutput:\n2"
+    },
+    "question2": {
+      "name": "Balanced Binary Tree",
+      "link": "https://leetcode.com/problems/balanced-binary-tree/",
+      "difficulty": "Easy"
+    },
+    "topics": ["Balanced Tree", "Binary Tree"]
+  },
+  {
+    "day": 48,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "BST Insertion & Inorder Traversal",
+      "description": "Problem Statement:\nInsert elements into a Binary Search Tree and print its inorder traversal.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n\nOutput Format:\n- Print inorder traversal of BST\n\nExample:\nInput:\n5\n4 2 6 1 3\n\nOutput:\n1 2 3 4 6"
+    },
+    "question2": {
+      "name": "Validate Binary Search Tree",
+      "link": "https://leetcode.com/problems/validate-binary-search-tree/",
+      "difficulty": "Medium"
+    },
+    "topics": ["BST", "Insertion"]
+  },
+  {
+    "day": 49,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Search in BST",
+      "description": "Problem Statement:\nSearch for a given key in a Binary Search Tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n- Third line contains key to search\n\nOutput Format:\n- Print \"Found\" if key exists, otherwise \"Not Found\"\n\nExample:\nInput:\n5\n4 2 6 1 3\n3\n\nOutput:\nFound"
+    },
+    "question2": {
+      "name": "Search in a Binary Search Tree",
+      "link": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
+      "difficulty": "Easy"
+    },
+    "topics": ["BST Search"]
+  },
+  {
+    "day": 50,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Delete Node from BST",
+      "description": "Problem Statement:\nDelete a given node from a Binary Search Tree while maintaining BST properties.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n- Third line contains key to delete\n\nOutput Format:\n- Print inorder traversal after deletion\n\nExample:\nInput:\n5\n4 2 6 1 3\n2\n\nOutput:\n1 3 4 6"
+    },
+    "question2": {
+      "name": "Delete Node in a BST",
+      "link": "https://leetcode.com/problems/delete-node-in-a-bst/",
+      "difficulty": "Medium"
+    },
+    "topics": ["BST Deletion"]
+  },
+  {
+    "day": 51,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "Lowest Common Ancestor in BST",
+      "description": "Problem Statement:\nFind the Lowest Common Ancestor (LCA) of two nodes in a Binary Search Tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n- Third line contains two node values\n\nOutput Format:\n- Print the LCA value\n\nExample:\nInput:\n7\n6 2 8 0 4 7 9\n2 8\n\nOutput:\n6"
+    },
+    "question2": {
+      "name": "Lowest Common Ancestor of a BST",
+      "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+      "difficulty": "Easy"
+    },
+    "topics": ["BST", "LCA"]
+  },
+  {
+    "day": 52,
+    "unit": "Unit III: Stack & Queue",
+    "question1": {
+      "title": "LCA in Binary Tree",
+      "description": "Problem Statement:\nFind the Lowest Common Ancestor (LCA) of two nodes in a Binary Tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n- Third line contains two node values\n\nOutput Format:\n- Print the LCA value\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n4 5\n\nOutput:\n2"
+    },
+    "question2": {
+      "name": "Lowest Common Ancestor of a Binary Tree",
+      "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Binary Tree", "LCA"]
+  },
+{
+    "day": 53,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Print Binary Tree Vertical Order",
+      "description": "Problem Statement:\nGiven a binary tree, print its vertical order traversal. Nodes that lie on the same vertical line should be printed together from top to bottom and from left to right.\n\nInput Format:\n- First line contains integer N (number of nodes)\n- Second line contains N space-separated integers representing level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print nodes column by column from leftmost to rightmost vertical line\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n4\n2\n1 5 6\n3\n7\n\nExplanation:\nVertical lines are formed based on horizontal distance from root. Nodes sharing the same distance are printed together."
+    },
+    "question2": {
+      "name": "Binary Tree Level Order Traversal",
+      "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Tree Traversal", "BFS"]
+  },
+  {
+    "day": 54,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Zigzag Traversal",
+      "description": "Problem Statement:\nPerform zigzag (spiral) level order traversal of a binary tree. Alternate levels should be traversed left-to-right and right-to-left.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print traversal in zigzag order\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n1 3 2 4 5 6 7\n\nExplanation:\nLevel 1 is printed left-to-right, level 2 right-to-left, and so on."
+    },
+    "question2": {
+      "name": "Binary Tree Zigzag Level Order Traversal",
+      "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Tree Traversal", "Zigzag"]
+  },
+  {
+    "day": 55,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Right View of Binary Tree",
+      "description": "Problem Statement:\nPrint the nodes visible when the binary tree is viewed from the right side.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print right view nodes\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 6\n\nOutput:\n1 3 6\n\nExplanation:\nAt each level, the rightmost node is visible from the right view."
+    },
+    "question2": {
+      "name": "Binary Tree Right Side View",
+      "link": "https://leetcode.com/problems/binary-tree-right-side-view/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Tree View Problems"]
+  },
+  {
+    "day": 56,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Symmetric Binary Tree Check",
+      "description": "Problem Statement:\nCheck whether a given binary tree is symmetric around its center.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print YES if symmetric, otherwise NO\n\nExample:\nInput:\n7\n1 2 2 3 4 4 3\n\nOutput:\nYES\n\nExplanation:\nLeft subtree is a mirror image of the right subtree."
+    },
+    "question2": {
+      "name": "Symmetric Tree",
+      "link": "https://leetcode.com/problems/symmetric-tree/",
+      "difficulty": "Easy"
+    },
+    "topics": ["Symmetry", "Binary Tree"]
+  },
+  {
+    "day": 57,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Mirror a Binary Tree",
+      "description": "Problem Statement:\nConvert a binary tree into its mirror image by swapping left and right children at every node.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print inorder traversal of mirrored tree\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n7 3 6 1 5 2 4\n\nExplanation:\nEach node’s left and right children are swapped recursively."
+    },
+    "question2": {
+      "name": "Flatten Binary Tree to Linked List",
+      "link": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Binary Tree", "Linked List"]
+  },
+  {
+    "day": 58,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Build Tree from Inorder & Preorder",
+      "description": "Problem Statement:\nConstruct a binary tree from given preorder and inorder traversal arrays.\n\nInput Format:\n- First line contains integer N\n- Second line contains preorder traversal\n- Third line contains inorder traversal\n\nOutput Format:\n- Print postorder traversal of constructed tree\n\nExample:\nInput:\n5\n1 2 4 5 3\n4 2 5 1 3\n\nOutput:\n4 5 2 3 1\n\nExplanation:\nPreorder identifies root, inorder splits left and right subtrees."
+    },
+    "question2": {
+      "name": "Construct Binary Tree from Preorder and Inorder Traversal",
+      "link": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Tree Construction"]
+  },
+  {
+    "day": 59,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Build Tree from Inorder & Postorder",
+      "description": "Problem Statement:\nConstruct a binary tree from given inorder and postorder traversal arrays.\n\nInput Format:\n- First line contains integer N\n- Second line contains inorder traversal\n- Third line contains postorder traversal\n\nOutput Format:\n- Print preorder traversal of constructed tree\n\nExample:\nInput:\n5\n4 2 5 1 3\n4 5 2 3 1\n\nOutput:\n1 2 4 5 3\n\nExplanation:\nPostorder gives root at end, inorder divides left and right subtrees."
+    },
+    "question2": {
+      "name": "Construct Binary Tree from Inorder and Postorder Traversal",
+      "link": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Binary Tree", "Construction"]
+  },
+  {
+    "day": 60,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Validate Min-Heap",
+      "description": "Problem Statement:\nCheck whether a given binary tree satisfies the Min-Heap property.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal\n\nOutput Format:\n- Print YES if valid Min-Heap, otherwise NO\n\nExample:\nInput:\n7\n1 3 5 7 9 8 10\n\nOutput:\nYES\n\nExplanation:\nEach parent node must be smaller than its children."
+    },
+    "question2": {
+      "name": "Binary Tree Cameras",
+      "link": "https://leetcode.com/problems/binary-tree-cameras/",
+      "difficulty": "Hard"
+    },
+    "topics": ["Heap", "Tree"]
+  },
+  {
+    "day": 61,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Graph Representation Using Adjacency Matrix",
+      "description": "Problem Statement:\nRepresent a graph using an adjacency matrix.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges u v\n\nOutput Format:\n- Print adjacency matrix\n\nExample:\nInput:\n4 3\n1 2\n2 3\n3 4\n\nOutput:\n0 1 0 0\n1 0 1 0\n0 1 0 1\n0 0 1 0\n\nExplanation:\nMatrix cell (i,j) is 1 if edge exists between i and j."
+    },
+    "question2": {
+      "name": "Number of Provinces",
+      "link": "https://leetcode.com/problems/number-of-provinces/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Graph Basics", "Adjacency Matrix"]
+  },
+  {
+    "day": 62,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Graph Representation Using Adjacency List",
+      "description": "Problem Statement:\nRepresent a graph using adjacency list.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges u v\n\nOutput Format:\n- Print adjacency list\n\nExample:\nInput:\n4 3\n1 2\n1 3\n2 4\n\nOutput:\n1 -> 2 3\n2 -> 4\n3 ->\n4 ->\n\nExplanation:\nEach vertex stores a list of its adjacent vertices."
+    },
+    "question2": {
+      "name": "Keys and Rooms",
+      "link": "https://leetcode.com/problems/keys-and-rooms/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Graph Representation", "Adjacency List"]
+  },
+  {
+    "day": 63,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Depth First Search (DFS)",
+      "description": "Problem Statement:\nPerform Depth First Search traversal starting from a given source vertex.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges\n- Last line contains source vertex\n\nOutput Format:\n- Print DFS traversal order\n\nExample:\nInput:\n5 4\n1 2\n1 3\n2 4\n3 5\n1\n\nOutput:\n1 2 4 3 5\n\nExplanation:\nDFS explores as far as possible before backtracking."
+    },
+    "question2": {
+      "name": "Flood Fill",
+      "link": "https://leetcode.com/problems/flood-fill/",
+      "difficulty": "Easy"
+    },
+    "topics": ["DFS", "Graph Traversal"]
+  },
+  {
+    "day": 64,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Breadth First Search (BFS)",
+      "description": "Problem Statement:\nPerform Breadth First Search traversal starting from a given source vertex.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges\n- Last line contains source vertex\n\nOutput Format:\n- Print BFS traversal order\n\nExample:\nInput:\n5 4\n1 2\n1 3\n2 4\n3 5\n1\n\nOutput:\n1 2 3 4 5\n\nExplanation:\nBFS explores vertices level by level using a queue."
+    },
+    "question2": {
+      "name": "Rotting Oranges",
+      "link": "https://leetcode.com/problems/rotting-oranges/",
+      "difficulty": "Medium"
+    },
+    "topics": ["BFS", "Graph Traversal"]
+  },
+  {
+    "day": 65,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Cycle Detection in Undirected Graph (DFS)",
+      "description": "Problem Statement:\nDetect whether an undirected graph contains a cycle using DFS.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges\n\nOutput Format:\n- Print YES if cycle exists, otherwise NO\n\nExample:\nInput:\n4 4\n1 2\n2 3\n3 4\n4 2\n\nOutput:\nYES\n\nExplanation:\nBack-edge during DFS indicates a cycle."
+    },
+    "question2": {
+      "name": "Graph Cycle Detection",
+      "link": "https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1",
+      "difficulty": "Medium"
+    },
+    "topics": ["Cycle Detection", "DFS"]
+  },
+  {
+    "day": 66,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Cycle Detection in Directed Graph",
+      "description": "Problem Statement:\nDetect whether a directed graph contains a cycle.\n\nInput Format:\n- First line contains n m\n- Next m lines contain directed edges\n\nOutput Format:\n- Print YES if cycle exists, otherwise NO\n\nExample:\nInput:\n3 3\n1 2\n2 3\n3 1\n\nOutput:\nYES\n\nExplanation:\nA back-edge in DFS recursion stack confirms a cycle."
+    },
+    "question2": {
+      "name": "Course Schedule",
+      "link": "https://leetcode.com/problems/course-schedule/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Directed Graph", "Cycle Detection"]
+  },
+  {
+    "day": 67,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Topological Sort (DFS)",
+      "description": "Problem Statement:\nPerform Topological Sort of a Directed Acyclic Graph using DFS.\n\nInput Format:\n- First line contains n m\n- Next m lines contain directed edges\n\nOutput Format:\n- Print topological order\n\nExample:\nInput:\n6 6\n5 2\n5 0\n4 0\n4 1\n2 3\n3 1\n\nOutput:\n5 4 2 3 1 0\n\nExplanation:\nVertices are ordered such that for every edge u → v, u appears before v."
+    },
+    "question2": {
+      "name": "Course Schedule II",
+      "link": "https://leetcode.com/problems/course-schedule-ii/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Topological Sort", "DFS"]
+  },
+  {
+    "day": 68,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Topological Sort (Kahn’s BFS Algorithm)",
+      "description": "Problem Statement:\nPerform Topological Sort of a Directed Acyclic Graph using Kahn’s BFS algorithm.\n\nInput Format:\n- First line contains n m\n- Next m lines contain directed edges\n\nOutput Format:\n- Print topological order\n\nExample:\nInput:\n6 6\n5 2\n5 0\n4 0\n4 1\n2 3\n3 1\n\nOutput:\n4 5 2 0 3 1\n\nExplanation:\nNodes with zero in-degree are processed first using a queue."
+    },
+    "question2": {
+      "name": "Alien Dictionary",
+      "link": "https://practice.geeksforgeeks.org/problems/alien-dictionary/1",
+      "difficulty": "Hard"
+    },
+    "topics": ["Topological Sort", "Kahn's Algorithm"]
+  },
+   {
+    "day": 69,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Implement a Hash Table Using Chaining (Linked List Collision Handling)",
+      "description": "Problem Statement\nImplement a hash table of size m using separate chaining, where collisions are resolved by storing elements in a linked list.\n\nYou must support the following operations:\n● INSERT x → Insert key x\n● SEARCH x → Print “FOUND” or “NOT FOUND”\n● DELETE x → Delete key x\n\nHash function:\nh(x) = x % m.\n\nInput Format\nm\nn\noperation1 value\noperation2 value\n...\noperation n value\n\nOutput Format\nPrint the result for SEARCH operations only.\n\nSample Input\n5\n6\nINSERT 12\nINSERT 7\nINSERT 17\nSEARCH 7\nDELETE 7\nSEARCH 7\n\nSample Output\nFOUND\nNOT FOUND\n\nExplanation\n● 12 → bucket 2, 7 → bucket 2, 17 → bucket 2\n● After deletion of 7, it no longer exists."
+    },
+    "question2": {
+      "name": "Network Delay Time",
+      "link": "https://leetcode.com/problems/network-delay-time/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Hashing", "Chaining"]
+  },
+  {
+    "day": 70,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Hash Table Using Linear Probing",
+      "description": "Problem Statement\nImplement a hash table using open addressing with linear probing.\n\nSupport INSERT and SEARCH operations. If the table becomes full, display “HASH TABLE FULL”.\n\nInput Format\nm\nn\noperation value\n...\n\nOutput Format\nPrint results of SEARCH operations.\n\nSample Input\n7\n5\nINSERT 10\nINSERT 24\nINSERT 17\nSEARCH 24\nSEARCH 5\n\nSample Output\nFOUND\nNOT FOUND\n\nExplanation\n● 24 inserted at index (24 % 7) = 3\n● 5 never inserted → NOT FOUND"
+    },
+    "question2": {
+      "name": "Cheapest Flights Within K Stops",
+      "link": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Hashing", "Linear Probing"]
+  },
+  {
+    "day": 71,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Hash Table Using Quadratic Probing",
+      "description": "Problem Statement\nImplement a hash table using quadratic probing with formula:\n\nh(k, i) = (h(k) + i*i) % m\n\nInput Format\nSame as previous.\n\nOutput Format\nResult of SEARCH operations.\n\nSample Input\n7\n4\nINSERT 49\nINSERT 56\nSEARCH 49\nSEARCH 15\n\nSample Output\nFOUND\nNOT FOUND\n\nExplanation\nCollisions resolved using i² jumps."
+    },
+    "question2": {
+      "name": "Min Cost to Connect All Points",
+      "link": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Hashing", "Quadratic Probing"]
+  },
+  {
+    "day": 72,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Build Graph Using Adjacency Matrix",
+      "description": "Problem Statement\nConstruct a graph with n vertices and m edges using adjacency matrix.\nGraph may be directed or undirected (given as flag).\n\nInput Format\nn m type\nu v\n...\n\ntype:\n0 = undirected\n1 = directed\n\nOutput Format\nPrint adjacency matrix.\n\nSample Input\n4 3 0\n1 2\n2 3\n3 4\n\nSample Output\n0 1 0 0\n1 0 1 0\n0 1 0 1\n0 0 1 0\n\nExplanation\nEdges added symmetrically."
+    },
+    "question2": {
+      "name": "Optimize Water Distribution in a Village",
+      "link": "https://leetcode.com/problems/optimize-water-distribution-in-a-village/",
+      "difficulty": "Hard"
+    },
+    "topics": ["Adjacency Matrix", "Graph Representation"]
+  },
+  {
+    "day": 73,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Build Graph Using Adjacency List",
+      "description": "Problem Statement\nCreate adjacency list for given graph. Print each vertex and its neighbors.\n\nInput Format\nn m type\nu v\n...\n\nOutput Format\nAdjacency lists.\n\nSample Input\n4 3 1\n1 2\n1 3\n2 4\n\nSample Output\n1 -> 2 3\n2 -> 4\n3 ->\n4 ->\n\nExplanation\nDirected edges."
+    },
+    "question2": {
+      "name": "Redundant Connection",
+      "link": "https://leetcode.com/problems/redundant-connection/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Adjacency List", "Graph Representation"]
+  },
+  {
+    "day": 74,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "DFS Traversal of Graph",
+      "description": "Problem Statement\nPerform Depth First Search starting from a given source vertex.\n\nInput Format\nn m\nedges\nsource\n\nOutput Format\nDFS order.\n\nSample Input\n5 4\n1 2\n1 3\n2 4\n3 5\n1\n\nSample Output\n1 2 4 3 5\n\nExplanation\nStandard DFS from 1."
+    },
+    "question2": {
+      "name": "Number of Connected Components in an Undirected Graph",
+      "link": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
+      "difficulty": "Medium"
+    },
+    "topics": ["DFS", "Graph Traversal"]
+  },
+  {
+    "day": 75,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "BFS Traversal of Graph",
+      "description": "Problem Statement\nPerform Breadth First Search from source using a queue.\n\nInput Format\nSame as DFS.\n\nOutput Format\nBFS order.\n\nSample Input\n5 4\n1 2\n1 3\n2 4\n3 5\n1\n\nSample Output\n1 2 3 4 5"
+    },
+    "question2": {
+      "name": "Is Graph Bipartite?",
+      "link": "https://leetcode.com/problems/is-graph-bipartite/",
+      "difficulty": "Medium"
+    },
+    "topics": ["BFS", "Graph Traversal"]
+  },
+  {
+    "day": 76,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Count Connected Components (Undirected Graph)",
+      "description": "Problem Statement\nUsing DFS or BFS, count number of connected components.\n\nInput Format\nn m\nedges\n\nOutput Format\nNumber of connected components.\n\nSample Input\n6 3\n1 2\n2 3\n5 6\n\nSample Output\n3\n\nExplanation\nComponents: {1,2,3}, {4}, {5,6}"
+    },
+    "question2": {
+      "name": "Clone Graph",
+      "link": "https://leetcode.com/problems/clone-graph/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Connected Components", "DFS/BFS"]
+  },
+  {
+    "day": 77,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Check if Graph is Connected",
+      "description": "Problem Statement\nUsing BFS or DFS, check if the entire graph is connected.\n\nInput Format\nn m\nedges\n\nOutput Format\nCONNECTED\nNOT CONNECTED\n\nSample Input\n4 2\n1 2\n3 4\n\nSample Output\nNOT CONNECTED"
+    },
+    "question2": {
+      "name": "Critical Connections in a Network",
+      "link": "https://leetcode.com/problems/critical-connections-in-a-network/",
+      "difficulty": "Hard"
+    },
+    "topics": ["Graph Connectivity", "DFS"]
+  },
+  {
+    "day": 78,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Minimum Spanning Tree using Prim’s Algorithm",
+      "description": "Problem Statement\nGiven weighted undirected graph, compute total weight of Minimum Spanning Tree using Prim’s algorithm.\n\nInput Format\nn m\nu v w\n...\n\nOutput Format\nTotal weight of MST.\n\nSample Input\n4 5\n1 2 3\n1 3 5\n2 3 1\n2 4 4\n3 4 2\n\nSample Output\n6\n\nExplanation\nOne possible MST edges: (2-3), (3-4), (1-2)"
+    },
+    "question2": {
+      "name": "Articulation Points (GFG)",
+      "link": "https://practice.geeksforgeeks.org/problems/articulation-point-1/1",
+      "difficulty": "Hard"
+    },
+    "topics": ["MST", "Prim’s Algorithm"]
+  },
+  {
+    "day": 79,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Single Source Shortest Path using Dijkstra’s Algorithm",
+      "description": "Problem Statement\nFind shortest distances from source vertex in a weighted graph with non-negative weights.\n\nInput Format\nn m\nu v w\nsource\n\nOutput Format\nDistances to all vertices.\n\nSample Input\n5 6\n1 2 2\n1 3 4\n2 3 1\n2 4 7\n3 5 3\n4 5 1\n1\n\nSample Output\n0 2 3 9 6\n\nExplanation\nShortest distances computed via priority queue."
+    },
+    "question2": {
+      "name": "Strongly Connected Components",
+      "link": "https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1",
+      "difficulty": "Medium"
+    },
+    "topics": ["Dijkstra", "Shortest Path"]
+  },
+  {
+    "day": 80,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Floyd-Warshall Algorithm",
+      "description": "Problem: Floyd-Warshall Algorithm - Implement the solution as required.\n\nInput:\n- First line: input size\n- Following lines: input data\n\nOutput:\n- Print the result\n\nExample:\nInput:\n[Sample input]\n\nOutput:\n[Sample output]"
+    },
+    "question2": {
+      "name": "Find the City With the Smallest Number of Neighbors",
+      "link": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "All-Pairs Shortest Path",
+      "DP"
+    ]
+  },
+  {
+    "day": 81,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Implement Bubble Sort",
+      "description": "Problem: Implement Bubble Sort - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
+    },
+    "question2": {
+      "name": "Binary Search",
+      "link": "https://leetcode.com/problems/binary-search/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Binary Search",
+      "Searching"
+    ]
+  },
+  {
+    "day": 82,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Upper Bound & Lower Bound Implementation",
+      "description": "Problem: Upper Bound & Lower Bound Implementation - Implement the solution as required.\n\nInput:\n- First line: input size\n- Following lines: input data\n\nOutput:\n- Print the result\n\nExample:\nInput:\n[Sample input]\n\nOutput:\n[Sample output]"
+    },
+    "question2": {
+      "name": "Search Insert Position",
+      "link": "https://leetcode.com/problems/search-insert-position/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Binary Search",
+      "Bounds"
+    ]
+  },
+  {
+    "day": 83,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Implement Selection Sort",
+      "description": "Problem: Implement Selection Sort - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
+    },
+    "question2": {
+      "name": "Search in Rotated Sorted Array",
+      "link": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Binary Search",
+      "Rotation"
+    ]
+  },
+  {
+    "day": 84,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Implement Insertion Sort",
+      "description": "Problem: Implement Insertion Sort - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
+    },
+    "question2": {
+      "name": "Find Peak Element",
+      "link": "https://leetcode.com/problems/find-peak-element/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Binary Search on Answer"
+    ]
+  },
+  {
+    "day": 85,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Implement Merge Sort",
+      "description": "Problem: Implement Merge Sort - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
+    },
+    "question2": {
+      "name": "Find Minimum in Rotated Sorted Array",
+      "link": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Binary Search",
+      "Rotation"
+    ]
+  },
+  {
+    "day": 86,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Square Root using Binary Search",
+      "description": "Problem: Square Root using Binary Search - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
+    },
+    "question2": {
+      "name": "Sqrt(x)",
+      "link": "https://leetcode.com/problems/sqrtx/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "Binary Search",
+      "Math"
+    ]
+  },
+  {
+    "day": 87,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Implement Binary Search Iterative",
+      "description": "Problem: Implement Binary Search Iterative - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
+    },
+    "question2": {
+      "name": "Koko Eating Bananas",
+      "link": "https://leetcode.com/problems/koko-eating-bananas/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Binary Search on Answer"
+    ]
+  },
+   {
+    "day": 88,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Aggressive Cows Problem",
+      "description": "Problem Statement\nGiven n stalls located at different positions along a straight line and k cows, place the cows in the stalls such that the minimum distance between any two cows is maximized.\n\nThis is an optimization problem where binary search on the answer is required.\n\nInput Format\nn k\nn space-separated integers representing stall positions\n\nOutput Format\nPrint the maximum possible minimum distance between any two cows.\n\nSample Input\n5 3\n1 2 8 4 9\n\nSample Output\n3\n\nExplanation\nCows can be placed at positions 1, 4, and 8. The minimum distance between any two cows is 3, which is the maximum possible."
+    },
+    "question2": {
+      "name": "Magnetic Force Between Two Balls",
+      "link": "https://leetcode.com/problems/magnetic-force-between-two-balls/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Binary Search", "Distance Optimization"]
+  },
+  {
+    "day": 89,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Allocate Minimum Pages",
+      "description": "Problem Statement\nGiven an array of integers where each element represents the number of pages in a book, and m students, allocate books such that each student gets at least one book and the maximum number of pages assigned to a student is minimized.\n\nBooks must be allocated in contiguous order.\n\nInput Format\nn m\nn space-separated integers representing pages in books\n\nOutput Format\nPrint the minimum possible value of the maximum pages assigned to any student.\n\nSample Input\n4 2\n12 34 67 90\n\nSample Output\n113\n\nExplanation\nOne optimal allocation is:\nStudent 1: 12 + 34 + 67 = 113\nStudent 2: 90\nMaximum pages = 113 (minimum possible)."
+    },
+    "question2": {
+      "name": "Capacity To Ship Packages Within D Days",
+      "link": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Binary Search", "Load Balancing"]
+  },
+  {
+    "day": 90,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Painter Partition Problem",
+      "description": "Problem Statement\nGiven n boards of different lengths and k painters, each painter paints contiguous boards. Painting a unit length of board takes one unit of time.\n\nDetermine the minimum time required to paint all boards.\n\nInput Format\nn k\nn space-separated integers representing board lengths\n\nOutput Format\nPrint the minimum time required to paint all boards.\n\nSample Input\n4 2\n10 20 30 40\n\nSample Output\n60\n\nExplanation\nOne painter paints boards of length 10, 20, and 30 (total 60), while the other paints board of length 40."
+    },
+    "question2": {
+      "name": "Split Array Largest Sum",
+      "link": "https://leetcode.com/problems/split-array-largest-sum/",
+      "difficulty": "Hard"
+    },
+    "topics": ["Binary Search on Answer"]
+  },
+  {
+    "day": 91,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Merge Sort Implementation",
+      "description": "Problem Statement\nImplement the Merge Sort algorithm to sort an array of integers using the divide-and-conquer approach.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the sorted array.\n\nSample Input\n5\n64 34 25 12 22\n\nSample Output\n12 22 25 34 64\n\nExplanation\nThe array is recursively divided into halves, sorted, and merged to produce the final sorted array."
+    },
+    "question2": {
+      "name": "Sort Colors",
+      "link": "https://leetcode.com/problems/sort-colors/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Sorting", "Merge Sort"]
+  },
+  {
+    "day": 92,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Quick Sort Implementation",
+      "description": "Problem Statement\nImplement the Quick Sort algorithm to sort an array of integers using a pivot-based partitioning strategy.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the sorted array.\n\nSample Input\n5\n64 34 25 12 22\n\nSample Output\n12 22 25 34 64\n\nExplanation\nElements are partitioned around a pivot such that smaller elements go to the left and larger to the right, recursively sorting subarrays."
+    },
+    "question2": {
+      "name": "Kth Largest Element in an Array",
+      "link": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Sorting", "Quick Sort"]
+  },
+  {
+    "day": 93,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Insertion Sort Implementation",
+      "description": "Problem Statement\nImplement the Insertion Sort algorithm to sort an array of integers.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the sorted array.\n\nSample Input\n5\n64 34 25 12 22\n\nSample Output\n12 22 25 34 64\n\nExplanation\nEach element is inserted into its correct position in the already sorted part of the array."
+    },
+    "question2": {
+      "name": "Insertion Sort List",
+      "link": "https://leetcode.com/problems/insertion-sort-list/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Sorting", "Insertion Sort"]
+  },
+  {
+    "day": 94,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Counting Sort Implementation",
+      "description": "Problem Statement\nImplement the Counting Sort algorithm for sorting non-negative integers.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the sorted array.\n\nSample Input\n5\n4 2 2 8 3\n\nSample Output\n2 2 3 4 8\n\nExplanation\nThe algorithm counts the frequency of each element and reconstructs the sorted array."
+    },
+    "question2": {
+      "name": "Relative Sort Array",
+      "link": "https://leetcode.com/problems/relative-sort-array/",
+      "difficulty": "Easy"
+    },
+    "topics": ["Counting Sort"]
+  },
+  {
+    "day": 95,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Bucket Sort (Float Values 0–1)",
+      "description": "Problem Statement\nImplement Bucket Sort to sort floating-point numbers uniformly distributed in the range [0, 1).\n\nInput Format\nn\nn space-separated floating-point numbers\n\nOutput Format\nPrint the sorted array.\n\nSample Input\n5\n0.78 0.17 0.39 0.26 0.72\n\nSample Output\n0.17 0.26 0.39 0.72 0.78\n\nExplanation\nElements are distributed into buckets, each bucket is sorted individually, and then concatenated."
+    },
+    "question2": {
+      "name": "Maximum Gap",
+      "link": "https://leetcode.com/problems/maximum-gap/",
+      "difficulty": "Hard"
+    },
+    "topics": ["Bucket Sort"]
+  },
+  {
+    "day": 96,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Counting Inversions in Array",
+      "description": "Problem Statement\nGiven an array of integers, count the number of inversion pairs.\nAn inversion is a pair (i, j) such that i < j and arr[i] > arr[j].\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the number of inversions.\n\nSample Input\n5\n2 4 1 3 5\n\nSample Output\n3\n\nExplanation\nThe inversion pairs are (2,1), (4,1), and (4,3)."
+    },
+    "question2": {
+      "name": "Reverse Pairs",
+      "link": "https://leetcode.com/problems/reverse-pairs/",
+      "difficulty": "Hard"
+    },
+    "topics": ["Inversions", "Merge Sort"]
+  },
+  {
+    "day": 97,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Meeting Rooms Scheduling",
+      "description": "Problem Statement\nGiven a list of meeting time intervals, determine the minimum number of meeting rooms required so that all meetings can be held without overlap.\n\nInput Format\nn\nn pairs of start and end times\n\nOutput Format\nPrint the minimum number of rooms required.\n\nSample Input\n3\n0 30\n5 10\n15 20\n\nSample Output\n2\n\nExplanation\nTwo meetings overlap, so at least two rooms are required."
+    },
+    "question2": {
+      "name": "Meeting Rooms II",
+      "link": "https://leetcode.com/problems/meeting-rooms-ii/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Intervals", "Priority Queue"]
+  },
+  {
+    "day": 98,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Merge Overlapping Intervals",
+      "description": "Problem Statement\nGiven a set of intervals, merge all overlapping intervals and return the resulting intervals.\n\nInput Format\nn\nn pairs of start and end times\n\nOutput Format\nPrint merged intervals.\n\nSample Input\n4\n1 3\n2 6\n8 10\n15 18\n\nSample Output\n1 6\n8 10\n15 18\n\nExplanation\nOverlapping intervals [1,3] and [2,6] are merged into [1,6]."
+    },
+    "question2": {
+      "name": "Merge Intervals",
+      "link": "https://leetcode.com/problems/merge-intervals/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Intervals", "Sorting"]
+  },
+  {
+    "day": 99,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Find Peak Element in Array",
+      "description": "Problem Statement\nGiven an array of integers, find an index of a peak element. An element is a peak if it is greater than its neighbors.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the index or value of a peak element.\n\nSample Input\n6\n1 2 3 1 5 6\n\nSample Output\n2\n\nExplanation\nElement 3 at index 2 is greater than its neighbors."
+    },
+    "question2": {
+      "name": "Car Fleet",
+      "link": "https://leetcode.com/problems/car-fleet/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Greedy", "Sorting"]
+  },
+  {
+    "day": 100,
+    "unit": "Unit VI: Sorting & Searching",
+    "question1": {
+      "title": "Count Inversions in Array",
+      "description": "Problem Statement\nGiven an array of integers, count the number of elements smaller to the right of each element.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the count of smaller elements after each element.\n\nSample Input\n5\n5 2 6 1\n\nSample Output\n2 1 1 0\n\nExplanation\nFor 5 → {2,1} are smaller; for 2 → {1}; for 6 → {1}; for 1 → none."
+    },
+    "question2": {
+      "name": "Count of Smaller Numbers After Self",
+      "link": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
+      "difficulty": "Hard"
+    },
+    "topics": ["Fenwick Tree", "Merge Sort Tree"]
+  }
+]
