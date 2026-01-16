@@ -1189,7 +1189,7 @@
     "unit": "Unit V: Hash Table & Graph",
     "question1": {
       "title": "Floyd-Warshall Algorithm",
-      "description": "Problem: Floyd-Warshall Algorithm - Implement the solution as required.\n\nInput:\n- First line: input size\n- Following lines: input data\n\nOutput:\n- Print the result\n\nExample:\nInput:\n[Sample input]\n\nOutput:\n[Sample output]"
+      "description": "Problem: Given a weighted graph with n vertices, implement the Floyd-Warshall algorithm to compute the shortest distances between every pair of vertices. The graph may contain positive or negative edge weights, but it does not contain any negative weight cycles.\n\nInput:\n- First line: integer n representing the number of vertices\n- Next n lines: n space-separated integers representing the adjacency matrix of the graph\n  (use -1 to indicate no direct edge between two vertices)\n\nOutput:\n- Print the shortest distance matrix where the value at row i and column j represents the shortest distance from vertex i to vertex j\n\nExample:\nInput:\n4\n0 5 -1 10\n-1 0 3 -1\n-1 -1 0 1\n-1 -1 -1 0\n\nOutput:\n0 5 8 9\n-1 0 3 4\n-1 -1 0 1\n-1 -1 -1 0\n\nExplanation:\nThe Floyd-Warshall algorithm works by considering each vertex as an intermediate point and updating the shortest paths between all pairs of vertices. For example, the shortest path from vertex 1 to vertex 3 is improved via vertex 2 with total cost 8. This process is repeated for all vertices, resulting in the final shortest distance matrix."
     },
     "question2": {
       "name": "Find the City With the Smallest Number of Neighbors",
@@ -1223,7 +1223,7 @@
     "unit": "Unit V: Hash Table & Graph",
     "question1": {
       "title": "Upper Bound & Lower Bound Implementation",
-      "description": "Problem: Upper Bound & Lower Bound Implementation - Implement the solution as required.\n\nInput:\n- First line: input size\n- Following lines: input data\n\nOutput:\n- Print the result\n\nExample:\nInput:\n[Sample input]\n\nOutput:\n[Sample output]"
+      "description": "Problem: Given a sorted array of integers and a target value x, implement the Lower Bound and Upper Bound operations using Binary Search.\n\nLower Bound: The index of the first element in the array that is greater than or equal to x.\nUpper Bound: The index of the first element in the array that is strictly greater than x.\n\nInput:\n- First line: integer n representing the size of the array\n- Second line: n space-separated sorted integers\n- Third line: integer x (the target value)\n\nOutput:\n- Print two integers:\n  1) Index of the lower bound of x\n  2) Index of the upper bound of x\n\nExample:\nInput:\n7\n1 2 4 4 4 5 7\n4\n\nOutput:\n2 5\n\nExplanation:\nFor the given array [1, 2, 4, 4, 4, 5, 7] and x = 4:\n- The lower bound is at index 2, which is the first occurrence of 4.\n- The upper bound is at index 5, which is the first element greater than 4 (i.e., 5).\nBinary Search is used to find both bounds efficiently in O(log n) time."
     },
     "question2": {
       "name": "Search Insert Position",
