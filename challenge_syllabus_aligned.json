@@ -337,8 +337,8 @@
     "day": 22,
     "unit": "Unit II: Linked List",
     "question1": {
-      "title": "Reverse a Singly Linked List (Iterative)",
-      "description": "Problem: Reverse a Singly Linked List (Iterative) - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the linked list elements, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n50 40 30 20 10\n\nExplanation:\nUse three pointers (prev, curr, next) to reverse links iteratively. Prev becomes new head."
+      "title": "Count Number of Nodes in a Singly Linked List",
+      "description": "Problem: Count the number of nodes in a singly linked list. Implement the solution using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers representing the linked list elements\n\nOutput:\n- Print a single integer representing the total number of nodes in the linked list\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n5\n\nExplanation:\nTraverse the linked list starting from the head node and increment a counter for each node until the end of the list is reached."
     },
     "question2": {
       "name": "Reverse Linked List",
@@ -1290,7 +1290,7 @@
     "unit": "Unit VI: Sorting & Searching",
     "question1": {
       "title": "Square Root using Binary Search",
-      "description": "Problem: Square Root using Binary Search - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
+      "description": "Problem: Find the integer square root of a given non-negative integer using Binary Search. The integer square root of a number is defined as the greatest integer whose square is less than or equal to the given number.\n\nInput:\n- First line: an integer n\n\nOutput:\n- Print the integer square root of n\n\nExamples:\nInput:\n64\n\nOutput:\n8\n\nInput:\n20\n\nOutput:\n4\n\nInput:\n1\n\nOutput:\n1\n\nExplanation:\nBinary Search is applied on the range 0 to n. At each step, the middle value is squared and compared with n. If mid * mid equals n, mid is the square root. If mid * mid is less than n, search continues in the right half; otherwise, in the left half. The final answer is the largest integer whose square does not exceed n."
     },
     "question2": {
       "name": "Sqrt(x)",
@@ -1364,8 +1364,8 @@
     "day": 91,
     "unit": "Unit VI: Sorting & Searching",
     "question1": {
-      "title": "Merge Sort Implementation",
-      "description": "Problem Statement\nImplement the Merge Sort algorithm to sort an array of integers using the divide-and-conquer approach.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the sorted array.\n\nSample Input\n5\n64 34 25 12 22\n\nSample Output\n12 22 25 34 64\n\nExplanation\nThe array is recursively divided into halves, sorted, and merged to produce the final sorted array."
+      "title": "Arithmetic Number",
+      "description": "Problem: You are given three integers a, b, and c, where 'a' is the first term of an arithmetic sequence, 'c' is the common difference, and 'b' is a number to be checked. Determine whether the number b exists in the arithmetic sequence. Return 1 if b is present in the sequence; otherwise, return 0.\n\nInput:\n- First line: integer a (first term of the arithmetic sequence)\n- Second line: integer b (number to be checked)\n- Third line: integer c (common difference of the arithmetic sequence)\n\nOutput:\n- Print 1 if b exists in the arithmetic sequence, otherwise print 0\n\nExamples:\nInput:\n1\n3\n2\n\nOutput:\n1\n\nInput:\n1\n2\n3\n\nOutput:\n0\n\nInput:\n1\n2\n4\n\nOutput:\n0\n\nExplanation:\nAn arithmetic sequence is of the form a, a+c, a+2c, a+3c, ... . To check whether b belongs to the sequence, verify that (b - a) is divisible by c and that b is reachable by repeatedly adding the common difference starting from a."
     },
     "question2": {
       "name": "Sort Colors",
@@ -1490,8 +1490,8 @@
     "day": 100,
     "unit": "Unit VI: Sorting & Searching",
     "question1": {
-      "title": "Count Inversions in Array",
-      "description": "Problem Statement\nGiven an array of integers, count the number of elements smaller to the right of each element.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the count of smaller elements after each element.\n\nSample Input\n5\n5 2 6 1\n\nSample Output\n2 1 1 0\n\nExplanation\nFor 5 → {2,1} are smaller; for 2 → {1}; for 6 → {1}; for 1 → none."
+    "title": "Product of Array Except Self",
+    "description": "Problem: Given an integer array nums[], return an array answer[] such that answer[i] is equal to the product of all the elements of nums except nums[i]. The solution must run in O(n) time and should not use the division operation.\n\nInput:\n- First line: integer n representing the size of the array\n- Second line: n space-separated integers representing the array elements\n\nOutput:\n- Print n space-separated integers representing the product array\n\nExamples:\nInput:\n4\n1 2 3 4\n\nOutput:\n24 12 8 6\n\nInput:\n5\n-1 1 0 -3 3\n\nOutput:\n0 0 9 0 0\n\nExplanation:\nFor each index i, the value at answer[i] is calculated as the product of all elements to the left of i multiplied by the product of all elements to the right of i. This approach avoids using division and ensures linear time complexity."
     },
     "question2": {
       "name": "Count of Smaller Numbers After Self",
