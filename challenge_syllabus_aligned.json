@@ -292,8 +292,8 @@
     "day": 19,
     "unit": "Unit I: Introduction",
     "question1": {
-      "title": "Check Pair with Given Sum",
-      "description": "Problem: Given an array of integers and a target sum, determine whether any two elements form the given sum.\n\nInput:\n- First line: integer n\n- Second line: n integers\n- Third line: integer target\n\nOutput:\n- Print \"Yes\" if a pair exists, otherwise print \"No\"\n\nExample:\nInput:\n5\n2 4 7 11 15\n9\n\nOutput:\nYes"
+      "title": "Pair Sum Closest to Zero",
+      "description": "Problem: Given an array of integers, find two elements whose sum is closest to zero.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the pair of elements whose sum is closest to zero\n\nExample:\nInput:\n5\n1 60 -10 70 -80\n\nOutput:\n-10 1\n\nExplanation: Among all possible pairs, the sum of -10 and 1 is -9, which is the closest to zero compared to other pairs."
     },
     "question2": {
       "name": "Maximum Subarray Sum",
@@ -305,10 +305,10 @@
   {
     "day": 20,
     "unit": "Unit I: Introduction",
-    "question1": {
-      "title": "Count Zero-Sum Subarrays",
-      "description": "Problem: Given an array of integers, count the number of subarrays whose sum is equal to zero.\n\nInput:\n- First line: integer n\n- Second line: n integers\n\nOutput:\n- Print the count of subarrays having sum zero\n\nExample:\nInput:\n6\n1 -1 2 -2 3 -3\n\nOutput:\n6"
-    },
+      "question1": {
+        "title": "Count Subarrays with Sum Zero",
+        "description": "Problem: Given an array of integers, count the number of subarrays whose sum is equal to zero.\n\nInput:\n- First line: integer n\n- Second line: n integers\n\nOutput:\n- Print the count of subarrays having sum zero\n\nExample:\nInput:\n6\n1 -1 2 -2 3 -3\n\nOutput:\n6\n\nExplanation: A subarray is a continuous part of the array. For the input array 1 -1 2 -2 3 -3, the following subarrays have sum zero: [1, -1], [2, -2], [3, -3], [1, -1, 2, -2], [2, -2, 3, -3], and [1, -1, 2, -2, 3, -3]. Since there are 6 such subarrays, the output is 6."
+      },
     "question2": {
       "name": "3Sum",
       "link": "https://leetcode.com/problems/3sum/",
@@ -982,8 +982,8 @@
       "description": "Problem Statement:\nDetect whether an undirected graph contains a cycle using DFS.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges\n\nOutput Format:\n- Print YES if cycle exists, otherwise NO\n\nExample:\nInput:\n4 4\n1 2\n2 3\n3 4\n4 2\n\nOutput:\nYES\n\nExplanation:\nBack-edge during DFS indicates a cycle."
     },
     "question2": {
-      "name": "Graph Cycle Detection",
-      "link": "https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1",
+      "name": "Rat In A maze",
+      "link": "https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1",
       "difficulty": "Medium"
     },
     "topics": ["Cycle Detection", "DFS"]
@@ -1072,16 +1072,16 @@
     },
     "topics": ["Hashing", "Quadratic Probing"]
   },
-  {
+ {
     "day": 72,
     "unit": "Unit V: Hash Table & Graph",
     "question1": {
-      "title": "Build Graph Using Adjacency Matrix",
-      "description": "Problem Statement\nConstruct a graph with n vertices and m edges using adjacency matrix.\nGraph may be directed or undirected (given as flag).\n\nInput Format\nn m type\nu v\n...\n\ntype:\n0 = undirected\n1 = directed\n\nOutput Format\nPrint adjacency matrix.\n\nSample Input\n4 3 0\n1 2\n2 3\n3 4\n\nSample Output\n0 1 0 0\n1 0 1 0\n0 1 0 1\n0 0 1 0\n\nExplanation\nEdges added symmetrically."
+      "title": "First Repeated Character",
+      "description": "Problem Statement\nGiven a string s consisting of lowercase letters, find the first repeated character in the string. A character is considered repeated if it appears more than once, and among all such characters, the one whose second occurrence has the smallest index should be returned.\n\nInput Format\nA single string s.\n\nOutput Format\nPrint the first repeated character. If no character is repeated, print -1.\n\nSample Input\ngeeksforgeeks\n\nSample Output\ne\n\nExplanation\nThe character 'e' appears more than once and its second occurrence appears earlier than any other repeated character."
     },
     "question2": {
-      "name": "Optimize Water Distribution in a Village",
-      "link": "https://leetcode.com/problems/optimize-water-distribution-in-a-village/",
+      "name": "Travelling Salesman Problem",
+      "link": "https://www.geeksforgeeks.org/problems/travelling-salesman-problem2732/1",
       "difficulty": "Hard"
     },
     "topics": ["Adjacency Matrix", "Graph Representation"]
@@ -1090,8 +1090,8 @@
     "day": 73,
     "unit": "Unit V: Hash Table & Graph",
     "question1": {
-      "title": "Build Graph Using Adjacency List",
-      "description": "Problem Statement\nCreate adjacency list for given graph. Print each vertex and its neighbors.\n\nInput Format\nn m type\nu v\n...\n\nOutput Format\nAdjacency lists.\n\nSample Input\n4 3 1\n1 2\n1 3\n2 4\n\nSample Output\n1 -> 2 3\n2 -> 4\n3 ->\n4 ->\n\nExplanation\nDirected edges."
+      "title": "First Non-Repeating Character",
+      "description": "Problem Statement\nGiven a string s consisting of lowercase English letters, find and return the first character that does not repeat in the string. If all characters repeat, return '$'.\n\nInput Format\nA single string s.\n\nOutput Format\nPrint the first non-repeating character or '$' if none exists.\n\nSample Input\ngeeksforgeeks\n\nSample Output\nf\n\nExplanation\nThe character 'f' occurs only once in the string and appears before any other non-repeating character."
     },
     "question2": {
       "name": "Redundant Connection",
@@ -1104,8 +1104,8 @@
     "day": 74,
     "unit": "Unit V: Hash Table & Graph",
     "question1": {
-      "title": "DFS Traversal of Graph",
-      "description": "Problem Statement\nPerform Depth First Search starting from a given source vertex.\n\nInput Format\nn m\nedges\nsource\n\nOutput Format\nDFS order.\n\nSample Input\n5 4\n1 2\n1 3\n2 4\n3 5\n1\n\nSample Output\n1 2 4 3 5\n\nExplanation\nStandard DFS from 1."
+      "title": "Winner of an Election",
+      "description": "Problem Statement\nGiven an array of candidate names where each name represents a vote cast for that candidate, determine the candidate who received the maximum number of votes. In case of a tie, return the lexicographically smallest candidate name.\n\nInput Format\nFirst line contains an integer n representing number of votes.\nSecond line contains n space-separated strings representing candidate names.\n\nOutput Format\nPrint the name of the winning candidate followed by the number of votes received.\n\nSample Input\n13\njohn johnny jackie johnny john jackie jamie jamie john johnny jamie johnny john\n\nSample Output\njohn 4\n\nExplanation\nBoth john and johnny receive 4 votes, but john is lexicographically smaller, so john is declared the winner."
     },
     "question2": {
       "name": "Number of Connected Components in an Undirected Graph",
@@ -1118,8 +1118,8 @@
     "day": 75,
     "unit": "Unit V: Hash Table & Graph",
     "question1": {
-      "title": "BFS Traversal of Graph",
-      "description": "Problem Statement\nPerform Breadth First Search from source using a queue.\n\nInput Format\nSame as DFS.\n\nOutput Format\nBFS order.\n\nSample Input\n5 4\n1 2\n1 3\n2 4\n3 5\n1\n\nSample Output\n1 2 3 4 5"
+      "title": "Largest Subarray with Zero Sum",
+      "description": "Problem Statement\nGiven an array of integers containing both positive and negative values, find the length of the longest contiguous subarray whose sum is equal to zero.\n\nInput Format\nAn integer array arr[].\n\nOutput Format\nPrint the length of the longest subarray with sum equal to zero.\n\nSample Input\n15 -2 2 -8 1 7 10 23\n\nSample Output\n5\n\nExplanation\nThe subarray [-2, 2, -8, 1, 7] has a sum of 0 and is the longest such subarray."
     },
     "question2": {
       "name": "Is Graph Bipartite?",
@@ -1392,8 +1392,8 @@
     "day": 93,
     "unit": "Unit VI: Sorting & Searching",
     "question1": {
-      "title": "Insertion Sort Implementation",
-      "description": "Problem Statement\nImplement the Insertion Sort algorithm to sort an array of integers.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the sorted array.\n\nSample Input\n5\n64 34 25 12 22\n\nSample Output\n12 22 25 34 64\n\nExplanation\nEach element is inserted into its correct position in the already sorted part of the array."
+      "title": "Roti Prata (Minimum Time to Cook)",
+      "description": "Problem Statement\nIEEE is organizing an event and needs to prepare P pratas using L cooks. Each cook has a rank R which determines how fast they can cook pratas. A cook with rank R cooks:\n- 1st prata in R minutes\n- 2nd prata in 2R minutes\n- 3rd prata in 3R minutes, and so on.\nA cook can only prepare a complete prata and cannot partially cook one. The task is to determine the minimum time required to cook at least P pratas using all available cooks.\n\nInput Format\nThe first line contains an integer t representing the number of test cases.\nFor each test case:\n- The first line contains an integer P, the number of pratas required.\n- The second line starts with an integer L, followed by L space-separated integers representing the ranks of the cooks.\n\nOutput Format\nFor each test case, print a single integer representing the minimum number of minutes required to cook P pratas.\n\nSample Input\n3\n10\n4 1 2 3 4\n8\n1 1\n8\n8 1 1 1 1 1 1 1 1\n\nSample Output\n12\n36\n1\n\nExplanation\nIn the first test case, by efficiently distributing the cooking among cooks with ranks 1, 2, 3, and 4, a total of 10 pratas can be prepared in 12 minutes, which is the minimum possible time."
     },
     "question2": {
       "name": "Insertion Sort List",
@@ -1462,8 +1462,8 @@
     "day": 98,
     "unit": "Unit VI: Sorting & Searching",
     "question1": {
-      "title": "Merge Overlapping Intervals",
-      "description": "Problem Statement\nGiven a set of intervals, merge all overlapping intervals and return the resulting intervals.\n\nInput Format\nn\nn pairs of start and end times\n\nOutput Format\nPrint merged intervals.\n\nSample Input\n4\n1 3\n2 6\n8 10\n15 18\n\nSample Output\n1 6\n8 10\n15 18\n\nExplanation\nOverlapping intervals [1,3] and [2,6] are merged into [1,6]."
+      "title": "Search in Step Array",
+      "description": "Problem Statement\nYou are given a step array arr[], an integer k representing the maximum allowed difference between adjacent elements, and an integer x representing the key to be searched. A step array is defined as an array where the absolute difference between any two adjacent elements is at most k. Your task is to find the index of the first occurrence of x in the array. If x is not present, return -1.\n\nInput Format\nAn integer array arr[].\nAn integer k representing the maximum adjacent difference.\nAn integer x representing the element to be searched.\n\nOutput Format\nPrint the index of the first occurrence of x in the array. If x is not found, print -1.\n\nSample Input\narr[] = [4, 5, 6, 7, 6]\nk = 1\nx = 6\n\nSample Output\n2\n\nExplanation\nThe element 6 first appears at index 2 in the array, so the output is 2."
     },
     "question2": {
       "name": "Merge Intervals",
