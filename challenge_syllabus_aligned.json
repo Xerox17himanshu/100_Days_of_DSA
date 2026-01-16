@@ -725,9 +725,9 @@
   {
     "day": 47,
     "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Count Leaf Nodes in Binary Tree",
-      "description": "Problem Statement:\nCount the total number of leaf nodes in a binary tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n\nOutput Format:\n- Print the count of leaf nodes\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 -1\n\nOutput:\n2"
+      "question1": {
+      "title": "Check Identical Binary Trees",
+      "description": "Problem Statement:\nGiven two binary trees, determine whether they are identical. Two binary trees are considered identical if they have the same structure and the same node values.\n\nInput Format:\n- First line contains integer N (number of nodes in first tree)\n- Second line contains level-order traversal of first tree (-1 represents NULL)\n- Third line contains integer M (number of nodes in second tree)\n- Fourth line contains level-order traversal of second tree (-1 represents NULL)\n\nOutput Format:\n- Print \"YES\" if both trees are identical, otherwise print \"NO\".\n\nExample:\nInput:\n7\n1 2 3 4 -1 -1 -1\n7\n1 2 3 4 -1 -1 -1\n\nOutput:\nYES"
     },
     "question2": {
       "name": "Balanced Binary Tree",
