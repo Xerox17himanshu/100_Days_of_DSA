@@ -14,7 +14,37 @@
     "topics": [
       "Array Basics",
       "Hash Tables"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "To insert an element at a specific position in an array:\n\n1. Shift all elements from position 'pos' to the end, one step to the right\n2. Insert the new element at the specified position\n3. The array size increases by 1\n\nKey Points:\n- Start shifting from the end to avoid overwriting values\n- Position is 1-based, but array indexing is 0-based\n- Ensure the array has enough space",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n, pos, x;\n    int arr[101];\n\n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n\n    scanf(\"%d %d\", &pos, &x);\n\n    for (int i = n; i >= pos; i--) {\n        arr[i] = arr[i - 1];\n    }\n\n    arr[pos - 1] = x;\n\n    for (int i = 0; i <= n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n) printf(\" \");\n    }\n    printf(\"\\n\");\n\n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        },
+        {
+          "type": "editorial",
+          "label": "Solution Article",
+          "link": "https://yourblog.com/day1-insert-element-solution"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "NeetCode Explanation",
+          "link": "https://www.youtube.com/watch?v=KLlXCFG5TnA"
+        },
+             {
+        "explanation": "Find two numbers that add up to target using a brute-force approach.\n\nApproach:\n1. Use two nested loops to check all possible pairs\n2. Fix the first number using the outer loop\n3. For each fixed number, check the remaining numbers using the inner loop\n4. If nums[i] + nums[j] equals target, return their indices\n\nWhy it works:\n- All possible pairs are checked\n- No extra data structure is used\n- Guaranteed to find the correct pair if it exists",
+        "code": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n        int n = nums.size();\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                if (nums[i] + nums[j] == target) {\n                    return {i, j};\n                }\n            }\n        }\n        return {};\n    }\n};",
+        "timeComplexity": "O(n^2)",
+        "spaceComplexity": "O(1)",
+        "type": "tutorial"
+      }
+      ]
+    }
   },
   {
     "day": 2,
@@ -31,7 +61,42 @@
     "topics": [
       "Array Operations",
       "Math"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "To delete an element from an array at a given position:\n\n1. Shift all elements after position 'pos' one step to the left\n2. This overwrites the element to be deleted\n3. Reduce the array size by 1\n\nKey Points:\n- Start shifting from the deletion position forward\n- No need to clear the last element (it's now outside array bounds)\n- Position is 1-based for input, but array uses 0-based indexing",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n, pos;\n    int arr[100];\n    \n    scanf(\"%d\", &n);\n    \n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    scanf(\"%d\", &pos);\n    \n    // Shift elements left\n    for (int i = pos - 1; i < n - 1; i++) {\n        arr[i] = arr[i + 1];\n    }\n    \n    for (int i = 0; i < n - 1; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 2) printf(\" \");\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        },
+        {
+          "type": "editorial",
+          "label": "Solution Walkthrough",
+          "link": "https://yourblog.com/day2-delete-element-solution"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Video Tutorial",
+          "link": "https://www.youtube.com/watch?v=1pkOgXD63yU"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Find maximum profit from buying and selling stock once.\n\nAlgorithm:\n1. Track minimum price seen so far\n2. For each price, calculate profit if selling today\n3. Update maximum profit\n\nKey Insight:\n- Buy at lowest price before current day\n- Sell at current price for maximum profit\n- One pass solution",
+          "code": "class Solution {\npublic:\n    int maxProfit(vector<int>& prices) {\n        int minPrice = INT_MAX;\n        int maxProfit = 0;\n        \n        for (int price : prices) {\n            minPrice = min(minPrice, price);\n            maxProfit = max(maxProfit, price - minPrice);\n        }\n        \n        return maxProfit;\n    }\n};",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        },
+        {
+          "type": "editorial",
+          "label": "LeetCode Editorial",
+          "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/editorial/"
+        }
+      ]
+    }
   },
   {
     "day": 3,
@@ -47,7 +112,42 @@
     },
     "topics": [
       "Array Searching"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Linear search checks each element sequentially until finding the target or reaching the end.\n\nAlgorithm:\n1. Iterate through each element of the array\n2. Compare current element with the search key\n3. If found, return the index\n4. If not found after checking all elements, return -1\n\nKey Points:\n- Works on unsorted arrays\n- Time complexity is O(n) in worst case\n- Count comparisons to analyze performance",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n, k, comparisons = 0;\n    int arr[100];\n    int found = -1;\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    scanf(\"%d\", &k);\n    \n    for (int i = 0; i < n; i++) {\n        comparisons++;\n        if (arr[i] == k) {\n            found = i;\n            break;\n        }\n    }\n    \n    if (found != -1) {\n        printf(\"Found at index %d\\n\", found);\n    } else {\n        printf(\"Not Found\\n\");\n    }\n    printf(\"Comparisons = %d\\n\", comparisons);\n    \n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        },
+        {
+          "type": "editorial",
+          "label": "Algorithm Explanation",
+          "link": "https://yourblog.com/day3-linear-search-solution"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "GFG Video Solution",
+          "link": "https://www.youtube.com/watch?v=WnPLSRLSANE"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Find missing number using sum formula or XOR.\n\nApproach 1 - Sum Formula:\n1. Calculate expected sum: n*(n+1)/2\n2. Calculate actual sum\n3. Difference is missing number\n\nApproach 2 - XOR:\n1. XOR all indices with all array values\n2. Pairs cancel out, leaving missing number",
+          "code": "class Solution {\npublic:\n    int missingNumber(vector<int>& nums) {\n        int n = nums.size();\n        int expectedSum = n * (n + 1) / 2;\n        int actualSum = 0;\n        \n        for (int num : nums) {\n            actualSum += num;\n        }\n        \n        return expectedSum - actualSum;\n    }\n};",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        },
+        {
+          "type": "editorial",
+          "label": "GeeksforGeeks Article",
+          "link": "https://www.geeksforgeeks.org/find-the-missing-number/"
+        }
+      ]
+    }
   },
   {
     "day": 4,
@@ -64,7 +164,42 @@
     "topics": [
       "Array Reversal",
       "Two Pointers"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Reverse an array using the two-pointer technique:\n\n1. Use two pointers: one at start (left) and one at end (right)\n2. Swap elements at left and right pointers\n3. Move left pointer forward and right pointer backward\n4. Continue until left >= right\n\nKey Points:\n- In-place reversal (no extra array needed)\n- Efficient with O(n/2) swaps\n- Works for arrays of any size",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    int arr[100];\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    // Two-pointer reversal\n    int left = 0, right = n - 1;\n    while (left < right) {\n        int temp = arr[left];\n        arr[left] = arr[right];\n        arr[right] = temp;\n        left++;\n        right--;\n    }\n    \n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        },
+        {
+          "type": "editorial",
+          "label": "Two-Pointer Approach",
+          "link": "https://yourblog.com/day4-reverse-array-solution"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Video Explanation",
+          "link": "https://www.youtube.com/watch?v=Pcd1ii9P9ZI"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Remove all instances of val in-place using two pointers.\n\nApproach:\n1. Use slow pointer to track position to write\n2. Fast pointer scans through array\n3. Copy non-val elements to slow pointer position\n4. Return new length\n\nKey Points:\n- In-place modification\n- Order of elements can change\n- Return new array length",
+          "code": "class Solution {\npublic:\n    int removeElement(vector<int>& nums, int val) {\n        int slow = 0;\n        \n        for (int fast = 0; fast < nums.size(); fast++) {\n            if (nums[fast] != val) {\n                nums[slow] = nums[fast];\n                slow++;\n            }\n        }\n        \n        return slow;\n    }\n};",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        },
+        {
+          "type": "editorial",
+          "label": "LeetCode Editorial",
+          "link": "https://leetcode.com/problems/remove-element/editorial/"
+        }
+      ]
+    }
   },
   {
     "day": 5,
@@ -73,7 +208,6 @@
       "title": "Arrange Arrival Logs",
       "description": "Problem: A system receives two separate logs of user arrival times from two different servers. Each log is already sorted in ascending order. Your task is to create a single chronological log that preserves the correct order of arrivals.\n\nInput:\n- First line: integer p (number of entries in server log 1)\n- Second line: p sorted integers representing arrival times from server 1\n- Third line: integer q (number of entries in server log 2)\n- Fourth line: q sorted integers representing arrival times from server 2)\n\nOutput:\n- Print a single line containing all arrival times in chronological order, separated by spaces\n\nExample:\nInput:\n5\n10 20 30 50 70\n4\n15 25 40 60\n\nOutput:\n10 15 20 25 30 40 50 60 70\n\nExplanation: Compare the next unprocessed arrival time from both logs and append the earlier one to the final log until all entries are processed"
     },
-
     "question2": {
       "name": "Merge Sorted Array",
       "link": "https://leetcode.com/problems/merge-sorted-array/",
@@ -82,7 +216,32 @@
     "topics": [
       "Array Merge",
       "Two Pointers"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Merge two sorted arrays using two-pointer technique:\n\n1. Use pointers i and j for array1 and array2\n2. Compare elements at both pointers\n3. Add smaller element to result and move that pointer\n4. When one array is exhausted, copy remaining elements from other array\n\nKey Points:\n- Maintains sorted order\n- Time complexity O(n + m)\n- Requires extra space for result array",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n1, n2;\n    int arr1[100], arr2[100], result[200];\n    \n    scanf(\"%d\", &n1);\n    for (int i = 0; i < n1; i++) {\n        scanf(\"%d\", &arr1[i]);\n    }\n    \n    scanf(\"%d\", &n2);\n    for (int i = 0; i < n2; i++) {\n        scanf(\"%d\", &arr2[i]);\n    }\n    \n    int i = 0, j = 0, k = 0;\n    while (i < n1 && j < n2) {\n        if (arr1[i] <= arr2[j]) {\n            result[k++] = arr1[i++];\n        } else {\n            result[k++] = arr2[j++];\n        }\n    }\n    \n    while (i < n1) result[k++] = arr1[i++];\n    while (j < n2) result[k++] = arr2[j++];\n    \n    for (int i = 0; i < k; i++) {\n        printf(\"%d\", result[i]);\n        if (i < k - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "timeComplexity": "O(n + m)",
+          "spaceComplexity": "O(n + m)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "LeetCode Video",
+          "link": "https://www.youtube.com/watch?v=P1Ic85RarKY"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Merge nums2 into nums1 (which has enough space) in-place.\n\nApproach:\n1. Start from the end of both arrays\n2. Compare elements and place larger one at end of nums1\n3. Move pointers backward\n4. Copy remaining elements from nums2 if any\n\nKey Points:\n- Work backwards to avoid overwriting\n- nums1 has space for both arrays\n- In-place solution",
+          "code": "class Solution {\npublic:\n    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {\n        int i = m - 1, j = n - 1, k = m + n - 1;\n        \n        while (i >= 0 && j >= 0) {\n            if (nums1[i] > nums2[j]) {\n                nums1[k--] = nums1[i--];\n            } else {\n                nums1[k--] = nums2[j--];\n            }\n        }\n        \n        while (j >= 0) {\n            nums1[k--] = nums2[j--];\n        }\n    }\n};",
+          "timeComplexity": "O(n + m)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 6,
@@ -98,7 +257,32 @@
     },
     "topics": [
       "Array Cleanup"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Remove duplicates from sorted array using two pointers:\n\n1. Use slow pointer to track position of unique elements\n2. Fast pointer scans through array\n3. When different element found, copy to slow+1 position\n4. Return count of unique elements\n\nKey Points:\n- Array is sorted, duplicates are adjacent\n- First element is always unique\n- In-place modification",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    int arr[100];\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int slow = 0;\n    for (int fast = 1; fast < n; fast++) {\n        if (arr[fast] != arr[slow]) {\n            slow++;\n            arr[slow] = arr[fast];\n        }\n    }\n    \n    for (int i = 0; i <= slow; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < slow) printf(\" \");\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Move Zeroes - Video Solution",
+          "link": "https://www.youtube.com/watch?v=aayNRwUN3Do"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Move all zeroes to end while maintaining relative order of non-zero elements.\n\nApproach:\n1. Use slow pointer for non-zero position\n2. Fast pointer scans array\n3. Swap non-zero elements to front\n4. Zeroes automatically move to end\n\nKey Points:\n- In-place modification\n- Maintain relative order\n- Two-pointer technique",
+          "code": "class Solution {\npublic:\n    void moveZeroes(vector<int>& nums) {\n        int slow = 0;\n        \n        for (int fast = 0; fast < nums.size(); fast++) {\n            if (nums[fast] != 0) {\n                swap(nums[slow], nums[fast]);\n                slow++;\n            }\n        }\n    }\n};",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 7,
@@ -114,7 +298,32 @@
     },
     "topics": [
       "Recursion"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Recursive solution for Fibonacci:\n\n1. Define base cases: fib(0) = 0, fib(1) = 1\n2. Recursive case: fib(n) = fib(n-1) + fib(n-2)\n3. Ensure progress toward base case\n\nKey Points:\n- Recursion uses call stack\n- Watch for stack overflow with large inputs\n- Consider iterative alternative for better space complexity\n- Can use memoization to optimize",
+          "code": "#include <stdio.h>\n\nint fib(int n) {\n    // Base cases\n    if (n <= 1) return n;\n    \n    // Recursive case\n    return fib(n - 1) + fib(n - 2);\n}\n\nint main() {\n    int n;\n    scanf(\"%d\", &n);\n    printf(\"%d\\n\", fib(n));\n    return 0;\n}",
+          "timeComplexity": "O(2^n)",
+          "spaceComplexity": "O(n)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Fibonacci Number - Video Solution",
+          "link": "https://www.youtube.com/watch?v=3lpNp5Ojvrw"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Calculate Fibonacci number efficiently.\n\nApproach 1 - Iterative (Optimal):\n1. Use two variables to track previous two numbers\n2. Iterate from 2 to n\n3. Update variables in each iteration\n\nApproach 2 - Recursive with Memoization:\n1. Cache computed values\n2. Avoid redundant calculations\n\nKey Points:\n- Iterative is O(n) time, O(1) space\n- Recursive is simpler but less efficient",
+          "code": "class Solution {\npublic:\n    int fib(int n) {\n        if (n <= 1) return n;\n        \n        int prev2 = 0, prev1 = 1;\n        \n        for (int i = 2; i <= n; i++) {\n            int curr = prev1 + prev2;\n            prev2 = prev1;\n            prev1 = curr;\n        }\n        \n        return prev1;\n    }\n};",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 8,
@@ -131,16 +340,40 @@
     "topics": [
       "Recursion",
       "Math"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Compute power using recursion:\n\n1. Base case: a^0 = 1\n2. Recursive case: a^b = a * a^(b-1)\n3. Can optimize with divide and conquer for O(log n)\n\nKey Points:\n- Simple recursion is O(b) time\n- Fast exponentiation uses a^(2k) = (a^k)^2\n- Handle negative exponents if needed",
+          "code": "#include <stdio.h>\n\nint power(int a, int b) {\n    // Base case\n    if (b == 0) return 1;\n    \n    // Recursive case\n    return a * power(a, b - 1);\n}\n\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", power(a, b));\n    return 0;\n}",
+          "timeComplexity": "O(b)",
+          "spaceComplexity": "O(b)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Power of Two - Video Solution",
+          "link": "https://www.youtube.com/watch?v=H2bjttEV4Vc"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Check if n is a power of 2.\n\nApproach 1 - Bit Manipulation:\n1. Power of 2 has exactly one bit set\n2. Use n & (n-1) == 0 trick\n3. Also check n > 0\n\nApproach 2 - Recursive Division:\n1. Keep dividing by 2\n2. Check if remainder is 0\n3. Final result should be 1\n\nKey Points:\n- Bit manipulation is O(1)\n- Powers of 2: 1, 2, 4, 8, 16, ...",
+          "code": "class Solution {\npublic:\n    bool isPowerOfTwo(int n) {\n        if (n <= 0) return false;\n        return (n & (n - 1)) == 0;\n    }\n};",
+          "timeComplexity": "O(1)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 9,
     "unit": "Unit I: Introduction",
     "question1": {
-    "title": "Mirror the Code Name",
-    "description": "Problem: A secret system stores code names in forward order. To display them in mirror format, you must transform the given code name so that its characters appear in the opposite order.\n\nInput:\n- Single line: a lowercase string containing only alphabetic characters (no spaces)\n\nOutput:\n- Print the transformed code name after applying the mirror operation\n\nExample:\nInput:\nhello\n\nOutput:\nolleh\n\nExplanation: The first character moves to the last position, the second to the second-last, and so on until the entire string is mirrored"
-  },
-
+      "title": "Mirror the Code Name",
+      "description": "Problem: A secret system stores code names in forward order. To display them in mirror format, you must transform the given code name so that its characters appear in the opposite order.\n\nInput:\n- Single line: a lowercase string containing only alphabetic characters (no spaces)\n\nOutput:\n- Print the transformed code name after applying the mirror operation\n\nExample:\nInput:\nhello\n\nOutput:\nolleh\n\nExplanation: The first character moves to the last position, the second to the second-last, and so on until the entire string is mirrored"
+    },
     "question2": {
       "name": "Reverse String",
       "link": "https://leetcode.com/problems/reverse-string/",
@@ -149,7 +382,32 @@
     "topics": [
       "String",
       "Two Pointers"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Reverse a string using two-pointer technique:\n\n1. Use two pointers: one at start, one at end\n2. Swap characters at both pointers\n3. Move pointers toward center\n4. Stop when pointers meet\n\nKey Points:\n- In-place reversal\n- Works for strings of any length\n- O(n/2) swaps needed",
+          "code": "#include <stdio.h>\n#include <string.h>\n\nint main() {\n    char str[1000];\n    scanf(\"%s\", str);\n    \n    int left = 0;\n    int right = strlen(str) - 1;\n    \n    while (left < right) {\n        char temp = str[left];\n        str[left] = str[right];\n        str[right] = temp;\n        left++;\n        right--;\n    }\n    \n    printf(\"%s\\n\", str);\n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Reverse String - Video Solution",
+          "link": "https://www.youtube.com/watch?v=_d0T_2Lk2qA"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Reverse string in-place (array of characters).\n\nApproach:\n1. Use two pointers from both ends\n2. Swap characters\n3. Move pointers toward center\n4. Must modify input array directly\n\nKey Points:\n- In-place requirement (O(1) space)\n- Two-pointer technique\n- Return void, modify input",
+          "code": "class Solution {\npublic:\n    void reverseString(vector<char>& s) {\n        int left = 0, right = s.size() - 1;\n        \n        while (left < right) {\n            swap(s[left], s[right]);\n            left++;\n            right--;\n        }\n    }\n};",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 10,
@@ -166,7 +424,32 @@
     "topics": [
       "Palindrome Check",
       "Array"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Check if string is palindrome using two pointers:\n\n1. Use left pointer at start, right at end\n2. Compare characters at both positions\n3. If different, not palindrome\n4. Move pointers toward center\n5. If all match, it's palindrome\n\nKey Points:\n- Case-sensitive comparison\n- Works for odd and even length strings\n- Early termination on mismatch",
+          "code": "#include <stdio.h>\n#include <string.h>\n#include <stdbool.h>\n\nint main() {\n    char str[1000];\n    scanf(\"%s\", str);\n    \n    int left = 0;\n    int right = strlen(str) - 1;\n    bool isPalindrome = true;\n    \n    while (left < right) {\n        if (str[left] != str[right]) {\n            isPalindrome = false;\n            break;\n        }\n        left++;\n        right--;\n    }\n    \n    printf(\"%s\\n\", isPalindrome ? \"YES\" : \"NO\");\n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Intersection of Two Arrays II - Video",
+          "link": "https://www.youtube.com/watch?v=jo7E5K_pJ18"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Find intersection of two arrays (with duplicates).\n\nApproach 1 - Hash Map:\n1. Count frequency of elements in nums1\n2. Iterate through nums2\n3. If element exists in map and count > 0, add to result\n4. Decrement count\n\nApproach 2 - Sorting:\n1. Sort both arrays\n2. Use two pointers\n3. Add common elements\n\nKey Points:\n- Handle duplicates\n- Can appear multiple times in result",
+          "code": "class Solution {\npublic:\n    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {\n        unordered_map<int, int> count;\n        vector<int> result;\n        \n        for (int num : nums1) {\n            count[num]++;\n        }\n        \n        for (int num : nums2) {\n            if (count[num] > 0) {\n                result.push_back(num);\n                count[num]--;\n            }\n        }\n        \n        return result;\n    }\n};",
+          "timeComplexity": "O(n + m)",
+          "spaceComplexity": "O(min(n, m))"
+        }
+      ]
+    }
   },
   {
     "day": 11,
@@ -175,7 +458,6 @@
       "title": "Matrix Addition",
       "description": "Problem: Write a program to perform addition of two matrices having the same dimensions. The sum of two matrices is obtained by adding corresponding elements of the matrices.\n\nInput:\n- First line: two integers m and n representing the number of rows and columns\n- Next m lines: n integers each representing the elements of the first matrix\n- Next m lines: n integers each representing the elements of the second matrix\n\nOutput:\n- Print the resultant matrix after addition, with each row on a new line and elements separated by spaces\n\nExample:\nInput:\n3 3\n1 2 3\n4 5 6\n7 8 9\n9 8 7\n6 5 4\n3 2 1\n\nOutput:\n10 10 10\n10 10 10\n10 10 10\n\nExplanation:\nEach element of the result matrix is the sum of the corresponding elements from the two input matrices.\n\nTest Cases:\n\nTest Case 1:\nInput:\n2 2\n1 2\n3 4\n5 6\n7 8\nOutput:\n6 8\n10 12\n\nTest Case 2:\nInput:\n1 3\n10 20 30\n1 2 3\nOutput:\n11 22 33\n\nTest Case 3:\nInput:\n3 1\n1\n2\n3\n4\n5\n6\nOutput:\n5\n7\n9"
     },
-
     "question2": {
       "name": "Transpose Matrix",
       "link": "https://leetcode.com/problems/transpose-matrix/",
@@ -183,7 +465,32 @@
     },
     "topics": [
       "Matrix"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Matrix addition is performed element-wise:\n\n1. Both matrices must have same dimensions (m × n)\n2. Add corresponding elements: result[i][j] = mat1[i][j] + mat2[i][j]\n3. Store in result matrix\n4. Print the result\n\nKey Points:\n- Matrices must have same dimensions\n- Addition is commutative: A + B = B + A\n- Time complexity is O(m × n)",
+          "code": "#include <stdio.h>\n\nint main() {\n    int m, n;\n    int mat1[100][100], mat2[100][100], result[100][100];\n    \n    scanf(\"%d %d\", &m, &n);\n    \n    // Read first matrix\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &mat1[i][j]);\n        }\n    }\n    \n    // Read second matrix\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &mat2[i][j]);\n        }\n    }\n    \n    // Add matrices\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            result[i][j] = mat1[i][j] + mat2[i][j];\n        }\n    }\n    \n    // Print result\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            printf(\"%d\", result[i][j]);\n            if (j < n - 1) printf(\" \");\n        }\n        printf(\"\\n\");\n    }\n    \n    return 0;\n}",
+          "timeComplexity": "O(m × n)",
+          "spaceComplexity": "O(m × n)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Transpose Matrix - Video Solution",
+          "link": "https://www.youtube.com/watch?v=hA_yvtCpjsg"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Transpose a matrix (rows become columns).\n\nApproach:\n1. Create result matrix with swapped dimensions\n2. For each element at [i][j], place at [j][i] in result\n3. Return the transposed matrix\n\nKey Points:\n- If input is m × n, output is n × m\n- Element at position (i, j) moves to (j, i)\n- Not in-place for non-square matrices",
+          "code": "class Solution {\npublic:\n    vector<vector<int>> transpose(vector<vector<int>>& matrix) {\n        int m = matrix.size();\n        int n = matrix[0].size();\n        \n        vector<vector<int>> result(n, vector<int>(m));\n        \n        for (int i = 0; i < m; i++) {\n            for (int j = 0; j < n; j++) {\n                result[j][i] = matrix[i][j];\n            }\n        }\n        \n        return result;\n    }\n};",
+          "timeComplexity": "O(m × n)",
+          "spaceComplexity": "O(m × n)"
+        }
+      ]
+    }
   },
   {
     "day": 12,
@@ -192,7 +499,6 @@
       "title": "Check Symmetric Matrix",
       "description": "Problem: Write a program to check whether a given matrix is symmetric. A matrix is said to be symmetric if it is a square matrix and is equal to its transpose (i.e., element at position [i][j] is equal to element at position [j][i] for all valid i and j).\n\nInput:\n- First line: two integers m and n representing the number of rows and columns\n- Next m lines: n integers each representing the elements of the matrix\n\nOutput:\n- Print \"Symmetric Matrix\" if the given matrix is symmetric\n- Otherwise, print \"Not a Symmetric Matrix\"\n\nExample:\nInput:\n3 3\n1 2 3\n2 4 5\n3 5 6\n\nOutput:\nSymmetric Matrix\n\nExplanation:\nThe matrix is square (3 × 3) and for every i and j, element[i][j] = element[j][i].\n\nTest Cases:\n\nTest Case 1:\nInput:\n2 2\n1 2\n2 1\nOutput:\nSymmetric Matrix\n\nTest Case 2:\nInput:\n3 3\n1 0 1\n2 3 4\n1 4 5\nOutput:\nNot a Symmetric Matrix\n\nTest Case 3:\nInput:\n2 3\n1 2 3\n4 5 6\nOutput:\nNot a Symmetric Matrix"
     },
-
     "question2": {
       "name": "Toeplitz Matrix",
       "link": "https://leetcode.com/problems/toeplitz-matrix/",
@@ -200,7 +506,32 @@
     },
     "topics": [
       "Matrix Diagonal"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Check if matrix is symmetric:\n\n1. First check if matrix is square (m == n)\n2. Compare element at [i][j] with element at [j][i]\n3. If any pair doesn't match, not symmetric\n4. If all pairs match, it's symmetric\n\nKey Points:\n- Must be square matrix\n- A[i][j] must equal A[j][i] for all i, j\n- Only need to check upper or lower triangle",
+          "code": "#include <stdio.h>\n#include <stdbool.h>\n\nint main() {\n    int m, n;\n    int mat[100][100];\n    \n    scanf(\"%d %d\", &m, &n);\n    \n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &mat[i][j]);\n        }\n    }\n    \n    bool isSymmetric = true;\n    \n    // Check if square\n    if (m != n) {\n        isSymmetric = false;\n    } else {\n        // Check symmetry\n        for (int i = 0; i < m && isSymmetric; i++) {\n            for (int j = 0; j < n; j++) {\n                if (mat[i][j] != mat[j][i]) {\n                    isSymmetric = false;\n                    break;\n                }\n            }\n        }\n    }\n    \n    printf(\"%s\\n\", isSymmetric ? \"Symmetric Matrix\" : \"Not a Symmetric Matrix\");\n    return 0;\n}",
+          "timeComplexity": "O(n²)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Toeplitz Matrix - Video Solution",
+          "link": "https://www.youtube.com/watch?v=r1Al6vVg2VQ"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Check if matrix is Toeplitz (every diagonal from top-left to bottom-right has same elements).\n\nApproach:\n1. For each element (except last row and column)\n2. Compare with element at (i+1, j+1)\n3. If any pair differs, return false\n4. If all match, return true\n\nKey Points:\n- Every diagonal has constant values\n- Check element with its bottom-right neighbor\n- Early termination on mismatch",
+          "code": "class Solution {\npublic:\n    bool isToeplitzMatrix(vector<vector<int>>& matrix) {\n        int m = matrix.size();\n        int n = matrix[0].size();\n        \n        for (int i = 0; i < m - 1; i++) {\n            for (int j = 0; j < n - 1; j++) {\n                if (matrix[i][j] != matrix[i + 1][j + 1]) {\n                    return false;\n                }\n            }\n        }\n        \n        return true;\n    }\n};",
+          "timeComplexity": "O(m × n)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 13,
@@ -216,9 +547,34 @@
     },
     "topics": [
       "Matrix Spiral"
-    ]
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Traverse matrix in spiral order using boundaries:\n\n1. Maintain four boundaries: top, bottom, left, right\n2. Traverse top row (left to right)\n3. Traverse right column (top to bottom)\n4. Traverse bottom row (right to left) if exists\n5. Traverse left column (bottom to top) if exists\n6. Shrink boundaries and repeat\n\nKey Points:\n- Update boundaries after each direction\n- Check if boundaries are valid before traversing\n- Handle single row/column cases",
+          "code": "#include <stdio.h>\n\nint main() {\n    int r, c;\n    int mat[100][100];\n    \n    scanf(\"%d %d\", &r, &c);\n    \n    for (int i = 0; i < r; i++) {\n        for (int j = 0; j < c; j++) {\n            scanf(\"%d\", &mat[i][j]);\n        }\n    }\n    \n    int top = 0, bottom = r - 1, left = 0, right = c - 1;\n    \n    while (top <= bottom && left <= right) {\n        // Top row\n        for (int j = left; j <= right; j++) {\n            printf(\"%d \", mat[top][j]);\n        }\n        top++;\n        \n        // Right column\n        for (int i = top; i <= bottom; i++) {\n            printf(\"%d \", mat[i][right]);\n        }\n        right--;\n        \n        // Bottom row (if exists)\n        if (top <= bottom) {\n            for (int j = right; j >= left; j--) {\n                printf(\"%d \", mat[bottom][j]);\n            }\n            bottom--;\n        }\n        \n        // Left column (if exists)\n        if (left <= right) {\n            for (int i = bottom; i >= top; i--) {\n                printf(\"%d \", mat[i][left]);\n            }\n            left++;\n        }\n    }\n    \n    printf(\"\\n\");\n    return 0;\n}",
+          "timeComplexity": "O(m × n)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Spiral Matrix - Video Solution",
+          "link": "https://www.youtube.com/watch?v=BJnMZNwUk1M"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Return all elements in spiral order.\n\nApproach:\n1. Use four boundary variables\n2. Traverse in order: right, down, left, up\n3. Shrink boundaries after each direction\n4. Continue until all elements visited\n\nKey Points:\n- Handle edge cases (empty, single row/column)\n- Check boundaries before each traversal\n- Use vector to store result",
+          "code": "class Solution {\npublic:\n    vector<int> spiralOrder(vector<vector<int>>& matrix) {\n        vector<int> result;\n        if (matrix.empty()) return result;\n        \n        int top = 0, bottom = matrix.size() - 1;\n        int left = 0, right = matrix[0].size() - 1;\n        \n        while (top <= bottom && left <= right) {\n            for (int j = left; j <= right; j++) {\n                result.push_back(matrix[top][j]);\n            }\n            top++;\n            \n            for (int i = top; i <= bottom; i++) {\n                result.push_back(matrix[i][right]);\n            }\n            right--;\n            \n            if (top <= bottom) {\n                for (int j = right; j >= left; j--) {\n                    result.push_back(matrix[bottom][j]);\n                }\n                bottom--;\n            }\n            \n            if (left <= right) {\n                for (int i = bottom; i >= top; i--) {\n                    result.push_back(matrix[i][left]);\n                }\n                left++;\n            }\n        }\n        \n        return result;\n    }\n};",
+          "timeComplexity": "O(m × n)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
-    {
+  {
     "day": 14,
     "unit": "Unit I: Introduction",
     "question1": {
@@ -230,7 +586,34 @@
       "link": "https://leetcode.com/problems/rotate-image/",
       "difficulty": "Medium"
     },
-    "topics": ["Matrix Properties"]
+    "topics": [
+      "Matrix Properties"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Check if matrix is identity matrix:\n\n1. Must be square matrix (n × n)\n2. Diagonal elements (i == j) must be 1\n3. Non-diagonal elements (i != j) must be 0\n4. Check all elements\n\nKey Points:\n- Identity matrix is always square\n- Diagonal: mat[i][i] = 1\n- Off-diagonal: mat[i][j] = 0 where i ≠ j",
+          "code": "#include <stdio.h>\n#include <stdbool.h>\n\nint main() {\n    int n;\n    int mat[100][100];\n    \n    scanf(\"%d\", &n);\n    \n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &mat[i][j]);\n        }\n    }\n    \n    bool isIdentity = true;\n    \n    for (int i = 0; i < n && isIdentity; i++) {\n        for (int j = 0; j < n; j++) {\n            if (i == j) {\n                if (mat[i][j] != 1) {\n                    isIdentity = false;\n                    break;\n                }\n            } else {\n                if (mat[i][j] != 0) {\n                    isIdentity = false;\n                    break;\n                }\n            }\n        }\n    }\n    \n    printf(\"%s\\n\", isIdentity ? \"Identity Matrix\" : \"Not an Identity Matrix\");\n    return 0;\n}",
+          "timeComplexity": "O(n²)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Rotate Image - Video Solution",
+          "link": "https://www.youtube.com/watch?v=fMSJSS7eO1w"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Rotate n×n matrix 90 degrees clockwise in-place.\n\nApproach:\n1. Transpose the matrix (swap mat[i][j] with mat[j][i])\n2. Reverse each row\n3. Result is 90-degree clockwise rotation\n\nAlternative: Rotate layer by layer\n\nKey Points:\n- In-place rotation required\n- Transpose + reverse = rotate 90°\n- Must handle square matrix only",
+          "code": "class Solution {\npublic:\n    void rotate(vector<vector<int>>& matrix) {\n        int n = matrix.size();\n        \n        // Transpose\n        for (int i = 0; i < n; i++) {\n            for (int j = i + 1; j < n; j++) {\n                swap(matrix[i][j], matrix[j][i]);\n            }\n        }\n        \n        // Reverse each row\n        for (int i = 0; i < n; i++) {\n            reverse(matrix[i].begin(), matrix[i].end());\n        }\n    }\n};",
+          "timeComplexity": "O(n²)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 15,
@@ -244,7 +627,34 @@
       "link": "https://leetcode.com/problems/set-matrix-zeroes/",
       "difficulty": "Medium"
     },
-    "topics": ["Matrix"]
+    "topics": [
+      "Matrix"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Calculate sum of diagonal elements:\n\n1. Primary diagonal: elements where i == j\n2. Sum only these elements\n3. Works only for square matrices\n\nKey Points:\n- Diagonal elements: mat[0][0], mat[1][1], ..., mat[n-1][n-1]\n- For non-square matrix, min(m, n) diagonal elements\n- Can also calculate secondary diagonal (i + j == n - 1)",
+          "code": "#include <stdio.h>\n\nint main() {\n    int m, n;\n    int mat[100][100];\n    \n    scanf(\"%d %d\", &m, &n);\n    \n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &mat[i][j]);\n        }\n    }\n    \n    int sum = 0;\n    int minDim = m < n ? m : n;\n    \n    for (int i = 0; i < minDim; i++) {\n        sum += mat[i][i];\n    }\n    \n    printf(\"%d\\n\", sum);\n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Set Matrix Zeroes - Video Solution",
+          "link": "https://www.youtube.com/watch?v=T41rL0L3Pnw"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Set entire row and column to 0 if element is 0.\n\nApproach (O(1) space):\n1. Use first row and column as markers\n2. Scan matrix, mark first row/column if 0 found\n3. Use markers to set zeros\n4. Handle first row/column separately\n\nKey Points:\n- Must modify in-place\n- O(1) space solution uses matrix itself\n- Process from bottom-right to preserve markers",
+          "code": "class Solution {\npublic:\n    void setZeroes(vector<vector<int>>& matrix) {\n        int m = matrix.size(), n = matrix[0].size();\n        bool firstRow = false, firstCol = false;\n        \n        // Check if first row/col has zeros\n        for (int i = 0; i < m; i++) {\n            if (matrix[i][0] == 0) firstCol = true;\n        }\n        for (int j = 0; j < n; j++) {\n            if (matrix[0][j] == 0) firstRow = true;\n        }\n        \n        // Mark zeros in first row/col\n        for (int i = 1; i < m; i++) {\n            for (int j = 1; j < n; j++) {\n                if (matrix[i][j] == 0) {\n                    matrix[i][0] = 0;\n                    matrix[0][j] = 0;\n                }\n            }\n        }\n        \n        // Set zeros based on markers\n        for (int i = 1; i < m; i++) {\n            for (int j = 1; j < n; j++) {\n                if (matrix[i][0] == 0 || matrix[0][j] == 0) {\n                    matrix[i][j] = 0;\n                }\n            }\n        }\n        \n        // Handle first row/col\n        if (firstRow) {\n            for (int j = 0; j < n; j++) matrix[0][j] = 0;\n        }\n        if (firstCol) {\n            for (int i = 0; i < m; i++) matrix[i][0] = 0;\n        }\n    }\n};",
+          "timeComplexity": "O(m × n)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 16,
@@ -258,7 +668,35 @@
       "link": "https://leetcode.com/problems/rotate-array/description/",
       "difficulty": "Easy"
     },
-    "topics": ["Array Count", "HashMap Logic"]
+    "topics": [
+      "Array Count",
+      "HashMap Logic"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Count frequency of elements using hash map (or frequency array):\n\n1. Iterate through array\n2. For each element, increment its count in map\n3. Print all element-frequency pairs\n\nKey Points:\n- Use hash map for arbitrary values\n- Use frequency array if values in limited range\n- Maintains insertion order with ordered map",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    int arr[100];\n    int freq[1001] = {0}; // Assuming values 0-1000\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n        freq[arr[i]]++;\n    }\n    \n    // Print in order of first appearance\n    for (int i = 0; i < n; i++) {\n        if (freq[arr[i]] > 0) {\n            printf(\"%d:%d \", arr[i], freq[arr[i]]);\n            freq[arr[i]] = 0; // Mark as printed\n        }\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(k) where k is range of values"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Rotate Array - Video Solution",
+          "link": "https://www.youtube.com/watch?v=BHr381Guz3Y"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Rotate array to right by k steps.\n\nApproach (Reverse Method):\n1. Reverse entire array\n2. Reverse first k elements\n3. Reverse remaining n-k elements\n\nAlternative: Use extra space to copy\n\nKey Points:\n- k can be > n, use k % n\n- In-place solution preferred\n- Three reverses achieve rotation",
+          "code": "class Solution {\npublic:\n    void rotate(vector<int>& nums, int k) {\n        int n = nums.size();\n        k = k % n;\n        \n        // Reverse entire array\n        reverse(nums.begin(), nums.end());\n        \n        // Reverse first k elements\n        reverse(nums.begin(), nums.begin() + k);\n        \n        // Reverse remaining elements\n        reverse(nums.begin() + k, nums.end());\n    }\n};",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 17,
@@ -272,7 +710,35 @@
       "link": "https://leetcode.com/problems/maximum-subarray/",
       "difficulty": "Medium"
     },
-    "topics": ["Kadane", "DP Intro"]
+    "topics": [
+      "Kadane",
+      "DP Intro"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Find max and min in array:\n\n1. Initialize max and min to first element\n2. Iterate through remaining elements\n3. Update max if current > max\n4. Update min if current < min\n\nKey Points:\n- Single pass through array\n- Can optimize with pairs comparison\n- Handle empty array edge case",
+          "code": "#include <stdio.h>\n#include <limits.h>\n\nint main() {\n    int n;\n    int arr[100];\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int max = arr[0];\n    int min = arr[0];\n    \n    for (int i = 1; i < n; i++) {\n        if (arr[i] > max) max = arr[i];\n        if (arr[i] < min) min = arr[i];\n    }\n    \n    printf(\"Max: %d\\n\", max);\n    printf(\"Min: %d\\n\", min);\n    \n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Maximum Subarray - Video Solution",
+          "link": "https://www.youtube.com/watch?v=5WZl3MMT0Eg"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Find maximum sum contiguous subarray (Kadane's Algorithm).\n\nApproach:\n1. Keep track of current sum and max sum\n2. Add current element to current sum\n3. If current sum < 0, reset to 0\n4. Update max sum at each step\n\nKey Points:\n- Dynamic programming approach\n- Linear time solution\n- Handle all negative numbers case",
+          "code": "class Solution {\npublic:\n    int maxSubArray(vector<int>& nums) {\n        int maxSum = nums[0];\n        int currentSum = nums[0];\n        \n        for (int i = 1; i < nums.size(); i++) {\n            currentSum = max(nums[i], currentSum + nums[i]);\n            maxSum = max(maxSum, currentSum);\n        }\n        \n        return maxSum;\n    }\n};",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 18,
@@ -286,7 +752,35 @@
       "link": "https://leetcode.com/problems/product-of-array-except-self/",
       "difficulty": "Medium"
     },
-    "topics": ["Prefix Suffix", "Array"]
+    "topics": [
+      "Prefix Suffix",
+      "Array"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Rotate array right by k positions using reversal:\n\n1. Normalize k: k = k % n\n2. Reverse entire array\n3. Reverse first k elements\n4. Reverse remaining n-k elements\n\nKey Points:\n- In-place rotation\n- Handle k > n\n- Three reverses achieve rotation",
+          "code": "#include <stdio.h>\n\nvoid reverse(int arr[], int start, int end) {\n    while (start < end) {\n        int temp = arr[start];\n        arr[start] = arr[end];\n        arr[end] = temp;\n        start++;\n        end--;\n    }\n}\n\nint main() {\n    int n, k;\n    int arr[100];\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    scanf(\"%d\", &k);\n    \n    k = k % n;\n    \n    reverse(arr, 0, n - 1);\n    reverse(arr, 0, k - 1);\n    reverse(arr, k, n - 1);\n    \n    for (int i = 0; i < n; i++) {\n        printf(\"%d\", arr[i]);\n        if (i < n - 1) printf(\" \");\n    }\n    printf(\"\\n\");\n    \n    return 0;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Product of Array Except Self - Video Solution",
+          "link": "https://www.youtube.com/watch?v=bNvIQI2wAjk"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Calculate product of all elements except self without division.\n\nApproach:\n1. Calculate prefix products (product of all elements before i)\n2. Calculate suffix products (product of all elements after i)\n3. result[i] = prefix[i] * suffix[i]\n\nOptimized: Use result array to store prefix, then multiply by suffix in reverse\n\nKey Points:\n- Cannot use division\n- O(n) time, O(1) extra space (output doesn't count)\n- Two passes through array",
+          "code": "class Solution {\npublic:\n    vector<int> productExceptSelf(vector<int>& nums) {\n        int n = nums.size();\n        vector<int> result(n, 1);\n        \n        // Calculate prefix products\n        int prefix = 1;\n        for (int i = 0; i < n; i++) {\n            result[i] = prefix;\n            prefix *= nums[i];\n        }\n        \n        // Multiply by suffix products\n        int suffix = 1;\n        for (int i = n - 1; i >= 0; i--) {\n            result[i] *= suffix;\n            suffix *= nums[i];\n        }\n        \n        return result;\n    }\n};",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 19,
@@ -296,1208 +790,79 @@
       "description": "Problem: Given an array of integers, find two elements whose sum is closest to zero.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the pair of elements whose sum is closest to zero\n\nExample:\nInput:\n5\n1 60 -10 70 -80\n\nOutput:\n-10 1\n\nExplanation: Among all possible pairs, the sum of -10 and 1 is -9, which is the closest to zero compared to other pairs."
     },
     "question2": {
-      "name": "Maximum Subarray Sum",
-      "link": "https://leetcode.com/problems/maximum-subarray/description/",
+      "name": "Maximum Sum Circular Subarray",
+      "link": "https://leetcode.com/problems/maximum-sum-circular-subarray/description/",
       "difficulty": "Medium"
     },
-    "topics": ["Two Pointers"]
+    "topics": [
+      "Two Pointers"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Find pair with sum closest to zero using two pointers:\n\n1. Sort the array\n2. Use two pointers: left at start, right at end\n3. Calculate sum, update minimum if closer to zero\n4. Move pointers based on sum (if negative, move left; if positive, move right)\n\nKey Points:\n- Sorting enables two-pointer approach\n- Track minimum absolute sum\n- O(n log n) due to sorting",
+          "code": "#include <stdio.h>\n#include <stdlib.h>\n#include <limits.h>\n\nint compare(const void* a, const void* b) {\n    return (*(int*)a - *(int*)b);\n}\n\nint main() {\n    int n;\n    int arr[100];\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    qsort(arr, n, sizeof(int), compare);\n    \n    int left = 0, right = n - 1;\n    int minSum = INT_MAX;\n    int resLeft = 0, resRight = 0;\n    \n    while (left < right) {\n        int sum = arr[left] + arr[right];\n        \n        if (abs(sum) < abs(minSum)) {\n            minSum = sum;\n            resLeft = arr[left];\n            resRight = arr[right];\n        }\n        \n        if (sum < 0) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    \n    printf(\"%d %d\\n\", resLeft, resRight);\n    return 0;\n}",
+          "timeComplexity": "O(n log n)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Maximum Sum Circular Subarray - Video Solution",
+          "link": "https://www.youtube.com/watch?v=fxT9KjakYPM"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Maximum Sum Circular Subarray using Kadane’s Algorithm.\n\nApproach:\n1. Use Kadane’s algorithm to find maximum subarray sum (non-circular).\n2. Use modified Kadane’s to find minimum subarray sum.\n3. Calculate total array sum.\n4. Answer = max(maxSub, totalSum - minSub).\n5. If all elements are negative (totalSum == minSub), return maxSub.",
+          "code": "int maxSubarraySumCircular(int* nums, int numsSize) {\n    int totalSum = 0;\n    int maxSub = nums[0], currentMax = nums[0];\n    int minSub = nums[0], currentMin = nums[0];\n\n    for (int i = 0; i < numsSize; i++) {\n        totalSum += nums[i];\n        if (i > 0) {\n            currentMax = (nums[i] > currentMax + nums[i]) ? nums[i] : currentMax + nums[i];\n            maxSub = (maxSub > currentMax) ? maxSub : currentMax;\n\n            currentMin = (nums[i] < currentMin + nums[i]) ? nums[i] : currentMin + nums[i];\n            minSub = (minSub < currentMin) ? minSub : currentMin;\n        }\n    }\n\n    if (totalSum == minSub) return maxSub;\n\n    int circularMax = totalSum - minSub;\n    return (maxSub > circularMax) ? maxSub : circularMax;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   },
   {
     "day": 20,
     "unit": "Unit I: Introduction",
-      "question1": {
-        "title": "Count Subarrays with Sum Zero",
-        "description": "Problem: Given an array of integers, count the number of subarrays whose sum is equal to zero.\n\nInput:\n- First line: integer n\n- Second line: n integers\n\nOutput:\n- Print the count of subarrays having sum zero\n\nExample:\nInput:\n6\n1 -1 2 -2 3 -3\n\nOutput:\n6\n\nExplanation: A subarray is a continuous part of the array. For the input array 1 -1 2 -2 3 -3, the following subarrays have sum zero: [1, -1], [2, -2], [3, -3], [1, -1, 2, -2], [2, -2, 3, -3], and [1, -1, 2, -2, 3, -3]. Since there are 6 such subarrays, the output is 6."
-      },
+    "question1": {
+      "title": "Count Subarrays with Sum Zero",
+      "description": "Problem: Given an array of integers, count the number of subarrays whose sum is equal to zero.\n\nInput:\n- First line: integer n\n- Second line: n integers\n\nOutput:\n- Print the count of subarrays having sum zero\n\nExample:\nInput:\n6\n1 -1 2 -2 3 -3\n\nOutput:\n6\n\nExplanation: A subarray is a continuous part of the array. For the input array 1 -1 2 -2 3 -3, the following subarrays have sum zero: [1, -1], [2, -2], [3, -3], [1, -1, 2, -2], [2, -2, 3, -3], and [1, -1, 2, -2, 3, -3]. Since there are 6 such subarrays, the output is 6."
+    },
     "question2": {
       "name": "3Sum",
       "link": "https://leetcode.com/problems/3sum/",
       "difficulty": "Medium"
     },
-    "topics": ["Sorting", "Two Pointers"]
-  },
-    {
-    "day": 21,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Create and Traverse Singly Linked List",
-      "description": "Problem: Create and Traverse Singly Linked List - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the linked list elements, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n10 20 30 40 50\n\nExplanation:\nCreate nodes dynamically and link them. Traverse from head to last node printing values."
-    },
-    "question2": {
-      "name": "Middle of the Linked List",
-      "link": "https://leetcode.com/problems/middle-of-the-linked-list/",
-      "difficulty": "Easy"
-    },
     "topics": [
-      "Linked List Basics",
-      "Traversal"
-    ]
-  },
-  {
-    "day": 22,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Count Number of Nodes in a Singly Linked List",
-      "description": "Problem: Count the number of nodes in a singly linked list. Implement the solution using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers representing the linked list elements\n\nOutput:\n- Print a single integer representing the total number of nodes in the linked list\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n5\n\nExplanation:\nTraverse the linked list starting from the head node and increment a counter for each node until the end of the list is reached."
-    },
-    "question2": {
-      "name": "Reverse Linked List",
-      "link": "https://leetcode.com/problems/reverse-linked-list/",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Linked List",
-      "Reversal"
-    ]
-  },
-  {
-    "day": 23,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Merge Two Sorted Linked Lists",
-      "description": "Problem: Merge Two Sorted Linked Lists - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers (first list)\n- Third line: integer m\n- Fourth line: m space-separated integers (second list)\n\nOutput:\n- Print the merged linked list elements, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n4\n15 25 35 45\n\nOutput:\n10 15 20 25 30 35 40 45 50\n\nExplanation:\nCompare nodes of both lists, append smaller to result, continue until all nodes are merged."
-    },
-    "question2": {
-      "name": "List Cycle Detection",
-      "link": "https://leetcode.com/problems/linked-list-cycle/description/s",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Linked List"
-    ]
-  },
-  {
-    "day": 24,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Delete First Occurrence of a Key",
-      "description": "Problem: Delete First Occurrence of a Key - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n- Third line: integer key\n\nOutput:\n- Print the linked list elements after deletion, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n30\n\nOutput:\n10 20 40 50\n\nExplanation:\nTraverse list, find first node with key, remove it by adjusting previous node's next pointer."
-    },
-    "question2": {
-      "name": "Remove Linked List Elements",
-      "link": "https://leetcode.com/problems/remove-linked-list-elements/",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Deletion",
-      "Linked List"
-    ]
-  },
-  {
-    "day": 25,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Count Occurrences of an Element in Linked List",
-      "description": "Problem: Count Occurrences of an Element in Linked List - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n (number of nodes)\n- Second line: n space-separated integers (linked list elements)\n- Third line: integer key (element to be counted)\n\nOutput:\n- Print the number of times the key appears in the linked list\n\nExample:\nInput:\n6\n10 20 30 20 40 20\n20\n\nOutput:\n3\n\nExplanation:\nTraverse the linked list from head to end. Each time a node’s data matches the given key, increment a counter. After traversal, print the final count."
-    },
-    "question2": {
-      "name": "Linked List Cycle",
-      "link": "https://leetcode.com/problems/linked-list-cycle/",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Cycle Detection",
-      "Linked List"
-    ]
-  },
-  {
-    "day": 26,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Doubly Linked List Insertion and Traversal",
-      "description": "Problem: Doubly Linked List Insertion and Traversal - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the linked list elements in forward order, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n10 20 30 40 50\n\nExplanation:\nEach node has data, next, prev. Insert nodes sequentially, traverse from head using next pointer."
-    },
-    "question2": {
-      "name": "Design Linked List",
-      "link": "https://leetcode.com/problems/design-linked-list/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Doubly Linked List"
-    ]
-  },
-  {
-    "day": 27,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Find Intersection Point of Two Linked Lists",
-      "description": "Problem: Find Intersection Point of Two Linked Lists - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers (first list)\n- Third line: integer m\n- Fourth line: m space-separated integers (second list)\n\nOutput:\n- Print value of intersection node or 'No Intersection'\n\nExample:\nInput:\n5\n10 20 30 40 50\n4\n15 25 30 40 50\n\nOutput:\n30\n\nExplanation:\nCalculate lengths, advance pointer in longer list, traverse both simultaneously. First common node is intersection."
-    },
-    "question2": {
-      "name": "Remove Cycle in Linked List",
-      "link": "https://www.geeksforgeeks.org/problems/remove-loop-in-linked-list/1",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Linked List"
-    ]
-  },
-  {
-    "day": 28,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Circular Linked List Creation and Traversal",
-      "description": "Problem: Circular Linked List Creation and Traversal - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the circular linked list elements starting from head, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n10 20 30 40 50\n\nExplanation:\nLast node's next points to head. Traverse from head until returning to head to avoid infinite loop."
-    },
-    "question2": {
-      "name": "Palindrome Linked List",
-      "link": "https://leetcode.com/problems/palindrome-linked-list/description/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Linked List"
-    ]
-  },
-  {
-    "day": 29,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Rotate Linked List Right by k Places",
-      "description": "Problem: Rotate Linked List Right by k Places - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n- Third line: integer k\n\nOutput:\n- Print the linked list elements after rotation, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n2\n\nOutput:\n40 50 10 20 30\n\nExplanation:\nConnect last node to head forming circular list. Traverse to (n-k)th node, set next to NULL, update head to (n-k+1)th node."
-    },
-    "question2": {
-      "name": "Add Two Numbers",
-      "link": "https://leetcode.com/problems/add-two-numbers/description/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Rotation",
-      "Linked List"
-    ]
-  },
-  {
-    "day": 30,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Polynomial Using Linked List",
-      "description": "Problem: Polynomial Using Linked List - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n (number of terms)\n- Next n lines: two integers (coefficient and exponent)\n\nOutput:\n- Print polynomial in standard form, e.g., 10x^4 + 20x^3 + 30x^2 + 40x + 50\n\nExample:\nInput:\n5\n10 4\n20 3\n30 2\n40 1\n50 0\n\nOutput:\n10x^4 + 20x^3 + 30x^2 + 40x + 50\n\nExplanation:\nEach node stores coefficient and exponent. Traverse nodes to print polynomial in decreasing exponent order."
-    },
-    "question2": {
-      "name": "Add Two Numbers II",
-      "link": "https://leetcode.com/problems/add-two-numbers-ii/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Polynomial LL",
-      "Representation"
-    ]
-  },
-  {
-    "day": 31,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Implement Stack Using Array",
-      "description": "Problem: Implement Stack Using Array - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print stack elements from top to bottom, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n50 40 30 20 10\n\nExplanation:\nUse array and top pointer. Push inserts at top, pop removes from top. Print elements from top to bottom."
-    },
-    "question2": {
-      "name": "Valid Parentheses",
-      "link": "https://leetcode.com/problems/valid-parentheses/",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Stack",
-      "Array Implementation"
-    ]
-  },
-  {
-    "day": 32,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Implement Stack Using Linked List",
-      "description": "Problem: Implement Stack Using Linked List - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print stack elements from top to bottom, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n50 40 30 20 10\n\nExplanation:\nPush inserts at head, pop removes head. Traverse linked list from head to print stack."
-    },
-    "question2": {
-      "name": "Implement Stack Using Queues",
-      "link": "https://leetcode.com/problems/implement-stack-using-queues/",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Stack",
-      "Linked List"
-    ]
-  },
-  {
-    "day": 33,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Infix to Postfix Conversion",
-      "description": "Problem: Infix to Postfix Conversion - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n (length of expression)\n- Second line: infix expression\n\nOutput:\n- Print postfix expression\n\nExample:\nInput:\n5\nA + B * C\n\nOutput:\nA B C * +\n\nExplanation:\nUse stack for operators, output operands directly, push operators considering precedence, pop remaining operators at end."
-    },
-    "question2": {
-      "name": "Basic Calculator II",
-      "link": "https://leetcode.com/problems/basic-calculator-ii/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Stack",
-      "Expression Parsing"
-    ]
-  },
-  {
-    "day": 34,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Evaluate Postfix Expression",
-      "description": "Problem: Evaluate Postfix Expression - Implement using linked list with dynamic memory allocation.\n\nInput:\n- Postfix expression with operands and operators\n\nOutput:\n- Print the integer result\n\nExample:\nInput:\n2 3 1 * + 9 -\n\nOutput:\n-4\n\nExplanation:\nUse stack to store operands, apply operators by popping operands, push result back. Final stack top is result."
-    },
-    "question2": {
-      "name": "Evaluate Reverse Polish Notation",
-      "link": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Expression Evaluation"
-    ]
-  },
-  {
-    "day": 35,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Queue Using Array",
-      "description": "Problem: Queue Using Array - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n (number of elements)\n- Second line: n space-separated integers\n\nOutput:\n- Print queue elements from front to rear, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n10 20 30 40 50\n\nExplanation:\nUse array and front/rear pointers. Enqueue inserts at rear, dequeue removes from front. Display from front to rear."
-    },
-    "question2": {
-      "name": "Number of Recent Calls",
-      "link": "https://leetcode.com/problems/number-of-recent-calls/",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Queue",
-      "Array"
-    ]
-  },
-  {
-    "day": 36,
-    "unit": "Unit II: Linked List",
-    "question1": {
-      "title": "Circular Queue Using Array",
-      "description": "Problem: Circular Queue Using Array - Implement using linked list with dynamic memory allocation.\n\nInput:\n- First line: integer n (number of elements to enqueue)\n- Second line: n space-separated integers\n- Third line: integer m (number of dequeue operations)\n\nOutput:\n- Print queue elements from front to rear after operations, space-separated\n\nExample:\nInput:\n5\n10 20 30 40 50\n2\n\nOutput:\n30 40 50 10 20\n\nExplanation:\nUse array and front/rear pointers. Rear wraps around to start after reaching array end. Dequeue removes elements from front. Display remaining elements in correct order."
-    },
-    "question2": {
-      "name": "Design Circular Deque",
-      "link": "https://leetcode.com/problems/design-circular-deque/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Circular Queue"
-    ]
-  },
-   {
-    "day": 37,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Double Ended Queue (Deque)",
-      "description": "Problem Statement:\nImplement a Double Ended Queue (Deque) that supports insertion and deletion from both ends.\n\nSupported Operations:\n- pushFront x\n- pushRear x\n- popFront\n- popRear\n- peekFront\n- peekRear\n\nInput Format:\n- First line contains integer N (number of operations)\n- Next N lines contain one operation per line\n\nOutput Format:\n- Print the result of pop and peek operations\n- Print -1 if operation cannot be performed\n\nExample:\nInput:\n6\npushFront 10\npushRear 20\npeekFront\npopRear\npeekRear\npopFront\n\nOutput:\n10\n20\n10"
-    },
-    "question2": {
-      "name": "Min Stack",
-      "link": "https://leetcode.com/problems/min-stack/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Deque", "Double Ended Queue"]
-  },
-  {
-    "day": 38,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Priority Queue Using Array",
-      "description": "Problem Statement:\nImplement a Priority Queue using an array. An element with smaller value has higher priority.\n\nSupported Operations:\n- insert x\n- delete\n- peek\n\nInput Format:\n- First line contains integer N\n- Next N lines contain operations\n\nOutput Format:\n- Print the deleted or peeked element\n- Print -1 if the queue is empty\n\nExample:\nInput:\n5\ninsert 30\ninsert 10\ninsert 20\ndelete\npeek\n\nOutput:\n10\n20"
-    },
-    "question2": {
-      "name": "Kth Largest Element in a Stream",
-      "link": "https://leetcode.com/problems/kth-largest-element-in-a-stream/",
-      "difficulty": "Easy"
-    },
-    "topics": ["Priority Queue"]
-  },
-  {
-    "day": 39,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Min Heap Implementation",
-      "description": "Problem Statement:\nImplement a Min Heap using an array where the smallest element is always at the root.\n\nSupported Operations:\n- insert x\n- extractMin\n- peek\n\nInput Format:\n- First line contains integer N\n- Next N lines contain heap operations\n\nOutput Format:\n- Print results of extractMin and peek\n- Print -1 if operation cannot be performed\n\nExample:\nInput:\n6\ninsert 40\ninsert 10\ninsert 30\npeek\nextractMin\npeek\n\nOutput:\n10\n10\n30"
-    },
-    "question2": {
-      "name": "Top K Frequent Elements",
-      "link": "https://leetcode.com/problems/top-k-frequent-elements/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Heap", "Priority Queue"]
-  },
-  {
-    "day": 40,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Heap Sort Using Max-Heap",
-      "description": "Problem Statement:\nImplement Heap Sort using a Max Heap to sort an array in ascending order.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n\nOutput Format:\n- Print the sorted array\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
-    },
-    "question2": {
-      "name": "Daily Temperatures",
-      "link": "https://leetcode.com/problems/daily-temperatures/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Heap Sort", "Sorting"]
-  },
-  {
-    "day": 41,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Queue Using Linked List",
-      "description": "Problem Statement:\nImplement a Queue using a linked list supporting enqueue and dequeue operations.\n\nInput Format:\n- First line contains integer N\n- Next N lines contain queue operations\n\nOutput Format:\n- Print dequeued elements\n- Print -1 if dequeue is attempted on an empty queue\n\nExample:\nInput:\n5\nenqueue 10\nenqueue 20\ndequeue\nenqueue 30\ndequeue\n\nOutput:\n10\n20"
-    },
-    "question2": {
-      "name": "Task Scheduler",
-      "link": "https://leetcode.com/problems/task-scheduler/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Queue", "Linked List Implementation"]
-  },
-  {
-    "day": 42,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Reverse a Queue Using Stack",
-      "description": "Problem Statement:\nGiven a queue of integers, reverse the queue using a stack.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n\nOutput Format:\n- Print the reversed queue\n\nExample:\nInput:\n5\n10 20 30 40 50\n\nOutput:\n50 40 30 20 10"
-    },
-    "question2": {
-      "name": "Find Median from Data Stream",
-      "link": "https://leetcode.com/problems/find-median-from-data-stream/",
-      "difficulty": "Hard"
-    },
-    "topics": ["Queue", "Stack", "Reversal"]
-  },
-  {
-    "day": 43,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Binary Tree Construction (Level Order)",
-      "description": "Problem Statement:\nConstruct a Binary Tree from the given level-order traversal.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers (-1 represents NULL)\n\nOutput Format:\n- Print inorder traversal of the constructed tree\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 6\n\nOutput:\n4 2 5 1 3 6"
-    },
-    "question2": {
-      "name": "Binary Tree Inorder Traversal",
-      "link": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
-      "difficulty": "Easy"
-    },
-    "topics": ["Binary Tree", "Construction"]
-  },
-  {
-    "day": 44,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Binary Tree Traversals",
-      "description": "Problem Statement:\nPerform inorder, preorder, and postorder traversals of a given binary tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n\nOutput Format:\n- Print inorder, preorder, and postorder traversals\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n4 2 5 1 6 3 7\n1 2 4 5 3 6 7\n4 5 2 6 7 3 1"
-    },
-    "question2": {
-      "name": "Binary Tree Preorder Traversal",
-      "link": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
-      "difficulty": "Easy"
-    },
-    "topics": ["Tree Traversal"]
-  },
-  {
-    "day": 45,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Height of a Binary Tree",
-      "description": "Problem Statement:\nFind the height (maximum depth) of a given binary tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n\nOutput Format:\n- Print the height of the tree\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 -1\n\nOutput:\n3"
-    },
-    "question2": {
-      "name": "Maximum Depth of Binary Tree",
-      "link": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
-      "difficulty": "Easy"
-    },
-    "topics": ["Binary Tree", "Recursion"]
-  },
-  {
-    "day": 46,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Count Leaf Nodes",
-      "description": "Problem Statement:\nCount the number of leaf nodes in a given binary tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n\nOutput Format:\n- Print the number of leaf nodes\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 6\n\nOutput:\n3"
-    },
-    "question2": {
-      "name": "Diameter of Binary Tree",
-      "link": "https://leetcode.com/problems/diameter-of-binary-tree/",
-      "difficulty": "Easy"
-    },
-    "topics": ["Binary Tree", "Leaf Count"]
-  },
-  {
-    "day": 47,
-    "unit": "Unit III: Stack & Queue",
-      "question1": {
-      "title": "Check Identical Binary Trees",
-      "description": "Problem Statement:\nGiven two binary trees, determine whether they are identical. Two binary trees are considered identical if they have the same structure and the same node values.\n\nInput Format:\n- First line contains integer N (number of nodes in first tree)\n- Second line contains level-order traversal of first tree (-1 represents NULL)\n- Third line contains integer M (number of nodes in second tree)\n- Fourth line contains level-order traversal of second tree (-1 represents NULL)\n\nOutput Format:\n- Print \"YES\" if both trees are identical, otherwise print \"NO\".\n\nExample:\nInput:\n7\n1 2 3 4 -1 -1 -1\n7\n1 2 3 4 -1 -1 -1\n\nOutput:\nYES"
-    },
-    "question2": {
-      "name": "Balanced Binary Tree",
-      "link": "https://leetcode.com/problems/balanced-binary-tree/",
-      "difficulty": "Easy"
-    },
-    "topics": ["Balanced Tree", "Binary Tree"]
-  },
-  {
-    "day": 48,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "BST Insertion & Inorder Traversal",
-      "description": "Problem Statement:\nInsert elements into a Binary Search Tree and print its inorder traversal.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n\nOutput Format:\n- Print inorder traversal of BST\n\nExample:\nInput:\n5\n4 2 6 1 3\n\nOutput:\n1 2 3 4 6"
-    },
-    "question2": {
-      "name": "Validate Binary Search Tree",
-      "link": "https://leetcode.com/problems/validate-binary-search-tree/",
-      "difficulty": "Medium"
-    },
-    "topics": ["BST", "Insertion"]
-  },
-  {
-    "day": 49,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Search in BST",
-      "description": "Problem Statement:\nSearch for a given key in a Binary Search Tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n- Third line contains key to search\n\nOutput Format:\n- Print \"Found\" if key exists, otherwise \"Not Found\"\n\nExample:\nInput:\n5\n4 2 6 1 3\n3\n\nOutput:\nFound"
-    },
-    "question2": {
-      "name": "Search in a Binary Search Tree",
-      "link": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
-      "difficulty": "Easy"
-    },
-    "topics": ["BST Search"]
-  },
-  {
-    "day": 50,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Delete Node from BST",
-      "description": "Problem Statement:\nDelete a given node from a Binary Search Tree while maintaining BST properties.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n- Third line contains key to delete\n\nOutput Format:\n- Print inorder traversal after deletion\n\nExample:\nInput:\n5\n4 2 6 1 3\n2\n\nOutput:\n1 3 4 6"
-    },
-    "question2": {
-      "name": "Delete Node in a BST",
-      "link": "https://leetcode.com/problems/delete-node-in-a-bst/",
-      "difficulty": "Medium"
-    },
-    "topics": ["BST Deletion"]
-  },
-  {
-    "day": 51,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "Lowest Common Ancestor in BST",
-      "description": "Problem Statement:\nFind the Lowest Common Ancestor (LCA) of two nodes in a Binary Search Tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n- Third line contains two node values\n\nOutput Format:\n- Print the LCA value\n\nExample:\nInput:\n7\n6 2 8 0 4 7 9\n2 8\n\nOutput:\n6"
-    },
-    "question2": {
-      "name": "Lowest Common Ancestor of a BST",
-      "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
-      "difficulty": "Easy"
-    },
-    "topics": ["BST", "LCA"]
-  },
-  {
-    "day": 52,
-    "unit": "Unit III: Stack & Queue",
-    "question1": {
-      "title": "LCA in Binary Tree",
-      "description": "Problem Statement:\nFind the Lowest Common Ancestor (LCA) of two nodes in a Binary Tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n- Third line contains two node values\n\nOutput Format:\n- Print the LCA value\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n4 5\n\nOutput:\n2"
-    },
-    "question2": {
-      "name": "Lowest Common Ancestor of a Binary Tree",
-      "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Binary Tree", "LCA"]
-  },
-{
-    "day": 53,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Print Binary Tree Vertical Order",
-      "description": "Problem Statement:\nGiven a binary tree, print its vertical order traversal. Nodes that lie on the same vertical line should be printed together from top to bottom and from left to right.\n\nInput Format:\n- First line contains integer N (number of nodes)\n- Second line contains N space-separated integers representing level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print nodes column by column from leftmost to rightmost vertical line\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n4\n2\n1 5 6\n3\n7\n\nExplanation:\nVertical lines are formed based on horizontal distance from root. Nodes sharing the same distance are printed together."
-    },
-    "question2": {
-      "name": "Binary Tree Level Order Traversal",
-      "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Tree Traversal", "BFS"]
-  },
-  {
-    "day": 54,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Zigzag Traversal",
-      "description": "Problem Statement:\nPerform zigzag (spiral) level order traversal of a binary tree. Alternate levels should be traversed left-to-right and right-to-left.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print traversal in zigzag order\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n1 3 2 4 5 6 7\n\nExplanation:\nLevel 1 is printed left-to-right, level 2 right-to-left, and so on."
-    },
-    "question2": {
-      "name": "Binary Tree Zigzag Level Order Traversal",
-      "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Tree Traversal", "Zigzag"]
-  },
-  {
-    "day": 55,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Right View of Binary Tree",
-      "description": "Problem Statement:\nPrint the nodes visible when the binary tree is viewed from the right side.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print right view nodes\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 6\n\nOutput:\n1 3 6\n\nExplanation:\nAt each level, the rightmost node is visible from the right view."
-    },
-    "question2": {
-      "name": "Binary Tree Right Side View",
-      "link": "https://leetcode.com/problems/binary-tree-right-side-view/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Tree View Problems"]
-  },
-  {
-    "day": 56,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Symmetric Binary Tree Check",
-      "description": "Problem Statement:\nCheck whether a given binary tree is symmetric around its center.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print YES if symmetric, otherwise NO\n\nExample:\nInput:\n7\n1 2 2 3 4 4 3\n\nOutput:\nYES\n\nExplanation:\nLeft subtree is a mirror image of the right subtree."
-    },
-    "question2": {
-      "name": "Symmetric Tree",
-      "link": "https://leetcode.com/problems/symmetric-tree/",
-      "difficulty": "Easy"
-    },
-    "topics": ["Symmetry", "Binary Tree"]
-  },
-  {
-    "day": 57,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Mirror a Binary Tree",
-      "description": "Problem Statement:\nConvert a binary tree into its mirror image by swapping left and right children at every node.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print inorder traversal of mirrored tree\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n7 3 6 1 5 2 4\n\nExplanation:\nEach node’s left and right children are swapped recursively."
-    },
-    "question2": {
-      "name": "Flatten Binary Tree to Linked List",
-      "link": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Binary Tree", "Linked List"]
-  },
-  {
-    "day": 58,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Build Tree from Inorder & Preorder",
-      "description": "Problem Statement:\nConstruct a binary tree from given preorder and inorder traversal arrays.\n\nInput Format:\n- First line contains integer N\n- Second line contains preorder traversal\n- Third line contains inorder traversal\n\nOutput Format:\n- Print postorder traversal of constructed tree\n\nExample:\nInput:\n5\n1 2 4 5 3\n4 2 5 1 3\n\nOutput:\n4 5 2 3 1\n\nExplanation:\nPreorder identifies root, inorder splits left and right subtrees."
-    },
-    "question2": {
-      "name": "Construct Binary Tree from Preorder and Inorder Traversal",
-      "link": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Tree Construction"]
-  },
-  {
-    "day": 59,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Build Tree from Inorder & Postorder",
-      "description": "Problem Statement:\nConstruct a binary tree from given inorder and postorder traversal arrays.\n\nInput Format:\n- First line contains integer N\n- Second line contains inorder traversal\n- Third line contains postorder traversal\n\nOutput Format:\n- Print preorder traversal of constructed tree\n\nExample:\nInput:\n5\n4 2 5 1 3\n4 5 2 3 1\n\nOutput:\n1 2 4 5 3\n\nExplanation:\nPostorder gives root at end, inorder divides left and right subtrees."
-    },
-    "question2": {
-      "name": "Construct Binary Tree from Inorder and Postorder Traversal",
-      "link": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Binary Tree", "Construction"]
-  },
-  {
-    "day": 60,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Validate Min-Heap",
-      "description": "Problem Statement:\nCheck whether a given binary tree satisfies the Min-Heap property.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal\n\nOutput Format:\n- Print YES if valid Min-Heap, otherwise NO\n\nExample:\nInput:\n7\n1 3 5 7 9 8 10\n\nOutput:\nYES\n\nExplanation:\nEach parent node must be smaller than its children."
-    },
-    "question2": {
-      "name": "Binary Tree Cameras",
-      "link": "https://leetcode.com/problems/binary-tree-cameras/",
-      "difficulty": "Hard"
-    },
-    "topics": ["Heap", "Tree"]
-  },
-  {
-    "day": 61,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Graph Representation Using Adjacency Matrix",
-      "description": "Problem Statement:\nRepresent a graph using an adjacency matrix.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges u v\n\nOutput Format:\n- Print adjacency matrix\n\nExample:\nInput:\n4 3\n1 2\n2 3\n3 4\n\nOutput:\n0 1 0 0\n1 0 1 0\n0 1 0 1\n0 0 1 0\n\nExplanation:\nMatrix cell (i,j) is 1 if edge exists between i and j."
-    },
-    "question2": {
-      "name": "Number of Provinces",
-      "link": "https://leetcode.com/problems/number-of-provinces/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Graph Basics", "Adjacency Matrix"]
-  },
-  {
-    "day": 62,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Graph Representation Using Adjacency List",
-      "description": "Problem Statement:\nRepresent a graph using adjacency list.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges u v\n\nOutput Format:\n- Print adjacency list\n\nExample:\nInput:\n4 3\n1 2\n1 3\n2 4\n\nOutput:\n1 -> 2 3\n2 -> 4\n3 ->\n4 ->\n\nExplanation:\nEach vertex stores a list of its adjacent vertices."
-    },
-    "question2": {
-      "name": "Keys and Rooms",
-      "link": "https://leetcode.com/problems/keys-and-rooms/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Graph Representation", "Adjacency List"]
-  },
-  {
-    "day": 63,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Depth First Search (DFS)",
-      "description": "Problem Statement:\nPerform Depth First Search traversal starting from a given source vertex.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges\n- Last line contains source vertex\n\nOutput Format:\n- Print DFS traversal order\n\nExample:\nInput:\n5 4\n1 2\n1 3\n2 4\n3 5\n1\n\nOutput:\n1 2 4 3 5\n\nExplanation:\nDFS explores as far as possible before backtracking."
-    },
-    "question2": {
-      "name": "Flood Fill",
-      "link": "https://leetcode.com/problems/flood-fill/",
-      "difficulty": "Easy"
-    },
-    "topics": ["DFS", "Graph Traversal"]
-  },
-  {
-    "day": 64,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Breadth First Search (BFS)",
-      "description": "Problem Statement:\nPerform Breadth First Search traversal starting from a given source vertex.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges\n- Last line contains source vertex\n\nOutput Format:\n- Print BFS traversal order\n\nExample:\nInput:\n5 4\n1 2\n1 3\n2 4\n3 5\n1\n\nOutput:\n1 2 3 4 5\n\nExplanation:\nBFS explores vertices level by level using a queue."
-    },
-    "question2": {
-      "name": "Rotting Oranges",
-      "link": "https://leetcode.com/problems/rotting-oranges/",
-      "difficulty": "Medium"
-    },
-    "topics": ["BFS", "Graph Traversal"]
-  },
-  {
-    "day": 65,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Cycle Detection in Undirected Graph (DFS)",
-      "description": "Problem Statement:\nDetect whether an undirected graph contains a cycle using DFS.\n\nInput Format:\n- First line contains n m\n- Next m lines contain edges\n\nOutput Format:\n- Print YES if cycle exists, otherwise NO\n\nExample:\nInput:\n4 4\n1 2\n2 3\n3 4\n4 2\n\nOutput:\nYES\n\nExplanation:\nBack-edge during DFS indicates a cycle."
-    },
-    "question2": {
-      "name": "Rat In A maze",
-      "link": "https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1",
-      "difficulty": "Medium"
-    },
-    "topics": ["Cycle Detection", "DFS"]
-  },
-  {
-    "day": 66,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Cycle Detection in Directed Graph",
-      "description": "Problem Statement:\nDetect whether a directed graph contains a cycle.\n\nInput Format:\n- First line contains n m\n- Next m lines contain directed edges\n\nOutput Format:\n- Print YES if cycle exists, otherwise NO\n\nExample:\nInput:\n3 3\n1 2\n2 3\n3 1\n\nOutput:\nYES\n\nExplanation:\nA back-edge in DFS recursion stack confirms a cycle."
-    },
-    "question2": {
-      "name": "Course Schedule",
-      "link": "https://leetcode.com/problems/course-schedule/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Directed Graph", "Cycle Detection"]
-  },
-  {
-    "day": 67,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Topological Sort (DFS)",
-      "description": "Problem Statement:\nPerform Topological Sort of a Directed Acyclic Graph using DFS.\n\nInput Format:\n- First line contains n m\n- Next m lines contain directed edges\n\nOutput Format:\n- Print topological order\n\nExample:\nInput:\n6 6\n5 2\n5 0\n4 0\n4 1\n2 3\n3 1\n\nOutput:\n5 4 2 3 1 0\n\nExplanation:\nVertices are ordered such that for every edge u → v, u appears before v."
-    },
-    "question2": {
-      "name": "Course Schedule II",
-      "link": "https://leetcode.com/problems/course-schedule-ii/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Topological Sort", "DFS"]
-  },
-  {
-    "day": 68,
-    "unit": "Unit IV: Tree",
-    "question1": {
-      "title": "Topological Sort (Kahn’s BFS Algorithm)",
-      "description": "Problem Statement:\nPerform Topological Sort of a Directed Acyclic Graph using Kahn’s BFS algorithm.\n\nInput Format:\n- First line contains n m\n- Next m lines contain directed edges\n\nOutput Format:\n- Print topological order\n\nExample:\nInput:\n6 6\n5 2\n5 0\n4 0\n4 1\n2 3\n3 1\n\nOutput:\n4 5 2 0 3 1\n\nExplanation:\nNodes with zero in-degree are processed first using a queue."
-    },
-    "question2": {
-      "name": "Alien Dictionary",
-      "link": "https://practice.geeksforgeeks.org/problems/alien-dictionary/1",
-      "difficulty": "Hard"
-    },
-    "topics": ["Topological Sort", "Kahn's Algorithm"]
-  },
-   {
-    "day": 69,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Implement a Hash Table Using Chaining (Linked List Collision Handling)",
-      "description": "Problem Statement\nImplement a hash table of size m using separate chaining, where collisions are resolved by storing elements in a linked list.\n\nYou must support the following operations:\n● INSERT x → Insert key x\n● SEARCH x → Print “FOUND” or “NOT FOUND”\n● DELETE x → Delete key x\n\nHash function:\nh(x) = x % m.\n\nInput Format\nm\nn\noperation1 value\noperation2 value\n...\noperation n value\n\nOutput Format\nPrint the result for SEARCH operations only.\n\nSample Input\n5\n6\nINSERT 12\nINSERT 7\nINSERT 17\nSEARCH 7\nDELETE 7\nSEARCH 7\n\nSample Output\nFOUND\nNOT FOUND\n\nExplanation\n● 12 → bucket 2, 7 → bucket 2, 17 → bucket 2\n● After deletion of 7, it no longer exists."
-    },
-    "question2": {
-      "name": "Network Delay Time",
-      "link": "https://leetcode.com/problems/network-delay-time/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Hashing", "Chaining"]
-  },
-  {
-    "day": 70,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Hash Table Using Linear Probing",
-      "description": "Problem Statement\nImplement a hash table using open addressing with linear probing.\n\nSupport INSERT and SEARCH operations. If the table becomes full, display “HASH TABLE FULL”.\n\nInput Format\nm\nn\noperation value\n...\n\nOutput Format\nPrint results of SEARCH operations.\n\nSample Input\n7\n5\nINSERT 10\nINSERT 24\nINSERT 17\nSEARCH 24\nSEARCH 5\n\nSample Output\nFOUND\nNOT FOUND\n\nExplanation\n● 24 inserted at index (24 % 7) = 3\n● 5 never inserted → NOT FOUND"
-    },
-    "question2": {
-      "name": "Cheapest Flights Within K Stops",
-      "link": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Hashing", "Linear Probing"]
-  },
-  {
-    "day": 71,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Hash Table Using Quadratic Probing",
-      "description": "Problem Statement\nImplement a hash table using quadratic probing with formula:\n\nh(k, i) = (h(k) + i*i) % m\n\nInput Format\nSame as previous.\n\nOutput Format\nResult of SEARCH operations.\n\nSample Input\n7\n4\nINSERT 49\nINSERT 56\nSEARCH 49\nSEARCH 15\n\nSample Output\nFOUND\nNOT FOUND\n\nExplanation\nCollisions resolved using i² jumps."
-    },
-    "question2": {
-      "name": "Min Cost to Connect All Points",
-      "link": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Hashing", "Quadratic Probing"]
-  },
- {
-    "day": 72,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "First Repeated Character",
-      "description": "Problem Statement\nGiven a string s consisting of lowercase letters, find the first repeated character in the string. A character is considered repeated if it appears more than once, and among all such characters, the one whose second occurrence has the smallest index should be returned.\n\nInput Format\nA single string s.\n\nOutput Format\nPrint the first repeated character. If no character is repeated, print -1.\n\nSample Input\ngeeksforgeeks\n\nSample Output\ne\n\nExplanation\nThe character 'e' appears more than once and its second occurrence appears earlier than any other repeated character."
-    },
-    "question2": {
-      "name": "Travelling Salesman Problem",
-      "link": "https://www.geeksforgeeks.org/problems/travelling-salesman-problem2732/1",
-      "difficulty": "Hard"
-    },
-    "topics": ["Adjacency Matrix", "Graph Representation"]
-  },
-  {
-    "day": 73,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "First Non-Repeating Character",
-      "description": "Problem Statement\nGiven a string s consisting of lowercase English letters, find and return the first character that does not repeat in the string. If all characters repeat, return '$'.\n\nInput Format\nA single string s.\n\nOutput Format\nPrint the first non-repeating character or '$' if none exists.\n\nSample Input\ngeeksforgeeks\n\nSample Output\nf\n\nExplanation\nThe character 'f' occurs only once in the string and appears before any other non-repeating character."
-    },
-    "question2": {
-      "name": "Redundant Connection",
-      "link": "https://leetcode.com/problems/redundant-connection/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Adjacency List", "Graph Representation"]
-  },
-  {
-    "day": 74,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Winner of an Election",
-      "description": "Problem Statement\nGiven an array of candidate names where each name represents a vote cast for that candidate, determine the candidate who received the maximum number of votes. In case of a tie, return the lexicographically smallest candidate name.\n\nInput Format\nFirst line contains an integer n representing number of votes.\nSecond line contains n space-separated strings representing candidate names.\n\nOutput Format\nPrint the name of the winning candidate followed by the number of votes received.\n\nSample Input\n13\njohn johnny jackie johnny john jackie jamie jamie john johnny jamie johnny john\n\nSample Output\njohn 4\n\nExplanation\nBoth john and johnny receive 4 votes, but john is lexicographically smaller, so john is declared the winner."
-    },
-    "question2": {
-      "name": "Number of Connected Components in an Undirected Graph",
-      "link": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
-      "difficulty": "Medium"
-    },
-    "topics": ["DFS", "Graph Traversal"]
-  },
-  {
-    "day": 75,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Largest Subarray with Zero Sum",
-      "description": "Problem Statement\nGiven an array of integers containing both positive and negative values, find the length of the longest contiguous subarray whose sum is equal to zero.\n\nInput Format\nAn integer array arr[].\n\nOutput Format\nPrint the length of the longest subarray with sum equal to zero.\n\nSample Input\n15 -2 2 -8 1 7 10 23\n\nSample Output\n5\n\nExplanation\nThe subarray [-2, 2, -8, 1, 7] has a sum of 0 and is the longest such subarray."
-    },
-    "question2": {
-      "name": "Is Graph Bipartite?",
-      "link": "https://leetcode.com/problems/is-graph-bipartite/",
-      "difficulty": "Medium"
-    },
-    "topics": ["BFS", "Graph Traversal"]
-  },
-  {
-    "day": 76,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Count Connected Components (Undirected Graph)",
-      "description": "Problem Statement\nUsing DFS or BFS, count number of connected components.\n\nInput Format\nn m\nedges\n\nOutput Format\nNumber of connected components.\n\nSample Input\n6 3\n1 2\n2 3\n5 6\n\nSample Output\n3\n\nExplanation\nComponents: {1,2,3}, {4}, {5,6}"
-    },
-    "question2": {
-      "name": "Clone Graph",
-      "link": "https://leetcode.com/problems/clone-graph/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Connected Components", "DFS/BFS"]
-  },
-  {
-    "day": 77,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Check if Graph is Connected",
-      "description": "Problem Statement\nUsing BFS or DFS, check if the entire graph is connected.\n\nInput Format\nn m\nedges\n\nOutput Format\nCONNECTED\nNOT CONNECTED\n\nSample Input\n4 2\n1 2\n3 4\n\nSample Output\nNOT CONNECTED"
-    },
-    "question2": {
-      "name": "Critical Connections in a Network",
-      "link": "https://leetcode.com/problems/critical-connections-in-a-network/",
-      "difficulty": "Hard"
-    },
-    "topics": ["Graph Connectivity", "DFS"]
-  },
-  {
-    "day": 78,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Minimum Spanning Tree using Prim’s Algorithm",
-      "description": "Problem Statement\nGiven weighted undirected graph, compute total weight of Minimum Spanning Tree using Prim’s algorithm.\n\nInput Format\nn m\nu v w\n...\n\nOutput Format\nTotal weight of MST.\n\nSample Input\n4 5\n1 2 3\n1 3 5\n2 3 1\n2 4 4\n3 4 2\n\nSample Output\n6\n\nExplanation\nOne possible MST edges: (2-3), (3-4), (1-2)"
-    },
-    "question2": {
-      "name": "Articulation Points (GFG)",
-      "link": "https://practice.geeksforgeeks.org/problems/articulation-point-1/1",
-      "difficulty": "Hard"
-    },
-    "topics": ["MST", "Prim’s Algorithm"]
-  },
-  {
-    "day": 79,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Single Source Shortest Path using Dijkstra’s Algorithm",
-      "description": "Problem Statement\nFind shortest distances from source vertex in a weighted graph with non-negative weights.\n\nInput Format\nn m\nu v w\nsource\n\nOutput Format\nDistances to all vertices.\n\nSample Input\n5 6\n1 2 2\n1 3 4\n2 3 1\n2 4 7\n3 5 3\n4 5 1\n1\n\nSample Output\n0 2 3 9 6\n\nExplanation\nShortest distances computed via priority queue."
-    },
-    "question2": {
-      "name": "Strongly Connected Components",
-      "link": "https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1",
-      "difficulty": "Medium"
-    },
-    "topics": ["Dijkstra", "Shortest Path"]
-  },
-  {
-    "day": 80,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Floyd-Warshall Algorithm",
-      "description": "Problem: Given a weighted graph with n vertices, implement the Floyd-Warshall algorithm to compute the shortest distances between every pair of vertices. The graph may contain positive or negative edge weights, but it does not contain any negative weight cycles.\n\nInput:\n- First line: integer n representing the number of vertices\n- Next n lines: n space-separated integers representing the adjacency matrix of the graph\n  (use -1 to indicate no direct edge between two vertices)\n\nOutput:\n- Print the shortest distance matrix where the value at row i and column j represents the shortest distance from vertex i to vertex j\n\nExample:\nInput:\n4\n0 5 -1 10\n-1 0 3 -1\n-1 -1 0 1\n-1 -1 -1 0\n\nOutput:\n0 5 8 9\n-1 0 3 4\n-1 -1 0 1\n-1 -1 -1 0\n\nExplanation:\nThe Floyd-Warshall algorithm works by considering each vertex as an intermediate point and updating the shortest paths between all pairs of vertices. For example, the shortest path from vertex 1 to vertex 3 is improved via vertex 2 with total cost 8. This process is repeated for all vertices, resulting in the final shortest distance matrix."
-    },
-    "question2": {
-      "name": "Find the City With the Smallest Number of Neighbors",
-      "link": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "All-Pairs Shortest Path",
-      "DP"
-    ]
-  },
-  {
-    "day": 81,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Implement Bubble Sort",
-      "description": "Problem: Implement Bubble Sort - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
-    },
-    "question2": {
-      "name": "Binary Search",
-      "link": "https://leetcode.com/problems/binary-search/",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Binary Search",
-      "Searching"
-    ]
-  },
-  {
-    "day": 82,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Upper Bound & Lower Bound Implementation",
-      "description": "Problem: Given a sorted array of integers and a target value x, implement the Lower Bound and Upper Bound operations using Binary Search.\n\nLower Bound: The index of the first element in the array that is greater than or equal to x.\nUpper Bound: The index of the first element in the array that is strictly greater than x.\n\nInput:\n- First line: integer n representing the size of the array\n- Second line: n space-separated sorted integers\n- Third line: integer x (the target value)\n\nOutput:\n- Print two integers:\n  1) Index of the lower bound of x\n  2) Index of the upper bound of x\n\nExample:\nInput:\n7\n1 2 4 4 4 5 7\n4\n\nOutput:\n2 5\n\nExplanation:\nFor the given array [1, 2, 4, 4, 4, 5, 7] and x = 4:\n- The lower bound is at index 2, which is the first occurrence of 4.\n- The upper bound is at index 5, which is the first element greater than 4 (i.e., 5).\nBinary Search is used to find both bounds efficiently in O(log n) time."
-    },
-    "question2": {
-      "name": "Search Insert Position",
-      "link": "https://leetcode.com/problems/search-insert-position/",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Binary Search",
-      "Bounds"
-    ]
-  },
-  {
-    "day": 83,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Implement Selection Sort",
-      "description": "Problem: Implement Selection Sort - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
-    },
-    "question2": {
-      "name": "Search in Rotated Sorted Array",
-      "link": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Binary Search",
-      "Rotation"
-    ]
-  },
-  {
-    "day": 84,
-    "unit": "Unit V: Hash Table & Graph",
-    "question1": {
-      "title": "Implement Insertion Sort",
-      "description": "Problem: Implement Insertion Sort - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
-    },
-    "question2": {
-      "name": "Find Peak Element",
-      "link": "https://leetcode.com/problems/find-peak-element/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Binary Search on Answer"
-    ]
-  },
-  {
-    "day": 85,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Implement Merge Sort",
-      "description": "Problem: Implement Merge Sort - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
-    },
-    "question2": {
-      "name": "Find Minimum in Rotated Sorted Array",
-      "link": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Binary Search",
-      "Rotation"
-    ]
-  },
-  {
-    "day": 86,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Square Root using Binary Search",
-      "description": "Problem: Find the integer square root of a given non-negative integer using Binary Search. The integer square root of a number is defined as the greatest integer whose square is less than or equal to the given number.\n\nInput:\n- First line: an integer n\n\nOutput:\n- Print the integer square root of n\n\nExamples:\nInput:\n64\n\nOutput:\n8\n\nInput:\n20\n\nOutput:\n4\n\nInput:\n1\n\nOutput:\n1\n\nExplanation:\nBinary Search is applied on the range 0 to n. At each step, the middle value is squared and compared with n. If mid * mid equals n, mid is the square root. If mid * mid is less than n, search continues in the right half; otherwise, in the left half. The final answer is the largest integer whose square does not exceed n."
-    },
-    "question2": {
-      "name": "Sqrt(x)",
-      "link": "https://leetcode.com/problems/sqrtx/",
-      "difficulty": "Easy"
-    },
-    "topics": [
-      "Binary Search",
-      "Math"
-    ]
-  },
-  {
-    "day": 87,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Implement Binary Search Iterative",
-      "description": "Problem: Implement Binary Search Iterative - Implement the algorithm.\n\nInput:\n- First line: integer n\n- Second line: n space-separated integers\n\nOutput:\n- Print the sorted array or search result\n\nExample:\nInput:\n5\n64 34 25 12 22\n\nOutput:\n12 22 25 34 64"
-    },
-    "question2": {
-      "name": "Koko Eating Bananas",
-      "link": "https://leetcode.com/problems/koko-eating-bananas/",
-      "difficulty": "Medium"
-    },
-    "topics": [
-      "Binary Search on Answer"
-    ]
-  },
-   {
-    "day": 88,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Aggressive Cows Problem",
-      "description": "Problem Statement\nGiven n stalls located at different positions along a straight line and k cows, place the cows in the stalls such that the minimum distance between any two cows is maximized.\n\nThis is an optimization problem where binary search on the answer is required.\n\nInput Format\nn k\nn space-separated integers representing stall positions\n\nOutput Format\nPrint the maximum possible minimum distance between any two cows.\n\nSample Input\n5 3\n1 2 8 4 9\n\nSample Output\n3\n\nExplanation\nCows can be placed at positions 1, 4, and 8. The minimum distance between any two cows is 3, which is the maximum possible."
-    },
-    "question2": {
-      "name": "Magnetic Force Between Two Balls",
-      "link": "https://leetcode.com/problems/magnetic-force-between-two-balls/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Binary Search", "Distance Optimization"]
-  },
-  {
-    "day": 89,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Allocate Minimum Pages",
-      "description": "Problem Statement\nGiven an array of integers where each element represents the number of pages in a book, and m students, allocate books such that each student gets at least one book and the maximum number of pages assigned to a student is minimized.\n\nBooks must be allocated in contiguous order.\n\nInput Format\nn m\nn space-separated integers representing pages in books\n\nOutput Format\nPrint the minimum possible value of the maximum pages assigned to any student.\n\nSample Input\n4 2\n12 34 67 90\n\nSample Output\n113\n\nExplanation\nOne optimal allocation is:\nStudent 1: 12 + 34 + 67 = 113\nStudent 2: 90\nMaximum pages = 113 (minimum possible)."
-    },
-    "question2": {
-      "name": "Capacity To Ship Packages Within D Days",
-      "link": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Binary Search", "Load Balancing"]
-  },
-  {
-    "day": 90,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Painter Partition Problem",
-      "description": "Problem Statement\nGiven n boards of different lengths and k painters, each painter paints contiguous boards. Painting a unit length of board takes one unit of time.\n\nDetermine the minimum time required to paint all boards.\n\nInput Format\nn k\nn space-separated integers representing board lengths\n\nOutput Format\nPrint the minimum time required to paint all boards.\n\nSample Input\n4 2\n10 20 30 40\n\nSample Output\n60\n\nExplanation\nOne painter paints boards of length 10, 20, and 30 (total 60), while the other paints board of length 40."
-    },
-    "question2": {
-      "name": "Split Array Largest Sum",
-      "link": "https://leetcode.com/problems/split-array-largest-sum/",
-      "difficulty": "Hard"
-    },
-    "topics": ["Binary Search on Answer"]
-  },
-  {
-    "day": 91,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Arithmetic Number",
-      "description": "Problem: You are given three integers a, b, and c, where 'a' is the first term of an arithmetic sequence, 'c' is the common difference, and 'b' is a number to be checked. Determine whether the number b exists in the arithmetic sequence. Return 1 if b is present in the sequence; otherwise, return 0.\n\nInput:\n- First line: integer a (first term of the arithmetic sequence)\n- Second line: integer b (number to be checked)\n- Third line: integer c (common difference of the arithmetic sequence)\n\nOutput:\n- Print 1 if b exists in the arithmetic sequence, otherwise print 0\n\nExamples:\nInput:\n1\n3\n2\n\nOutput:\n1\n\nInput:\n1\n2\n3\n\nOutput:\n0\n\nInput:\n1\n2\n4\n\nOutput:\n0\n\nExplanation:\nAn arithmetic sequence is of the form a, a+c, a+2c, a+3c, ... . To check whether b belongs to the sequence, verify that (b - a) is divisible by c and that b is reachable by repeatedly adding the common difference starting from a."
-    },
-    "question2": {
-      "name": "Sort Colors",
-      "link": "https://leetcode.com/problems/sort-colors/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Sorting", "Merge Sort"]
-  },
-  {
-    "day": 92,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Quick Sort Implementation",
-      "description": "Problem Statement\nImplement the Quick Sort algorithm to sort an array of integers using a pivot-based partitioning strategy.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the sorted array.\n\nSample Input\n5\n64 34 25 12 22\n\nSample Output\n12 22 25 34 64\n\nExplanation\nElements are partitioned around a pivot such that smaller elements go to the left and larger to the right, recursively sorting subarrays."
-    },
-    "question2": {
-      "name": "Kth Largest Element in an Array",
-      "link": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Sorting", "Quick Sort"]
-  },
-  {
-    "day": 93,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Roti Prata (Minimum Time to Cook)",
-      "description": "Problem Statement\nIEEE is organizing an event and needs to prepare P pratas using L cooks. Each cook has a rank R which determines how fast they can cook pratas. A cook with rank R cooks:\n- 1st prata in R minutes\n- 2nd prata in 2R minutes\n- 3rd prata in 3R minutes, and so on.\nA cook can only prepare a complete prata and cannot partially cook one. The task is to determine the minimum time required to cook at least P pratas using all available cooks.\n\nInput Format\nThe first line contains an integer t representing the number of test cases.\nFor each test case:\n- The first line contains an integer P, the number of pratas required.\n- The second line starts with an integer L, followed by L space-separated integers representing the ranks of the cooks.\n\nOutput Format\nFor each test case, print a single integer representing the minimum number of minutes required to cook P pratas.\n\nSample Input\n3\n10\n4 1 2 3 4\n8\n1 1\n8\n8 1 1 1 1 1 1 1 1\n\nSample Output\n12\n36\n1\n\nExplanation\nIn the first test case, by efficiently distributing the cooking among cooks with ranks 1, 2, 3, and 4, a total of 10 pratas can be prepared in 12 minutes, which is the minimum possible time."
-    },
-    "question2": {
-      "name": "Insertion Sort List",
-      "link": "https://leetcode.com/problems/insertion-sort-list/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Sorting", "Insertion Sort"]
-  },
-  {
-    "day": 94,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Counting Sort Implementation",
-      "description": "Problem Statement\nImplement the Counting Sort algorithm for sorting non-negative integers.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the sorted array.\n\nSample Input\n5\n4 2 2 8 3\n\nSample Output\n2 2 3 4 8\n\nExplanation\nThe algorithm counts the frequency of each element and reconstructs the sorted array."
-    },
-    "question2": {
-      "name": "Relative Sort Array",
-      "link": "https://leetcode.com/problems/relative-sort-array/",
-      "difficulty": "Easy"
-    },
-    "topics": ["Counting Sort"]
-  },
-  {
-    "day": 95,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Bucket Sort (Float Values 0–1)",
-      "description": "Problem Statement\nImplement Bucket Sort to sort floating-point numbers uniformly distributed in the range [0, 1).\n\nInput Format\nn\nn space-separated floating-point numbers\n\nOutput Format\nPrint the sorted array.\n\nSample Input\n5\n0.78 0.17 0.39 0.26 0.72\n\nSample Output\n0.17 0.26 0.39 0.72 0.78\n\nExplanation\nElements are distributed into buckets, each bucket is sorted individually, and then concatenated."
-    },
-    "question2": {
-      "name": "Maximum Gap",
-      "link": "https://leetcode.com/problems/maximum-gap/",
-      "difficulty": "Hard"
-    },
-    "topics": ["Bucket Sort"]
-  },
-  {
-    "day": 96,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Counting Inversions in Array",
-      "description": "Problem Statement\nGiven an array of integers, count the number of inversion pairs.\nAn inversion is a pair (i, j) such that i < j and arr[i] > arr[j].\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the number of inversions.\n\nSample Input\n5\n2 4 1 3 5\n\nSample Output\n3\n\nExplanation\nThe inversion pairs are (2,1), (4,1), and (4,3)."
-    },
-    "question2": {
-      "name": "Reverse Pairs",
-      "link": "https://leetcode.com/problems/reverse-pairs/",
-      "difficulty": "Hard"
-    },
-    "topics": ["Inversions", "Merge Sort"]
-  },
-  {
-    "day": 97,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Meeting Rooms Scheduling",
-      "description": "Problem Statement\nGiven a list of meeting time intervals, determine the minimum number of meeting rooms required so that all meetings can be held without overlap.\n\nInput Format\nn\nn pairs of start and end times\n\nOutput Format\nPrint the minimum number of rooms required.\n\nSample Input\n3\n0 30\n5 10\n15 20\n\nSample Output\n2\n\nExplanation\nTwo meetings overlap, so at least two rooms are required."
-    },
-    "question2": {
-      "name": "Meeting Rooms II",
-      "link": "https://leetcode.com/problems/meeting-rooms-ii/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Intervals", "Priority Queue"]
-  },
-  {
-    "day": 98,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Search in Step Array",
-      "description": "Problem Statement\nYou are given a step array arr[], an integer k representing the maximum allowed difference between adjacent elements, and an integer x representing the key to be searched. A step array is defined as an array where the absolute difference between any two adjacent elements is at most k. Your task is to find the index of the first occurrence of x in the array. If x is not present, return -1.\n\nInput Format\nAn integer array arr[].\nAn integer k representing the maximum adjacent difference.\nAn integer x representing the element to be searched.\n\nOutput Format\nPrint the index of the first occurrence of x in the array. If x is not found, print -1.\n\nSample Input\narr[] = [4, 5, 6, 7, 6]\nk = 1\nx = 6\n\nSample Output\n2\n\nExplanation\nThe element 6 first appears at index 2 in the array, so the output is 2."
-    },
-    "question2": {
-      "name": "Merge Intervals",
-      "link": "https://leetcode.com/problems/merge-intervals/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Intervals", "Sorting"]
-  },
-  {
-    "day": 99,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-      "title": "Find Peak Element in Array",
-      "description": "Problem Statement\nGiven an array of integers, find an index of a peak element. An element is a peak if it is greater than its neighbors.\n\nInput Format\nn\nn space-separated integers\n\nOutput Format\nPrint the index or value of a peak element.\n\nSample Input\n6\n1 2 3 1 5 6\n\nSample Output\n2\n\nExplanation\nElement 3 at index 2 is greater than its neighbors."
-    },
-    "question2": {
-      "name": "Car Fleet",
-      "link": "https://leetcode.com/problems/car-fleet/",
-      "difficulty": "Medium"
-    },
-    "topics": ["Greedy", "Sorting"]
-  },
-  {
-    "day": 100,
-    "unit": "Unit VI: Sorting & Searching",
-    "question1": {
-    "title": "Product of Array Except Self",
-    "description": "Problem: Given an integer array nums[], return an array answer[] such that answer[i] is equal to the product of all the elements of nums except nums[i]. The solution must run in O(n) time and should not use the division operation.\n\nInput:\n- First line: integer n representing the size of the array\n- Second line: n space-separated integers representing the array elements\n\nOutput:\n- Print n space-separated integers representing the product array\n\nExamples:\nInput:\n4\n1 2 3 4\n\nOutput:\n24 12 8 6\n\nInput:\n5\n-1 1 0 -3 3\n\nOutput:\n0 0 9 0 0\n\nExplanation:\nFor each index i, the value at answer[i] is calculated as the product of all elements to the left of i multiplied by the product of all elements to the right of i. This approach avoids using division and ensures linear time complexity."
-    },
-    "question2": {
-      "name": "Count of Smaller Numbers After Self",
-      "link": "https://leetcode.com/problems/count-of-smaller-numbers-after-self/",
-      "difficulty": "Hard"
-    },
-    "topics": ["Fenwick Tree", "Merge Sort Tree"]
+      "Sorting",
+      "Two Pointers"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Count subarrays with sum zero using hash map:\n\n1. Use prefix sum approach\n2. Store cumulative sums in hash map with their frequencies\n3. If same prefix sum appears twice, subarrays between them have sum 0\n4. Count = frequency * (frequency - 1) / 2 for each sum\n\nKey Points:\n- Prefix sum concept\n- Hash map to track sums\n- Combination formula for counting",
+          "code": "#include <stdio.h>\n\nint main() {\n    int n;\n    int arr[100];\n    \n    scanf(\"%d\", &n);\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n    }\n    \n    int count = 0;\n    \n    // Brute force: check all subarrays\n    for (int i = 0; i < n; i++) {\n        int sum = 0;\n        for (int j = i; j < n; j++) {\n            sum += arr[j];\n            if (sum == 0) {\n                count++;\n            }\n        }\n    }\n    \n    printf(\"%d\\n\", count);\n    return 0;\n}",
+          "timeComplexity": "O(n²)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "3Sum - Video Solution",
+          "link": "https://www.youtube.com/watch?v=jzZsG8n2R9A"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Find all unique triplets that sum to zero.\n\nApproach:\n1. Sort the array\n2. Fix first element, use two pointers for remaining\n3. Skip duplicates to avoid duplicate triplets\n4. Adjust pointers based on sum\n\nKey Points:\n- Sort first for two-pointer technique\n- Handle duplicates carefully\n- O(n²) time complexity",
+          "code": "class Solution {\npublic:\n    vector<vector<int>> threeSum(vector<int>& nums) {\n        vector<vector<int>> result;\n        sort(nums.begin(), nums.end());\n        \n        for (int i = 0; i < nums.size(); i++) {\n            if (i > 0 && nums[i] == nums[i-1]) continue;\n            \n            int left = i + 1, right = nums.size() - 1;\n            \n            while (left < right) {\n                int sum = nums[i] + nums[left] + nums[right];\n                \n                if (sum == 0) {\n                    result.push_back({nums[i], nums[left], nums[right]});\n                    while (left < right && nums[left] == nums[left+1]) left++;\n                    while (left < right && nums[right] == nums[right-1]) right--;\n                    left++;\n                    right--;\n                } else if (sum < 0) {\n                    left++;\n                } else {\n                    right--;\n                }\n            }\n        }\n        \n        return result;\n    }\n};",
+          "timeComplexity": "O(n²)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
   }
 ]
