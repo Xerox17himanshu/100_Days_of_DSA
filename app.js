@@ -25,21 +25,20 @@ function getUnlockedDay() {
         return 0;
     }
     
-    // Calculate days elapsed since start (including partial days)
+    // Calculate days elapsed since start
     const diffTime = now - start;
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     
-    // Calculate the unlock time for the current day being checked
-    const nextDayUnlock = new Date(start);
-    nextDayUnlock.setDate(nextDayUnlock.getDate() + diffDays);
-    nextDayUnlock.setHours(parseInt(CONFIG.unlockTime.split(':')[0]), parseInt(CONFIG.unlockTime.split(':')[1]), 0, 0);
+    // Check if we've passed today's unlock time
+    const todayUnlock = new Date();
+    const [hours, minutes] = CONFIG.unlockTime.split(':');
+    todayUnlock.setHours(parseInt(hours), parseInt(minutes), 0, 0);
     
-    // If current time has passed the unlock time for this day, we're on the next day
-    if (now >= nextDayUnlock) {
+    if (now >= todayUnlock) {
         return Math.min(diffDays + 1, 100);
     }
     
-    return Math.min(diffDays, 100);
+    return Math.min(Math.max(0, diffDays), 100);
 }
 
 // Update countdown timer to next unlock
@@ -80,17 +79,20 @@ function updateTimer() {
     }
 }
 
-// Calculate current streak
+// Calculate current streak - FIXED VERSION
 function calculateStreak() {
     if (completedDays.length === 0) return 0;
     
-    const sorted = [...completedDays].sort((a, b) => b - a);
-    let streak = 0;
-    const maxUnlocked = getUnlockedDay();
+    // Sort completed days in descending order
+    const sortedCompleted = [...completedDays].sort((a, b) => b - a);
     
-    // Count consecutive completed days from most recent
-    for (let i = maxUnlocked; i >= 1; i--) {
-        if (sorted.includes(i)) {
+    // Find the highest completed day
+    let highestCompleted = sortedCompleted[0];
+    let streak = 0;
+    
+    // Count consecutive days backwards from the highest completed day
+    for (let day = highestCompleted; day >= 1; day--) {
+        if (completedDays.includes(day)) {
             streak++;
         } else {
             break;
@@ -200,9 +202,79 @@ function closeModal() {
 // Close modal on outside click
 window.onclick = function(event) {
     const modal = document.getElementById('problemModal');
+    const solutionModal = document.getElementById('solutionModal');
     if (event.target === modal) {
         closeModal();
     }
+    if (event.target === solutionModal) {
+        closeSolutionModal();
+    }
+}
+
+// Show solution in fullscreen modal
+function showSolutionFullscreen(dayNum, questionNum, solutionType) {
+    const day = challengeData.find(d => d.day === dayNum);
+    if (!day || !day.solutions) return;
+    
+    const solutions = questionNum === 1 ? day.solutions.question1 : day.solutions.question2;
+    if (!solutions) return;
+    
+    const solution = solutions.find(sol => sol.type === solutionType);
+    if (!solution) return;
+    
+    const modal = document.getElementById('solutionModal');
+    const title = document.getElementById('solutionModalTitle');
+    const content = document.getElementById('solutionModalContent');
+    
+    title.textContent = `Day ${dayNum} - Question ${questionNum} - ${solutionType === 'tutorial' ? 'Tutorial' : 'Solution'}`;
+    
+    let contentHTML = '';
+    
+    if (solutionType === 'tutorial') {
+        contentHTML = `
+            <div class="fullscreen-solution-content">
+                ${solution.explanation ? `
+                    <div class="tutorial-block">
+                        <h3>💡 Logic Explanation</h3>
+                        <div class="tutorial-text">${solution.explanation.replace(/\n/g, '<br>')}</div>
+                    </div>
+                ` : ''}
+                
+                ${solution.code ? `
+                    <div class="tutorial-block">
+                        <h3>💻 Code Solution</h3>
+                        <pre class="code-block fullscreen-code"><code>${solution.code}</code></pre>
+                    </div>
+                ` : ''}
+                
+                ${solution.timeComplexity ? `
+                    <div class="tutorial-block">
+                        <h3>⏱️ Complexity Analysis</h3>
+                        <div class="complexity-info">
+                            <div class="complexity-item">
+                                <strong>Time Complexity:</strong> <code>${solution.timeComplexity}</code>
+                            </div>
+                            ${solution.spaceComplexity ? `
+                                <div class="complexity-item">
+                                    <strong>Space Complexity:</strong> <code>${solution.spaceComplexity}</code>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+    
+    content.innerHTML = contentHTML;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+// Close solution modal
+function closeSolutionModal() {
+    document.getElementById('solutionModal').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
 }
 
 // ============================================================================
@@ -257,6 +329,12 @@ function renderTutorial(dayNum, questionNum, tutorial) {
             </button>
             <div id="tutorial-${dayNum}-q${questionNum}" class="tutorial-content">
                 <div class="tutorial-inner">
+                    <button class="fullscreen-btn" onclick="showSolutionFullscreen(${dayNum}, ${questionNum}, 'tutorial')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                        </svg>
+                        View Fullscreen
+                    </button>
                     ${tutorial.explanation ? `
                         <div class="tutorial-block">
                             <h4>💡 Logic Explanation</h4>
