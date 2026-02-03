@@ -1065,16 +1065,47 @@
             font-size: 0.95rem;
         }
 
+        /* FIXED: Code blocks with vertical scrollbar */
         .code-block {
             background: #0f1419;
             padding: 20px;
             border-radius: 10px;
             overflow-x: auto;
+            overflow-y: auto;
+            max-height: 500px;
             color: #e2e8f0;
             font-family: 'Courier New', monospace;
             font-size: 0.9rem;
             line-height: 1.6;
             border: 1.5px solid rgba(96, 165, 250, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .code-block {
+                padding: 12px;
+                font-size: 0.8rem;
+                max-height: 400px;
+            }
+        }
+
+        /* Custom scrollbar for code blocks */
+        .code-block::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        .code-block::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 4px;
+        }
+
+        .code-block::-webkit-scrollbar-thumb {
+            background: rgba(96, 165, 250, 0.3);
+            border-radius: 4px;
+        }
+
+        .code-block::-webkit-scrollbar-thumb:hover {
+            background: rgba(96, 165, 250, 0.5);
         }
 
         .complexity-info {
@@ -1380,6 +1411,183 @@
             color: #cbd5e1;
             font-weight: 700;
         }
+
+        /* Fullscreen Button */
+        .fullscreen-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+        .fullscreen-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 12px 16px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Fullscreen Modal */
+        .fullscreen-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .fullscreen-modal-content {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            min-height: 100vh;
+            padding: 40px;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-modal-content {
+                padding: 20px;
+            }
+        }
+
+        .fullscreen-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            z-index: 10;
+            padding-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-modal-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+                margin-bottom: 24px;
+            }
+        }
+
+        .fullscreen-modal-header h2 {
+            color: #60a5fa;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-modal-header h2 {
+                font-size: 1.3rem;
+            }
+        }
+
+        .fullscreen-modal-body {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fullscreen-solution-content {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-solution-content {
+                padding: 20px;
+                border-radius: 16px;
+            }
+        }
+
+        .fullscreen-solution-content .tutorial-block {
+            margin-bottom: 40px;
+        }
+
+        .fullscreen-solution-content .tutorial-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .fullscreen-solution-content .tutorial-block h3 {
+            color: #a78bfa;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-solution-content .tutorial-block h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        .fullscreen-solution-content .tutorial-text {
+            color: #cbd5e1;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-solution-content .tutorial-text {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+        }
+
+        .fullscreen-code {
+            max-height: 600px;
+            font-size: 1rem;
+            padding: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-code {
+                max-height: 500px;
+                font-size: 0.85rem;
+                padding: 16px;
+            }
+        }
+
+        .fullscreen-modal .close-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-modal .close-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1404,7 +1612,7 @@
             <div class="instructions-content">
                 <div class="instructions-title">📚 How to Use This Challenge</div>
                 <div class="instructions-text">👉 ℹ️ Watch this quick video tutorial to learn how to make the most of your 100-day journey!</div>
-                <div class="instructions-text">👉 ℹ️ For Optimal Solution Of Plateform Specific Problems, Watch Tutorial Videos Attached!</div>
+                <div class="instructions-text">👉 ℹ️ For Optimal Solution Of Plateform Specific Problems, Watch Tutorial Video Attached!</div>
                 <a href="https://gusindia01-my.sharepoint.com/:v:/g/personal/soumik_maity_ddn_upes_ac_in/IQA3sgQjD8OEQadE9NCjyQOmAXfmFDELfPr4F4-tyZu6vEg?e=NVDxWL" target="_blank" rel="noopener noreferrer" class="watch-video-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -1462,6 +1670,23 @@
                 <button class="close-btn" onclick="closeModal()">Close</button>
             </div>
             <div id="modalDescription"></div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Solution Modal -->
+    <div id="solutionModal" class="fullscreen-modal">
+        <div class="fullscreen-modal-content">
+            <div class="fullscreen-modal-header">
+                <h2 id="solutionModalTitle"></h2>
+                <button class="close-btn" onclick="closeSolutionModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    Close
+                </button>
+            </div>
+            <div id="solutionModalContent" class="fullscreen-modal-body"></div>
         </div>
     </div>
 
