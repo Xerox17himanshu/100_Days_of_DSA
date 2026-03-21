@@ -2038,7 +2038,7 @@
     },
     "question2": {
       "name": "Insert into BST",
-      "link": "https://leetcode.com/problems/insert-into-bst/",
+      "link": "https://leetcode.com/problems/insert-into-a-binary-search-tree/description/",
       "difficulty": "Medium"
     },
     "topics": [
@@ -2079,7 +2079,7 @@
     },
     "question2": {
       "name": "Search in BST",
-      "link": "https://leetcode.com/problems/search-in-bst/",
+      "link": "https://leetcode.com/problems/search-in-a-binary-search-tree/description/",
       "difficulty": "Easy"
     },
     "topics": [
