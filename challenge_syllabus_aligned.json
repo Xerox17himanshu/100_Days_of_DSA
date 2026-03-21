@@ -2110,5 +2110,1212 @@
         }
       ]
     }
+  },
+     {
+    "day": 51,
+    "unit": "Unit IV: Trees",
+    "question1": {
+      "title": "Lowest Common Ancestor in BST",
+      "description": "Problem Statement:\nFind the Lowest Common Ancestor (LCA) of two nodes in a Binary Search Tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains N space-separated integers\n- Third line contains two node values\n\nOutput Format:\n- Print the LCA value\n\nExample:\nInput:\n7\n6 2 8 0 4 7 9\n2 8\n\nOutput:\n6"
+    },
+    "question2": {
+      "name": "Lowest Common Ancestor of a BST",
+      "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+      "difficulty": "Easy"
+    },
+    "topics": ["BST", "LCA"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "In a BST, left subtree contains smaller values and right subtree contains larger values.\n\nApproach:\n1. Start from root\n2. If both nodes are smaller, move left\n3. If both nodes are larger, move right\n4. Otherwise current node is LCA\n\nKey Points:\n- BST property makes solution efficient\n- No need to traverse full tree",
+          "code": "struct Node* LCA(struct Node* root, int n1, int n2) {\n    while(root != NULL) {\n        if(n1 &lt; root-&gt;data &amp;&amp; n2 &lt; root-&gt;data)\n            root = root-&gt;left;\n        else if(n1 &gt; root-&gt;data &amp;&amp; n2 &gt; root-&gt;data)\n            root = root-&gt;right;\n        else\n            return root;\n    }\n    return NULL;\n}",
+          "timeComplexity": "O(h)",
+          "spaceComplexity": "O(1)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Lowest Common Ancestor of a BST - Explanation",
+          "link": "https://www.youtube.com/watch?v=cX_kPV_foZc"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Use BST ordering to move left or right until split point is found.",
+          "code": "struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q) {\n    while(root != NULL) {\n        if(p-&gt;val &lt; root-&gt;val &amp;&amp; q-&gt;val &lt; root-&gt;val)\n            root = root-&gt;left;\n        else if(p-&gt;val &gt; root-&gt;val &amp;&amp; q-&gt;val &gt; root-&gt;val)\n            root = root-&gt;right;\n        else\n            return root;\n    }\n    return NULL;\n}",
+          "timeComplexity": "O(h)",
+          "spaceComplexity": "O(1)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 52,
+    "unit": "Unit IV: Trees",
+    "question1": {
+      "title": "LCA in Binary Tree",
+      "description": "Problem Statement:\nFind the Lowest Common Ancestor (LCA) of two nodes in a Binary Tree.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 represents NULL)\n- Third line contains two node values\n\nOutput Format:\n- Print the LCA value\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n4 5\n\nOutput:\n2"
+    },
+    "question2": {
+      "name": "Lowest Common Ancestor of a Binary Tree",
+      "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Binary Tree", "LCA"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "LCA is the lowest node having both target nodes in its subtree.\n\nApproach:\n1. If root is NULL, return NULL\n2. If root matches any target, return root\n3. Search left and right recursively\n4. If both sides return non-NULL, current root is LCA\n5. Otherwise return whichever side is non-NULL\n\nKey Points:\n- Works for general binary tree\n- Uses recursion",
+          "code": "struct Node* LCA(struct Node* root, int n1, int n2) {\n    if(root == NULL)\n        return NULL;\n\n    if(root-&gt;data == n1 || root-&gt;data == n2)\n        return root;\n\n    struct Node* left = LCA(root-&gt;left, n1, n2);\n    struct Node* right = LCA(root-&gt;right, n1, n2);\n\n    if(left != NULL &amp;&amp; right != NULL)\n        return root;\n\n    if(left != NULL)\n        return left;\n\n    return right;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(h)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Lowest Common Ancestor of a Binary Tree - Explanation",
+          "link": "https://www.youtube.com/watch?v=_-QHfMDde90"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Recursively search both subtrees. Split point becomes the answer.",
+          "code": "struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p, struct TreeNode* q) {\n    if(root == NULL || root == p || root == q)\n        return root;\n\n    struct TreeNode* left = lowestCommonAncestor(root-&gt;left, p, q);\n    struct TreeNode* right = lowestCommonAncestor(root-&gt;right, p, q);\n\n    if(left != NULL &amp;&amp; right != NULL)\n        return root;\n\n    if(left != NULL)\n        return left;\n\n    return right;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(h)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 53,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Print Binary Tree Vertical Order",
+      "description": "Problem Statement:\nGiven a binary tree, print its vertical order traversal. Nodes that lie on the same vertical line should be printed together from top to bottom and from left to right.\n\nInput Format:\n- First line contains integer N (number of nodes)\n- Second line contains N space-separated integers representing level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print nodes column by column from leftmost to rightmost vertical line\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n4\n2\n1 5 6\n3\n7\n\nExplanation:\nVertical lines are formed based on horizontal distance from root. Nodes sharing the same distance are printed together."
+    },
+    "question2": {
+      "name": "Binary Tree Level Order Traversal",
+      "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Tree Traversal", "BFS"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Vertical order traversal groups nodes by horizontal distance from root.\n\nApproach:\n1. Use queue for level order traversal\n2. Store each node with its horizontal distance\n3. Left child gets hd - 1, right child gets hd + 1\n4. Group nodes based on horizontal distance\n5. Print groups from smallest hd to largest hd\n\nKey Points:\n- BFS ensures top-to-bottom order\n- Need grouping by horizontal distance",
+          "code": "#include &lt;stdio.h&gt;\n#include &lt;stdlib.h&gt;\n\nstruct Node {\n    int data;\n    struct Node* left;\n    struct Node* right;\n};\n\nstruct Pair {\n    struct Node* node;\n    int hd;\n};\n\nvoid verticalOrder(struct Node* root) {\n    if(root == NULL) return;\n\n    struct Pair q[1000];\n    int front = 0, rear = 0;\n\n    int hdArr[1000];\n    int valArr[1000];\n    int count = 0;\n\n    q[rear].node = root;\n    q[rear].hd = 0;\n    rear++;\n\n    while(front &lt; rear) {\n        struct Pair cur = q[front++];\n        struct Node* temp = cur.node;\n        int hd = cur.hd;\n\n        hdArr[count] = hd;\n        valArr[count] = temp-&gt;data;\n        count++;\n\n        if(temp-&gt;left != NULL) {\n            q[rear].node = temp-&gt;left;\n            q[rear].hd = hd - 1;\n            rear++;\n        }\n\n        if(temp-&gt;right != NULL) {\n            q[rear].node = temp-&gt;right;\n            q[rear].hd = hd + 1;\n            rear++;\n        }\n    }\n\n    for(int i = -100; i &lt;= 100; i++) {\n        int printed = 0;\n        for(int j = 0; j &lt; count; j++) {\n            if(hdArr[j] == i) {\n                printf(\"%d \", valArr[j]);\n                printed = 1;\n            }\n        }\n        if(printed)\n            printf(\"\\n\");\n    }\n}",
+          "timeComplexity": "O(n*k)",
+          "spaceComplexity": "O(n)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Binary Tree Level Order Traversal - BFS",
+          "link": "https://www.youtube.com/watch?v=EoAsWbO7sqg"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Use queue to visit nodes level by level from left to right.",
+          "code": "int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes) {\n    *returnSize = 0;\n    if(root == NULL) {\n        *returnColumnSizes = NULL;\n        return NULL;\n    }\n\n    int** ans = (int**)malloc(1000 * sizeof(int*));\n    *returnColumnSizes = (int*)malloc(1000 * sizeof(int));\n\n    struct TreeNode* q[1000];\n    int front = 0, rear = 0;\n    q[rear++] = root;\n\n    while(front &lt; rear) {\n        int size = rear - front;\n        ans[*returnSize] = (int*)malloc(size * sizeof(int));\n        (*returnColumnSizes)[*returnSize] = size;\n\n        for(int i = 0; i &lt; size; i++) {\n            struct TreeNode* node = q[front++];\n            ans[*returnSize][i] = node-&gt;val;\n\n            if(node-&gt;left) q[rear++] = node-&gt;left;\n            if(node-&gt;right) q[rear++] = node-&gt;right;\n        }\n\n        (*returnSize)++;\n    }\n\n    return ans;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(n)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 54,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Zigzag Traversal",
+      "description": "Problem Statement:\nPerform zigzag (spiral) level order traversal of a binary tree. Alternate levels should be traversed left-to-right and right-to-left.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print traversal in zigzag order\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n1 3 2 4 5 6 7\n\nExplanation:\nLevel 1 is printed left-to-right, level 2 right-to-left, and so on."
+    },
+    "question2": {
+      "name": "Binary Tree Zigzag Level Order Traversal",
+      "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Tree Traversal", "Zigzag"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Zigzag traversal is a level order traversal where direction changes at every level.\n\nApproach:\n1. Use queue for normal BFS\n2. For each level, store nodes in an array\n3. If direction is right-to-left, place values in reverse index\n4. Append level values to final answer\n5. Toggle direction after each level\n\nKey Points:\n- BFS is used level by level\n- Direction alternates after every level",
+          "code": "#include &lt;stdio.h&gt;\n#include &lt;stdlib.h&gt;\n\nstruct Node {\n    int data;\n    struct Node* left;\n    struct Node* right;\n};\n\nvoid zigzagTraversal(struct Node* root) {\n    if(root == NULL) return;\n\n    struct Node* q[1000];\n    int front = 0, rear = 0;\n    q[rear++] = root;\n\n    int leftToRight = 1;\n\n    while(front &lt; rear) {\n        int size = rear - front;\n        int level[1000];\n\n        for(int i = 0; i &lt; size; i++) {\n            struct Node* temp = q[front++];\n            int index;\n\n            if(leftToRight)\n                index = i;\n            else\n                index = size - i - 1;\n\n            level[index] = temp-&gt;data;\n\n            if(temp-&gt;left != NULL)\n                q[rear++] = temp-&gt;left;\n            if(temp-&gt;right != NULL)\n                q[rear++] = temp-&gt;right;\n        }\n\n        for(int i = 0; i &lt; size; i++)\n            printf(\"%d \", level[i]);\n\n        leftToRight = !leftToRight;\n    }\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(n)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Binary Tree Zigzag Level Order Traversal - Explanation",
+          "link": "https://www.youtube.com/watch?v=3OXWEdlIGl4"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Use level order traversal and reverse filling logic for alternate levels.",
+          "code": "int** zigzagLevelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes) {\n    *returnSize = 0;\n    if(root == NULL) {\n        *returnColumnSizes = NULL;\n        return NULL;\n    }\n\n    int** ans = (int**)malloc(1000 * sizeof(int*));\n    *returnColumnSizes = (int*)malloc(1000 * sizeof(int));\n\n    struct TreeNode* q[1000];\n    int front = 0, rear = 0;\n    q[rear++] = root;\n    int leftToRight = 1;\n\n    while(front &lt; rear) {\n        int size = rear - front;\n        ans[*returnSize] = (int*)malloc(size * sizeof(int));\n        (*returnColumnSizes)[*returnSize] = size;\n\n        for(int i = 0; i &lt; size; i++) {\n            struct TreeNode* node = q[front++];\n            int index;\n\n            if(leftToRight)\n                index = i;\n            else\n                index = size - i - 1;\n\n            ans[*returnSize][index] = node-&gt;val;\n\n            if(node-&gt;left) q[rear++] = node-&gt;left;\n            if(node-&gt;right) q[rear++] = node-&gt;right;\n        }\n\n        leftToRight = !leftToRight;\n        (*returnSize)++;\n    }\n\n    return ans;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(n)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 55,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Right View of Binary Tree",
+      "description": "Problem Statement:\nPrint the nodes visible when the binary tree is viewed from the right side.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print right view nodes\n\nExample:\nInput:\n7\n1 2 3 4 5 -1 6\n\nOutput:\n1 3 6\n\nExplanation:\nAt each level, the rightmost node is visible from the right view."
+    },
+    "question2": {
+      "name": "Binary Tree Right Side View",
+      "link": "https://leetcode.com/problems/binary-tree-right-side-view/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Tree View Problems"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "The right view contains the last node of every level.\n\nApproach:\n1. Use level order traversal with queue\n2. For each level, process all nodes\n3. Print the last node of that level\n\nKey Points:\n- BFS makes it easy to identify level boundaries\n- Rightmost node at each level forms the answer",
+          "code": "#include &lt;stdio.h&gt;\n#include &lt;stdlib.h&gt;\n\nstruct Node {\n    int data;\n    struct Node* left;\n    struct Node* right;\n};\n\nvoid rightView(struct Node* root) {\n    if(root == NULL) return;\n\n    struct Node* q[1000];\n    int front = 0, rear = 0;\n    q[rear++] = root;\n\n    while(front &lt; rear) {\n        int size = rear - front;\n\n        for(int i = 0; i &lt; size; i++) {\n            struct Node* temp = q[front++];\n\n            if(i == size - 1)\n                printf(\"%d \", temp-&gt;data);\n\n            if(temp-&gt;left != NULL)\n                q[rear++] = temp-&gt;left;\n            if(temp-&gt;right != NULL)\n                q[rear++] = temp-&gt;right;\n        }\n    }\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(n)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Binary Tree Right Side View - Explanation",
+          "link": "https://www.youtube.com/watch?v=d4zLyf32e3I"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Use level order traversal and store the last node of each level.",
+          "code": "int* rightSideView(struct TreeNode* root, int* returnSize) {\n    *returnSize = 0;\n    if(root == NULL) return NULL;\n\n    int* ans = (int*)malloc(1000 * sizeof(int));\n    struct TreeNode* q[1000];\n    int front = 0, rear = 0;\n    q[rear++] = root;\n\n    while(front &lt; rear) {\n        int size = rear - front;\n\n        for(int i = 0; i &lt; size; i++) {\n            struct TreeNode* node = q[front++];\n\n            if(i == size - 1)\n                ans[(*returnSize)++] = node-&gt;val;\n\n            if(node-&gt;left) q[rear++] = node-&gt;left;\n            if(node-&gt;right) q[rear++] = node-&gt;right;\n        }\n    }\n\n    return ans;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(n)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 56,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Symmetric Binary Tree Check",
+      "description": "Problem Statement:\nCheck whether a given binary tree is symmetric around its center.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print YES if symmetric, otherwise NO\n\nExample:\nInput:\n7\n1 2 2 3 4 4 3\n\nOutput:\nYES\n\nExplanation:\nLeft subtree is a mirror image of the right subtree."
+    },
+    "question2": {
+      "name": "Symmetric Tree",
+      "link": "https://leetcode.com/problems/symmetric-tree/",
+      "difficulty": "Easy"
+    },
+    "topics": ["Symmetry", "Binary Tree"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "A tree is symmetric if left subtree is a mirror image of right subtree.\n\nApproach:\n1. Compare left and right subtree recursively\n2. Data at both nodes must be equal\n3. Left child of first tree must match right child of second tree\n4. Right child of first tree must match left child of second tree\n\nKey Points:\n- Mirror comparison is the core idea\n- Recursion naturally fits this problem",
+          "code": "#include &lt;stdio.h&gt;\n#include &lt;stdlib.h&gt;\n\nstruct Node {\n    int data;\n    struct Node* left;\n    struct Node* right;\n};\n\nint isMirror(struct Node* t1, struct Node* t2) {\n    if(t1 == NULL &amp;&amp; t2 == NULL)\n        return 1;\n\n    if(t1 == NULL || t2 == NULL)\n        return 0;\n\n    if(t1-&gt;data != t2-&gt;data)\n        return 0;\n\n    return isMirror(t1-&gt;left, t2-&gt;right) &amp;&amp; isMirror(t1-&gt;right, t2-&gt;left);\n}\n\nint isSymmetric(struct Node* root) {\n    if(root == NULL)\n        return 1;\n    return isMirror(root-&gt;left, root-&gt;right);\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(h)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Symmetric Tree - Explanation",
+          "link": "https://www.youtube.com/watch?v=nKggNAiEpBE"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Check whether left and right subtree are mirror images of each other.",
+          "code": "bool isMirror(struct TreeNode* left, struct TreeNode* right) {\n    if(left == NULL &amp;&amp; right == NULL)\n        return true;\n\n    if(left == NULL || right == NULL)\n        return false;\n\n    if(left-&gt;val != right-&gt;val)\n        return false;\n\n    return isMirror(left-&gt;left, right-&gt;right) &amp;&amp; isMirror(left-&gt;right, right-&gt;left);\n}\n\nbool isSymmetric(struct TreeNode* root) {\n    if(root == NULL)\n        return true;\n    return isMirror(root-&gt;left, root-&gt;right);\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(h)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 57,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Mirror a Binary Tree",
+      "description": "Problem Statement:\nConvert a binary tree into its mirror image by swapping left and right children at every node.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal (-1 indicates NULL)\n\nOutput Format:\n- Print inorder traversal of mirrored tree\n\nExample:\nInput:\n7\n1 2 3 4 5 6 7\n\nOutput:\n7 3 6 1 5 2 4\n\nExplanation:\nEach node’s left and right children are swapped recursively."
+    },
+    "question2": {
+      "name": "Flatten Binary Tree to Linked List",
+      "link": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Binary Tree", "Linked List"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "To mirror a binary tree, swap the left and right child of every node.\n\nApproach:\n1. If node is NULL, return\n2. Swap left and right child\n3. Recursively mirror left subtree\n4. Recursively mirror right subtree\n5. Print inorder traversal of mirrored tree\n\nKey Points:\n- Simple recursive problem\n- Every node is visited once",
+          "code": "#include &lt;stdio.h&gt;\n#include &lt;stdlib.h&gt;\n\nstruct Node {\n    int data;\n    struct Node* left;\n    struct Node* right;\n};\n\nvoid mirror(struct Node* root) {\n    if(root == NULL)\n        return;\n\n    struct Node* temp = root-&gt;left;\n    root-&gt;left = root-&gt;right;\n    root-&gt;right = temp;\n\n    mirror(root-&gt;left);\n    mirror(root-&gt;right);\n}\n\nvoid inorder(struct Node* root) {\n    if(root == NULL)\n        return;\n\n    inorder(root-&gt;left);\n    printf(\"%d \", root-&gt;data);\n    inorder(root-&gt;right);\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(h)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Flatten Binary Tree to Linked List - Explanation",
+          "link": "https://www.youtube.com/watch?v=sWf7k1x9XR4"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Flatten tree into linked list in preorder form.\n\nApproach:\n1. Recursively flatten left subtree\n2. Recursively flatten right subtree\n3. Move flattened left subtree to right\n4. Attach old right subtree at the end\n\nKey Points:\n- Final linked list uses right pointers only\n- Left pointers become NULL",
+          "code": "void flatten(struct TreeNode* root) {\n    if(root == NULL)\n        return;\n\n    flatten(root-&gt;left);\n    flatten(root-&gt;right);\n\n    struct TreeNode* left = root-&gt;left;\n    struct TreeNode* right = root-&gt;right;\n\n    root-&gt;left = NULL;\n    root-&gt;right = left;\n\n    struct TreeNode* curr = root;\n    while(curr-&gt;right != NULL)\n        curr = curr-&gt;right;\n\n    curr-&gt;right = right;\n}",
+          "timeComplexity": "O(n^2)",
+          "spaceComplexity": "O(h)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 58,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Build Tree from Inorder & Preorder",
+      "description": "Problem Statement:\nConstruct a binary tree from given preorder and inorder traversal arrays.\n\nInput Format:\n- First line contains integer N\n- Second line contains preorder traversal\n- Third line contains inorder traversal\n\nOutput Format:\n- Print postorder traversal of constructed tree\n\nExample:\nInput:\n5\n1 2 4 5 3\n4 2 5 1 3\n\nOutput:\n4 5 2 3 1\n\nExplanation:\nPreorder identifies root, inorder splits left and right subtrees."
+    },
+    "question2": {
+      "name": "Construct Binary Tree from Preorder and Inorder Traversal",
+      "link": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Tree Construction"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Preorder gives root first, and inorder splits the tree into left and right subtrees.\n\nApproach:\n1. Take current preorder element as root\n2. Find that root in inorder array\n3. Elements left of it belong to left subtree\n4. Elements right of it belong to right subtree\n5. Build recursively\n\nKey Points:\n- Preorder tells root order\n- Inorder tells subtree boundaries",
+          "code": "#include &lt;stdio.h&gt;\n#include &lt;stdlib.h&gt;\n\nstruct Node {\n    int data;\n    struct Node* left;\n    struct Node* right;\n};\n\nstruct Node* createNode(int val) {\n    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));\n    newNode-&gt;data = val;\n    newNode-&gt;left = NULL;\n    newNode-&gt;right = NULL;\n    return newNode;\n}\n\nint findIndex(int inorder[], int start, int end, int val) {\n    for(int i = start; i &lt;= end; i++) {\n        if(inorder[i] == val)\n            return i;\n    }\n    return -1;\n}\n\nstruct Node* buildTree(int preorder[], int inorder[], int inStart, int inEnd, int* preIndex) {\n    if(inStart &gt; inEnd)\n        return NULL;\n\n    int rootVal = preorder[*preIndex];\n    (*preIndex)++;\n    struct Node* root = createNode(rootVal);\n\n    if(inStart == inEnd)\n        return root;\n\n    int inIndex = findIndex(inorder, inStart, inEnd, rootVal);\n\n    root-&gt;left = buildTree(preorder, inorder, inStart, inIndex - 1, preIndex);\n    root-&gt;right = buildTree(preorder, inorder, inIndex + 1, inEnd, preIndex);\n\n    return root;\n}\n\nvoid postorder(struct Node* root) {\n    if(root == NULL)\n        return;\n    postorder(root-&gt;left);\n    postorder(root-&gt;right);\n    printf(\"%d \", root-&gt;data);\n}",
+          "timeComplexity": "O(n^2)",
+          "spaceComplexity": "O(h)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Construct Binary Tree from Preorder and Inorder - Explanation",
+          "link": "https://youtu.be/aZNaLrVebKQ?si=0-YLkSskeqFXUczS"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Build recursively using preorder root and inorder partition.",
+          "code": "struct TreeNode* build(int preorder[], int inorder[], int inStart, int inEnd, int* preIndex) {\n    if(inStart &gt; inEnd)\n        return NULL;\n\n    int val = preorder[*preIndex];\n    (*preIndex)++;\n\n    struct TreeNode* root = (struct TreeNode*)malloc(sizeof(struct TreeNode));\n    root-&gt;val = val;\n    root-&gt;left = NULL;\n    root-&gt;right = NULL;\n\n    if(inStart == inEnd)\n        return root;\n\n    int index;\n    for(index = inStart; index &lt;= inEnd; index++) {\n        if(inorder[index] == val)\n            break;\n    }\n\n    root-&gt;left = build(preorder, inorder, inStart, index - 1, preIndex);\n    root-&gt;right = build(preorder, inorder, index + 1, inEnd, preIndex);\n\n    return root;\n}",
+          "timeComplexity": "O(n^2)",
+          "spaceComplexity": "O(h)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 59,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Build Tree from Inorder & Postorder",
+      "description": "Problem Statement:\nConstruct a binary tree from given inorder and postorder traversal arrays.\n\nInput Format:\n- First line contains integer N\n- Second line contains inorder traversal\n- Third line contains postorder traversal\n\nOutput Format:\n- Print preorder traversal of constructed tree\n\nExample:\nInput:\n5\n4 2 5 1 3\n4 5 2 3 1\n\nOutput:\n1 2 4 5 3\n\nExplanation:\nPostorder gives root at end, inorder divides left and right subtrees."
+    },
+    "question2": {
+      "name": "Construct Binary Tree from Inorder and Postorder Traversal",
+      "link": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Binary Tree", "Construction"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Postorder gives root at the end, and inorder splits left and right subtree.\n\nApproach:\n1. Take current postorder element as root\n2. Find root in inorder array\n3. Build right subtree first\n4. Then build left subtree\n5. Print preorder traversal\n\nKey Points:\n- Postorder is processed from end to start\n- Right subtree must be built before left subtree",
+          "code": "#include &lt;stdio.h&gt;\n#include &lt;stdlib.h&gt;\n\nstruct Node {\n    int data;\n    struct Node* left;\n    struct Node* right;\n};\n\nstruct Node* createNode(int val) {\n    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));\n    newNode-&gt;data = val;\n    newNode-&gt;left = NULL;\n    newNode-&gt;right = NULL;\n    return newNode;\n}\n\nint findIndex(int inorder[], int start, int end, int val) {\n    for(int i = start; i &lt;= end; i++) {\n        if(inorder[i] == val)\n            return i;\n    }\n    return -1;\n}\n\nstruct Node* buildTree(int inorder[], int postorder[], int inStart, int inEnd, int* postIndex) {\n    if(inStart &gt; inEnd)\n        return NULL;\n\n    int rootVal = postorder[*postIndex];\n    (*postIndex)--;\n    struct Node* root = createNode(rootVal);\n\n    if(inStart == inEnd)\n        return root;\n\n    int inIndex = findIndex(inorder, inStart, inEnd, rootVal);\n\n    root-&gt;right = buildTree(inorder, postorder, inIndex + 1, inEnd, postIndex);\n    root-&gt;left = buildTree(inorder, postorder, inStart, inIndex - 1, postIndex);\n\n    return root;\n}\n\nvoid preorder(struct Node* root) {\n    if(root == NULL)\n        return;\n    printf(\"%d \", root-&gt;data);\n    preorder(root-&gt;left);\n    preorder(root-&gt;right);\n}",
+          "timeComplexity": "O(n^2)",
+          "spaceComplexity": "O(h)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Construct Binary Tree from Inorder and Postorder - Explanation",
+          "link": "https://youtu.be/LgLRTaEMRVc?si=4xl2YZ5sLRsrley_"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Use postorder from end and inorder partition to build the tree recursively.",
+          "code": "struct TreeNode* build(int inorder[], int postorder[], int inStart, int inEnd, int* postIndex) {\n    if(inStart &gt; inEnd)\n        return NULL;\n\n    int val = postorder[*postIndex];\n    (*postIndex)--;\n\n    struct TreeNode* root = (struct TreeNode*)malloc(sizeof(struct TreeNode));\n    root-&gt;val = val;\n    root-&gt;left = NULL;\n    root-&gt;right = NULL;\n\n    if(inStart == inEnd)\n        return root;\n\n    int index;\n    for(index = inStart; index &lt;= inEnd; index++) {\n        if(inorder[index] == val)\n            break;\n    }\n\n    root-&gt;right = build(inorder, postorder, index + 1, inEnd, postIndex);\n    root-&gt;left = build(inorder, postorder, inStart, index - 1, postIndex);\n\n    return root;\n}",
+          "timeComplexity": "O(n^2)",
+          "spaceComplexity": "O(h)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 60,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Validate Min-Heap",
+      "description": "Problem Statement:\nCheck whether a given binary tree satisfies the Min-Heap property.\n\nInput Format:\n- First line contains integer N\n- Second line contains level-order traversal\n\nOutput Format:\n- Print YES if valid Min-Heap, otherwise NO\n\nExample:\nInput:\n7\n1 3 5 7 9 8 10\n\nOutput:\nYES\n\nExplanation:\nEach parent node must be smaller than its children."
+    },
+    "question2": {
+      "name": "Binary Tree Cameras",
+      "link": "https://leetcode.com/problems/binary-tree-cameras/",
+      "difficulty": "Hard"
+    },
+    "topics": ["Heap", "Tree"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "A binary tree is a valid Min-Heap if every parent node is smaller than or equal to its children.\n\nApproach:\n1. Traverse every node\n2. If left child exists, check parent ≤ left child\n3. If right child exists, check parent ≤ right child\n4. Recursively validate left and right subtrees\n\nKey Points:\n- Every node must satisfy heap order\n- Works directly on binary tree structure",
+          "code": "#include &lt;stdio.h&gt;\n#include &lt;stdlib.h&gt;\n\nstruct Node {\n    int data;\n    struct Node* left;\n    struct Node* right;\n};\n\nint isMinHeap(struct Node* root) {\n    if(root == NULL)\n        return 1;\n\n    if(root-&gt;left != NULL &amp;&amp; root-&gt;data &gt; root-&gt;left-&gt;data)\n        return 0;\n\n    if(root-&gt;right != NULL &amp;&amp; root-&gt;data &gt; root-&gt;right-&gt;data)\n        return 0;\n\n    return isMinHeap(root-&gt;left) &amp;&amp; isMinHeap(root-&gt;right);\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(h)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Binary Tree Cameras - Explanation",
+          "link": "https://youtu.be/VBxiavZYfoA?si=LFSz2Ltx6qM0yPTh"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Use 3 states for each node.\n\nStates:\n1. Node has camera\n2. Node is covered\n3. Node needs camera\n\nApproach:\n- If any child needs camera, place camera at current node\n- If any child has camera, current node is covered\n- Otherwise current node needs camera",
+          "code": "int cameras;\n\nint dfs(struct TreeNode* root) {\n    if(root == NULL)\n        return 1;\n\n    int left = dfs(root-&gt;left);\n    int right = dfs(root-&gt;right);\n\n    if(left == 2 || right == 2) {\n        cameras++;\n        return 0;\n    }\n\n    if(left == 0 || right == 0)\n        return 1;\n\n    return 2;\n}\n\nint minCameraCover(struct TreeNode* root) {\n    cameras = 0;\n    if(dfs(root) == 2)\n        cameras++;\n    return cameras;\n}",
+          "timeComplexity": "O(n)",
+          "spaceComplexity": "O(h)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 61,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Graph Representation Using Adjacency Matrix",
+      "description": "Problem: Build a graph with n vertices and m edges using adjacency matrix representation.\nThe graph may be directed or undirected.\n\nInput:\n- n (vertices)\n- m (edges)\n- m pairs (u, v)\n\nOutput:\n- n x n adjacency matrix"
+    },
+    "question2": {
+      "name": "Number of Provinces",
+      "link": "https://leetcode.com/problems/number-of-provinces/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Graph Basics",
+      "Adjacency Matrix"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Represent a graph using a 2D array (matrix). If there is an edge between vertex i and j, matrix[i][j] = 1 (or weight), otherwise 0.\n\nKey Points:\n- Space Complexity: O(V^2)\n- checking if edge exists: O(1)\n- Good for dense graphs",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\n\nint main() {\n    int n, m;\n    cin &gt;&gt; n &gt;&gt; m;\n    // 1-based indexing for vertices\n    vector&lt;vector&lt;int&gt;&gt; adj(n + 1, vector&lt;int&gt;(n + 1, 0));\n    for (int i = 0; i &lt; m; i++) {\n        int u, v;\n        cin &gt;&gt; u &gt;&gt; v;\n        adj[u][v] = 1;\n        adj[v][u] = 1; // For undirected graph\n    }\n    return 0;\n}",
+          "timeComplexity": "O(m)",
+          "spaceComplexity": "O(n^2)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Number of Provinces - Video Solution",
+          "link": "https://www.youtube.com/watch?v=acZcT-sS2_8"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "We treat the matrix 'isConnected' as an adjacency matrix. To find the number of provinces (connected components), we iterate through each city (node) from 0 to V-1. If a node has not been visited, we increment the province counter and perform a traversal (DFS or BFS) starting from that node to mark all connected cities as visited.",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\n\nclass Solution {\nprivate:\n    void dfs(int node, vector&lt;int&gt; adjLs[], int vis[]) {\n        vis[node] = 1;\n        for(auto it: adjLs[node]) {\n            if(!vis[it]) {\n                dfs(it, adjLs, vis);\n            }\n        }\n    }\npublic:\n    int findCircleNum(vector&lt;vector&lt;int&gt;&gt;&amp; isConnected) {\n        int V = isConnected.size();\n        vector&lt;int&gt; adjLs[V];\n        // Convert matrix to adjacency list\n        for(int i = 0; i &lt; V; i++) {\n            for(int j = 0; j &lt; V; j++) {\n                if(isConnected[i][j] == 1 &amp;&amp; i != j) {\n                    adjLs[i].push_back(j);\n                    adjLs[j].push_back(i);\n                }\n            }\n        }\n        int vis[V];\n        for(int i=0;i&lt;V;i++) vis[i] = 0;\n        int cnt = 0;\n        for(int i = 0; i &lt; V; i++) {\n            if(!vis[i]) {\n                cnt++;\n                dfs(i, adjLs, vis);\n            }\n        }\n        return cnt;\n    }\n};",
+          "timeComplexity": "O(N^2) for adjacency matrix, O(V+E) for traversal",
+          "spaceComplexity": "O(V) for visited array"
+        }
+      ]
+    }
+  },
+  {
+    "day": 62,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Graph Representation Using Adjacency List",
+      "description": "Problem: Build a graph with adjacency list representation. Use linked lists or dynamic arrays.\n\nInput:\n- n (vertices)\n- m (edges)\n- edges (u, v)\n\nOutput:\n- List of adjacency lists for each vertex"
+    },
+    "question2": {
+      "name": "Keys and Rooms",
+      "link": "https://leetcode.com/problems/keys-and-rooms/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Graph Representation",
+      "Adjacency List"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Represent a graph using an array of lists. Each index i stores a list of vertices adjacent to i.\n\nKey Points:\n- Space Complexity: O(V + E)\n- Good for sparse graphs",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\n\nint main() {\n    int n, m;\n    cin &gt;&gt; n &gt;&gt; m;\n    vector&lt;int&gt; adj[n + 1];\n    for (int i = 0; i &lt; m; i++) {\n        int u, v;\n        cin &gt;&gt; u &gt;&gt; v;\n        adj[u].push_back(v);\n        adj[v].push_back(u); // For undirected graph\n    }\n    return 0;\n}",
+          "timeComplexity": "O(m)",
+          "spaceComplexity": "O(n + m)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Keys and Rooms - Video Solution",
+          "link": "https://www.youtube.com/watch?v=RZOe2uBq_qI"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "We model the rooms and keys as a directed graph where an edge exists from room A to room B if room A contains the key to room B. Starting from room 0, we use BFS or DFS to traverse all reachable rooms. We maintain a 'visited' array to track unlocked rooms. Finally, we check if the count of visited rooms equals the total number of rooms.",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;stack&gt;\nusing namespace std;\n\nclass Solution {\npublic:\n    bool canVisitAllRooms(vector&lt;vector&lt;int&gt;&gt;&amp; rooms) {\n        int n = rooms.size();\n        vector&lt;bool&gt; visited(n, false);\n        visited[0] = true;\n        vector&lt;int&gt; stack;\n        stack.push_back(0);\n        \n        while(!stack.empty()){\n            int current = stack.back();\n            stack.pop_back();\n            \n            for(int key : rooms[current]){\n                if(!visited[key]){\n                    visited[key] = true;\n                    stack.push_back(key);\n                }\n            }\n        }\n        \n        for(bool v : visited){\n            if(!v) return false;\n        }\n        return true;\n    }\n};",
+          "timeComplexity": "O(N + E)",
+          "spaceComplexity": "O(N)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 63,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Depth First Search (DFS)",
+      "description": "Problem: Perform DFS starting from a given source vertex using recursion.\n\nInput:\n- n\n- adjacency list\n- starting vertex s\n\nOutput:\n- DFS traversal order"
+    },
+    "question2": {
+      "name": "Flood Fill",
+      "link": "https://leetcode.com/problems/flood-fill/",
+      "difficulty": "Easy"
+    },
+    "topics": [
+      "DFS",
+      "Graph Traversal"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Traverse the graph by going as deep as possible before backtracking. Use recursion or a stack.\n\nKey Points:\n- Uses a visited array to prevent cycles\n- Time Complexity: O(V + E)",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\n\nvoid dfs(int node, vector&lt;int&gt; adj[], int vis[], vector&lt;int&gt; &amp;ls) {\n    vis[node] = 1;\n    ls.push_back(node);\n    for (auto it : adj[node]) {\n        if (!vis[it]) {\n            dfs(it, adj, vis, ls);\n        }\n    }\n}\n\nvector&lt;int&gt; dfsOfGraph(int V, vector&lt;int&gt; adj[]) {\n    int vis[V] = {0};\n    int start = 0;\n    vector&lt;int&gt; ls;\n    dfs(start, adj, vis, ls);\n    return ls;\n}\n\nint main() {\n    int V, E;\n    cin &gt;&gt; V &gt;&gt; E;\n    vector&lt;int&gt; adj[V];\n    for (int i = 0; i &lt; E; i++) {\n        int u, v;\n        cin &gt;&gt; u &gt;&gt; v;\n        adj[u].push_back(v);\n        adj[v].push_back(u);\n    }\n    vector&lt;int&gt; ls;\n    int vis[V] = {0}; \n    vector&lt;int&gt; ans = dfsOfGraph(V, adj);\n    for (int i = 0; i &lt; ans.size(); i++) {\n        cout &lt;&lt; ans[i] &lt;&lt; \" \";\n    }\n    return 0;\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Flood Fill - Video Solution",
+          "link": "https://www.youtube.com/watch?v=f2W2H4bfQfQ"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "We perform a standard traversal (DFS or BFS) starting from the source pixel (sr, sc). We verify if the starting pixel's color matches the initial color. If it does, we change its color to the new color and recursively visit its 4-directionally adjacent neighbors (up, down, left, right) that share the same initial color, avoiding pixels that have already been colored to the new color.",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\n\nclass Solution {\nprivate:\n    void dfs(int row, int col, vector&lt;vector&lt;int&gt;&gt;&amp; image, vector&lt;vector&lt;int&gt;&gt;&amp; ans, int iniColor, int newColor, int delRow[], int delCol[]) {\n        ans[row][col] = newColor;\n        int n = image.size();\n        int m = image[0].size();\n        for(int i = 0; i &lt; 4; i++) {\n            int nrow = row + delRow[i];\n            int ncol = col + delCol[i];\n            if(nrow &gt;= 0 &amp;&amp; nrow &lt; n &amp;&amp; ncol &gt;= 0 &amp;&amp; ncol &lt; m &amp;&amp; \n               image[nrow][ncol] == iniColor &amp;&amp; ans[nrow][ncol] != newColor) {\n                dfs(nrow, ncol, image, ans, iniColor, newColor, delRow, delCol);\n            }\n        }\n    }\npublic:\n    vector&lt;vector&lt;int&gt;&gt; floodFill(vector&lt;vector&lt;int&gt;&gt;&amp; image, int sr, int sc, int color) {\n        int iniColor = image[sr][sc];\n        vector&lt;vector&lt;int&gt;&gt; ans = image;\n        int delRow[] = {-1, 0, +1, 0};\n        int delCol[] = {0, +1, 0, -1};\n        dfs(sr, sc, image, ans, iniColor, color, delRow, delCol);\n        return ans;\n    }\n};",
+          "timeComplexity": "O(N*M)",
+          "spaceComplexity": "O(N*M)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 64,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Breadth First Search (BFS)",
+      "description": "Problem: Perform BFS from a given source using queue.\n\nInput:\n- n\n- adjacency list\n- source s\n\nOutput:\n- BFS traversal order"
+    },
+    "question2": {
+      "name": "Rotting Oranges",
+      "link": "https://leetcode.com/problems/rotting-oranges/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "BFS",
+      "Graph Traversal"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Traverse the graph level by level. Use a queue.\n\nKey Points:\n- Good for finding shortest path in unweighted graphs\n- Time Complexity: O(V + E)",
+          "code": "#include &lt;iostream&gt;\nusing namespace std;\n\n#include &lt;vector&gt;\n#include &lt;queue&gt;\nusing namespace std;\n\nvector&lt;int&gt; bfsOfGraph(int V, vector&lt;int&gt; adj[]) {\n    int vis[V] = {0};\n    vis[0] = 1;\n    queue&lt;int&gt; q;\n    q.push(0);\n    vector&lt;int&gt; bfs;\n    \n    while (!q.empty()) {\n        int node = q.front();\n        q.pop();\n        bfs.push_back(node);\n        \n        for (auto it : adj[node]) {\n            if (!vis[it]) {\n                vis[it] = 1;\n                q.push(it);\n            }\n        }\n    }\n    return bfs;\n}\nint main() {\n    int V, E;\n    cin &gt;&gt; V &gt;&gt; E;\n    vector&lt;int&gt; adj[V];\n    for (int i = 0; i &lt; E; i++) {\n        int u, v;\n        cin &gt;&gt; u &gt;&gt; v;\n        adj[u].push_back(v);\n        // adj[v].push_back(u); // Directed or Undirected? BFS usually undirected in basic examples but logic holds.\n                                // Problem says 'Graph', generic. Assuming Undirected for BFS traversal usually.\n        adj[v].push_back(u);\n    }\n    vector&lt;int&gt; ans = bfsOfGraph(V, adj);\n    for (int i = 0; i &lt; ans.size(); i++) {\n        cout &lt;&lt; ans[i] &lt;&lt; \" \";\n    }\n    return 0;\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Rotting Oranges - Video Solution",
+          "link": "https://www.youtube.com/watch?v=yf3oUhV9xpM"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Since rotten oranges rot their neighbors simultaneously level by level, this is a distinct Multi-Source BFS problem. We first add all initially rotten oranges to a queue and count fresh oranges. In each step of the BFS, we rot adjacent fresh oranges, decrement the fresh count, and add them to the queue. We track the 'time' (levels) taken. If fresh oranges remain after the queue is empty, we return -1.",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;queue&gt;\nusing namespace std;\n\nclass Solution {\npublic:\n    int orangesRotting(vector&lt;vector&lt;int&gt;&gt;&amp; grid) {\n        if(grid.empty()) return 0;\n        int m = grid.size(), n = grid[0].size(), days = 0, tot = 0, cnt = 0;\n        queue&lt;pair&lt;int, int&gt;&gt; q;\n        for(int i = 0; i &lt; m; ++i){\n            for(int j = 0; j &lt; n; ++j){\n                if(grid[i][j] != 0) tot++;\n                if(grid[i][j] == 2) q.push({i, j});\n            }\n        }\n        \n        int dx[4] = {0, 0, 1, -1};\n        int dy[4] = {1, -1, 0, 0};\n        \n        while(!q.empty()){\n            int k = q.size();\n            cnt += k;\n            while(k--){\n                int x = q.front().first, y = q.front().second;\n                q.pop();\n                for(int i = 0; i &lt; 4; ++i){\n                    int nx = x + dx[i], ny = y + dy[i];\n                    if(nx &lt; 0 || ny &lt; 0 || nx &gt;= m || ny &gt;= n || grid[nx][ny] != 1) continue;\n                    grid[nx][ny] = 2;\n                    q.push({nx, ny});\n                }\n            }\n            if(!q.empty()) days++;\n        }\n        return tot == cnt ? days : -1;\n    }\n};",
+          "timeComplexity": "O(N*M)",
+          "spaceComplexity": "O(N*M)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 65,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Cycle Detection in Undirected Graph (DFS)",
+      "description": "Problem: Using DFS and parent tracking, detect if undirected graph has a cycle.\n\nOutput:\n- YES or NO"
+    },
+    "question2": {
+      "name": "Graph Cycle Detection",
+      "link": "https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Cycle Detection",
+      "DFS"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "If we encounter a visited node that is not the parent of the current node, a cycle exists.\n\nKey Points:\n- Maintain parent pointer in DFS\n- Time Complexity: O(V + E)",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\n\nbool dfs(int node, int parent, int vis[], vector&lt;int&gt; adj[]) {\n    vis[node] = 1;\n    for(auto adjacentNode: adj[node]) {\n        if(!vis[adjacentNode]) {\n            if(dfs(adjacentNode, node, vis, adj) == true)\n                return true;\n        }\n        else if(adjacentNode != parent) return true;\n    }\n    return false;\n}\n\nbool isCycle(int V, vector&lt;int&gt; adj[]) {\n    int vis[V] = {0};\n    for(int i = 0; i &lt; V; i++) {\n        if(!vis[i]) {\n            if(dfs(i, -1, vis, adj))\n                return true;\n        }\n    }\n    return false;\n}\nint main() {\n    int V, E;\n    cin &gt;&gt; V &gt;&gt; E;\n    vector&lt;int&gt; adj[V];\n    for (int i = 0; i &lt; E; i++) {\n        int u, v;\n        cin &gt;&gt; u &gt;&gt; v;\n        adj[u].push_back(v);\n        adj[v].push_back(u);\n    }\n    bool ans = isCycle(V, adj);\n    if (ans) cout &lt;&lt; \"1\";\n    else cout &lt;&lt; \"0\";\n    return 0;\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Graph Cycle Detection - Video Solution",
+          "link": "https://www.youtube.com/watch?v=BfS2NEsXbL8"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Verify if the graph contains a cycle using DFS. We maintain a 'visited' array to track visited nodes. During DFS, for every visited neighbor, if the neighbor is not the parent of the current node, it implies we have found a back-edge to an already visited node, confirming a cycle.",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\n\nbool dfs(int node, int parent, vector&lt;int&gt; adj[], vector&lt;int&gt;&amp; vis) {\n    vis[node] = 1;\n    for (auto it : adj[node]) {\n        if (!vis[it]) {\n            if (dfs(it, node, adj, vis)) return true;\n        } else if (it != parent) {\n            return true;\n        }\n    }\n    return false;\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 66,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Cycle Detection in Directed Graph",
+      "description": "Problem: Detect cycle in directed graph using DFS and recursion stack.\n\nOutput:\n- YES if cycle exists"
+    },
+    "question2": {
+      "name": "Course Schedule",
+      "link": "https://leetcode.com/problems/course-schedule/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Directed Graph",
+      "Cycle Detection"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Use a recursion stack (pathVisited array) to track nodes in the current DFS path. If a node is visited and also in the current path, a cycle exists.\n\nKey Points:\n- Distinguish between generally visited and visited in current recursion stack",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\n\nbool dfsCheck(int node, vector&lt;int&gt; adj[], int vis[], int pathVis[]) {\n    vis[node] = 1;\n    pathVis[node] = 1;\n    for(auto it : adj[node]) {\n        if(!vis[it]) {\n            if(dfsCheck(it, adj, vis, pathVis) == true)\n                return true;\n        }\n        else if(pathVis[it]) {\n            return true;\n        }\n    }\n    pathVis[node] = 0;\n    return false;\n}\n\nbool isCyclic(int V, vector&lt;int&gt; adj[]) {\n    int vis[V] = {0};\n    int pathVis[V] = {0};\n    for(int i = 0; i &lt; V; i++) {\n        if(!vis[i]) {\n            if(dfsCheck(i, adj, vis, pathVis)) return true;\n        }\n    }\n    return false;\n}\nint main() {\n    int V, E;\n    cin &gt;&gt; V &gt;&gt; E;\n    vector&lt;int&gt; adj[V];\n    for (int i = 0; i &lt; E; i++) {\n        int u, v;\n        cin &gt;&gt; u &gt;&gt; v;\n        adj[u].push_back(v);\n    }\n    if (isCyclic(V, adj)) cout &lt;&lt; \"True\";\n    else cout &lt;&lt; \"False\";\n    return 0;\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Course Schedule - Video Solution",
+          "link": "https://www.youtube.com/watch?v=WAOfKpxYHR8"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "This problem models course dependencies as a directed graph. We need to detect if there is a cycle. We can use DFS with a 'recursion stack' (pathVisited array). If we encounter a node that is currently in the recursion stack, a cycle exists. Alternatively, we can use Kahn's Algorithm (BFS); if the topological sort contains fewer nodes than the total courses, a cycle exists.",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;queue&gt;\nusing namespace std;\n\nclass Solution {\npublic:\n    bool canFinish(int numCourses, vector&lt;vector&lt;int&gt;&gt;&amp; prerequisites) {\n        vector&lt;int&gt; adj[numCourses];\n        for(auto it : prerequisites) {\n            adj[it[1]].push_back(it[0]);\n        }\n        vector&lt;int&gt; indegree(numCourses, 0);\n        for(int i = 0; i &lt; numCourses; i++) {\n            for(auto it : adj[i]) {\n                indegree[it]++;\n            }\n        }\n        queue&lt;int&gt; q;\n        for(int i = 0; i &lt; numCourses; i++) {\n            if(indegree[i] == 0) {\n                q.push(i);\n            }\n        }\n        int cnt = 0;\n        while(!q.empty()) {\n            int node = q.front();\n            q.pop();\n            cnt++;\n            for(auto it : adj[node]) {\n                indegree[it]--;\n                if(indegree[it] == 0) q.push(it);\n            }\n        }\n        return cnt == numCourses;\n    }\n};",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V + E)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 67,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Topological Sort (DFS)",
+      "description": "Problem: Print topological ordering of a Directed Acyclic Graph (DAG) using DFS."
+    },
+    "question2": {
+      "name": "Course Schedule II",
+      "link": "https://leetcode.com/problems/course-schedule-ii/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Topological Sort",
+      "DFS"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Linear ordering of vertices such that for every edge u -> v, u appears before v. Only for DAGs. Use a stack to store the sort.\n\nKey Points:\n- Push to stack after visiting all children",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;stack&gt;\nusing namespace std;\n\nvoid dfs(int node, int vis[], stack&lt;int&gt; &amp;st, vector&lt;int&gt; adj[]) {\n    vis[node] = 1;\n    for(auto it : adj[node]) {\n        if(!vis[it]) dfs(it, vis, st, adj);\n    }\n    st.push(node);\n}\n\nvector&lt;int&gt; topoSort(int V, vector&lt;int&gt; adj[]) {\n    int vis[V] = {0};\n    stack&lt;int&gt; st;\n    for(int i = 0; i &lt; V; i++) {\n        if(!vis[i]) {\n            dfs(i, vis, st, adj);\n        }\n    }\n    vector&lt;int&gt; ans;\n    while(!st.empty()) {\n        ans.push_back(st.top());\n        st.pop();\n    }\n    return ans;\n}\nint main() {\n    int V, E;\n    cin &gt;&gt; V &gt;&gt; E;\n    vector&lt;int&gt; adj[V];\n    for (int i = 0; i &lt; E; i++) {\n        int u, v;\n        cin &gt;&gt; u &gt;&gt; v;\n        adj[u].push_back(v);\n    }\n    vector&lt;int&gt; res = topoSort(V, adj);\n    for (int i : res) cout &lt;&lt; i &lt;&lt; \" \";\n    return 0;\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Course Schedule II - Video Solution",
+          "link": "https://www.youtube.com/watch?v=k_C5_LzX_gI"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "We represent the courses and prerequisites as a directed graph. We need to return a valid ordering, which is a Topological Sort. Using Kahn's Algorithm (BFS), we calculate in-degrees for all nodes. Nodes with 0 in-degree are added to a queue. As we process nodes, we reduce the in-degree of their neighbors. The order in which nodes are popped from the queue is the topological sort.",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;queue&gt;\nusing namespace std;\n\nclass Solution {\npublic:\n    vector&lt;int&gt; findOrder(int numCourses, vector&lt;vector&lt;int&gt;&gt;&amp; prerequisites) {\n        vector&lt;int&gt; adj[numCourses];\n        for(auto it : prerequisites) {\n            adj[it[1]].push_back(it[0]);\n        }\n        vector&lt;int&gt; indegree(numCourses, 0);\n        for(int i = 0; i &lt; numCourses; i++) {\n            for(auto it : adj[i]) {\n                indegree[it]++;\n            }\n        }\n        queue&lt;int&gt; q;\n        for(int i = 0; i &lt; numCourses; i++) {\n            if(indegree[i] == 0) {\n                q.push(i);\n            }\n        }\n        vector&lt;int&gt; topo;\n        while(!q.empty()) {\n            int node = q.front();\n            q.pop();\n            topo.push_back(node);\n            for(auto it : adj[node]) {\n                indegree[it]--;\n                if(indegree[it] == 0) q.push(it);\n            }\n        }\n        if(topo.size() == numCourses) return topo;\n        return {};\n    }\n};",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V + E)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 68,
+    "unit": "Unit IV: Tree",
+    "question1": {
+      "title": "Topological Sort (Kahn\u00e2\u20ac\u2122s BFS Algorithm)",
+      "description": "Problem: Implement topological sorting using in-degree array and queue (Kahn\u00e2\u20ac\u2122s Algorithm)."
+    },
+    "question2": {
+      "name": "Alien Dictionary",
+      "link": "https://practice.geeksforgeeks.org/problems/alien-dictionary/1",
+      "difficulty": "Hard"
+    },
+    "topics": [
+      "Topological Sort",
+      "Kahn's Algorithm"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Uses in-degree concept. Nodes with in-degree 0 are added to queue. Decrease in-degree of neighbors.\n\nKey Points:\n- Also detects cycles (if result size < V)",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;queue&gt;\nusing namespace std;\n\nvector&lt;int&gt; topoSort(int V, vector&lt;int&gt; adj[]) {\n    int indegree[V] = {0};\n    for(int i = 0; i &lt; V; i++) {\n        for(auto it : adj[i]) {\n            indegree[it]++;\n        }\n    }\n    queue&lt;int&gt; q;\n    for(int i = 0; i &lt; V; i++) {\n        if(indegree[i] == 0) {\n            q.push(i);\n        }\n    }\n    vector&lt;int&gt; topo;\n    while(!q.empty()) {\n        int node = q.front();\n        q.pop();\n        topo.push_back(node);\n        for(auto it : adj[node]) {\n            indegree[it]--;\n            if(indegree[it] == 0) q.push(it);\n        }\n    }\n    return topo;\n}\nint main() {\n    int V, E;\n    cin &gt;&gt; V &gt;&gt; E;\n    vector&lt;int&gt; adj[V];\n    for (int i = 0; i &lt; E; i++) {\n        int u, v;\n        cin &gt;&gt; u &gt;&gt; v;\n        adj[u].push_back(v);\n    }\n    vector&lt;int&gt; res = topoSort(V, adj);\n    for (int i : res) cout &lt;&lt; i &lt;&lt; \" \";\n    return 0;\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Alien Dictionary - Video Solution",
+          "link": "https://www.youtube.com/watch?v=vD41jJlg7YA"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "The sorted alien dictionary implies a precedence rule between characters (e.g., 'a' comes before 'b'). We compare adjacent words to find the first differing character, creating a directed edge. This builds a DAG of characters. We then perform a Topological Sort (using BFS/Kahn's or DFS) on this graph to find the correct order of characters.",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;queue&gt;\nusing namespace std;\n\nclass Solution {\nprivate:\n    vector&lt;int&gt; topoSort(int V, vector&lt;int&gt; adj[]) {\n        int indegree[V] = {0};\n        for (int i = 0; i &lt; V; i++) {\n            for (auto it : adj[i]) {\n                indegree[it]++;\n            }\n        }\n        queue&lt;int&gt; q;\n        for (int i = 0; i &lt; V; i++) {\n            if (indegree[i] == 0) {\n                q.push(i);\n            }\n        }\n        vector&lt;int&gt; topo;\n        while (!q.empty()) {\n            int node = q.front();\n            q.pop();\n            topo.push_back(node);\n            for (auto it : adj[node]) {\n                indegree[it]--;\n                if (indegree[it] == 0) q.push(it);\n            }\n        }\n        return topo;\n    }\npublic:\n    string findOrder(string dict[], int N, int K) {\n        vector&lt;int&gt; adj[K];\n        for (int i = 0; i &lt; N - 1; i++) {\n            string s1 = dict[i];\n            string s2 = dict[i + 1];\n            int len = min(s1.size(), s2.size());\n            for (int ptr = 0; ptr &lt; len; ptr++) {\n                if (s1[ptr] != s2[ptr]) {\n                    adj[s1[ptr] - 'a'].push_back(s2[ptr] - 'a');\n                    break;\n                }\n            }\n        }\n        vector&lt;int&gt; topo = topoSort(K, adj);\n        string ans = \"\";\n        for (auto it : topo) {\n            ans = ans + char(it + 'a');\n        }\n        return ans;\n    }\n};",
+          "timeComplexity": "O(N * len + K + V)",
+          "spaceComplexity": "O(K)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 69,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Dijkstra\u00e2\u20ac\u2122s Algorithm (Shortest Path)",
+      "description": "Problem: Given weighted graph with non-negative edges, compute shortest path from source using priority queue."
+    },
+    "question2": {
+      "name": "Network Delay Time",
+      "link": "https://leetcode.com/problems/network-delay-time/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Dijkstra",
+      "Shortest Path"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Find shortest path from source to all vertices in graph with non-negative weights using Priority Queue.\n\nKey Points:\n- Greedy approach\n- Doesn't work for negative weights",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;queue&gt;\nusing namespace std;\n\nvector&lt;int&gt; dijkstra(int V, vector&lt;vector&lt;int&gt;&gt; adj[], int S) {\n    priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int, int&gt;&gt;&gt; pq;\n    vector&lt;int&gt; dist(V, 1e9);\n    \n    dist[S] = 0;\n    pq.push({0, S});\n    \n    while(!pq.empty()) {\n        int dis = pq.top().first;\n        int node = pq.top().second;\n        pq.pop();\n        \n        for(auto it : adj[node]) {\n            int edgeWeight = it[1];\n            int adjNode = it[0];\n            \n            if(dis + edgeWeight &lt; dist[adjNode]) {\n                dist[adjNode] = dis + edgeWeight;\n                pq.push({dist[adjNode], adjNode});\n            }\n        }\n    }\n    return dist;\n}\nint main() {\n    int V, E, S;\n    cin &gt;&gt; V &gt;&gt; E &gt;&gt; S;\n    vector&lt;vector&lt;int&gt;&gt; adj[V];\n    for (int i = 0; i &lt; E; i++) {\n        int u, v, w;\n        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;\n        adj[u].push_back({v, w});\n        adj[v].push_back({u, w}); // Undirected\n    }\n    vector&lt;int&gt; res = dijkstra(V, adj, S);\n    for (int i : res) cout &lt;&lt; i &lt;&lt; \" \";\n    return 0;\n}",
+          "timeComplexity": "O(E log V)",
+          "spaceComplexity": "O(V + E)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Network Delay Time - Video Solution",
+          "link": "https://www.youtube.com/watch?v=k5yGvt_QoT0"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "We model the network as a weighted directed graph where edge weights represent time. Since we want the minimum time to reach all nodes from a source 'k', this is a Shortest Path problem. We use Dijkstra's Algorithm with a Priority Queue to find the minimum time (distance) to reach every node. The answer is the maximum of these shortest times.",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;queue&gt;\nusing namespace std;\n\nclass Solution {\npublic:\n    int networkDelayTime(vector&lt;vector&lt;int&gt;&gt;&amp; times, int n, int k) {\n        vector&lt;pair&lt;int,int&gt;&gt; adj[n+1];\n        for(auto it: times) {\n            adj[it[0]].push_back({it[1], it[2]});\n        }\n        priority_queue&lt;pair&lt;int,int&gt;, vector&lt;pair&lt;int,int&gt;&gt;, greater&lt;pair&lt;int,int&gt;&gt;&gt; pq;\n        vector&lt;int&gt; dist(n+1, 1e9);\n        \n        dist[k] = 0;\n        pq.push({0, k});\n        \n        while(!pq.empty()) {\n            int d = pq.top().first;\n            int node = pq.top().second;\n            pq.pop();\n            \n            for(auto it : adj[node]) {\n                int adjNode = it.first;\n                int weight = it.second;\n                if(d + weight &lt; dist[adjNode]) {\n                    dist[adjNode] = d + weight;\n                    pq.push({dist[adjNode], adjNode});\n                }\n            }\n        }\n        int mx = -1;\n        for(int i = 1; i &lt;= n; i++) {\n            if(dist[i] == 1e9) return -1;\n            mx = max(mx, dist[i]);\n        }\n        return mx;\n    }\n};",
+          "timeComplexity": "O(E log V)",
+          "spaceComplexity": "O(V + E)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 70,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Bellman-Ford Algorithm",
+      "description": "Problem: Compute shortest path from source and detect negative weight cycles using Bellman-Ford.\n\nInput:\n- n vertices\n- m edges (u,v,w)\n\nOutput:\n- Shortest distances OR NEGATIVE CYCLE"
+    },
+    "question2": {
+      "name": "Cheapest Flights Within K Stops",
+      "link": "https://leetcode.com/problems/cheapest-flights-within-k-stops/",
+      "difficulty": "Medium"
+    },
+    "topics": [
+      "Bellman-Ford",
+      "Shortest Path"
+    ],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Computes shortest paths from source to all vertices. Works with negative weights. Detects negative cycles.\n\nKey Points:\n- Relax all edges V-1 times\n- If changes happen on Vth relaxation, negative cycle exists\n- Time Complexity: O(V * E)",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\nusing namespace std;\n\nvector&lt;int&gt; bellman_ford(int V, vector&lt;vector&lt;int&gt;&gt;&amp; edges, int S) {\n    vector&lt;int&gt; dist(V, 1e8);\n    dist[S] = 0;\n    for(int i = 0; i &lt; V - 1; i++) {\n        for(auto it : edges) {\n            int u = it[0];\n            int v = it[1];\n            int wt = it[2];\n            if(dist[u] != 1e8 &amp;&amp; dist[u] + wt &lt; dist[v]) {\n                dist[v] = dist[u] + wt;\n            }\n        }\n    }\n    // Nth relaxation to check for negative cycle\n    for(auto it : edges) {\n        int u = it[0];\n        int v = it[1];\n        int wt = it[2];\n        if(dist[u] != 1e8 &amp;&amp; dist[u] + wt &lt; dist[v]) {\n            return {-1};\n        }\n    }\n    return dist;\n}\nint main() {\n    int V, E, S;\n    cin &gt;&gt; V &gt;&gt; E &gt;&gt; S;\n    vector&lt;vector&lt;int&gt;&gt; edges;\n    for (int i = 0; i &lt; E; i++) {\n        int u, v, w;\n        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;\n        edges.push_back({u, v, w});\n    }\n    vector&lt;int&gt; res = bellman_ford(V, edges, S);\n    for (int i : res) cout &lt;&lt; i &lt;&lt; \" \";\n    return 0;\n}",
+          "timeComplexity": "O(V * E)",
+          "spaceComplexity": "O(V)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Cheapest Flights Within K Stops - Video Solution",
+          "link": "https://www.youtube.com/watch?v=9Xy-pMazOnE"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "This is a Shortest Path problem with a constraint on the number of edges (stops). Standard Dijkstra or Bellman-Ford doesn't strictly adhere to 'at most K stops'. We use a Modified BFS (or Dijkstra) where the queue stores tuple {stops, {node, cost}}. We ignore paths exceeding K stops. We relax edges only if we find a cheaper cost within the allowed stops.",
+          "code": "#include &lt;iostream&gt;\n#include &lt;vector&gt;\n#include &lt;queue&gt;\nusing namespace std;\n\nclass Solution {\npublic:\n    int findCheapestPrice(int n, vector&lt;vector&lt;int&gt;&gt;&amp; flights, int src, int dst, int k) {\n        vector&lt;pair&lt;int,int&gt;&gt; adj[n];\n        for(auto it : flights) {\n            adj[it[0]].push_back({it[1], it[2]});\n        }\n        queue&lt;pair&lt;int, pair&lt;int,int&gt;&gt;&gt; q;\n        q.push({0, {src, 0}});\n        vector&lt;int&gt; dist(n, 1e9);\n        dist[src] = 0;\n        \n        while(!q.empty()) {\n            auto it = q.front();\n            q.pop();\n            int stops = it.first;\n            int node = it.second.first;\n            int cost = it.second.second;\n            \n            if(stops &gt; k) continue;\n            for(auto iter : adj[node]) {\n                int adjNode = iter.first;\n                int edW = iter.second;\n                \n                if(cost + edW &lt; dist[adjNode] &amp;&amp; stops &lt;= k) {\n                    dist[adjNode] = cost + edW;\n                    q.push({stops + 1, {adjNode, cost + edW}});\n                }\n            }\n        }\n        if(dist[dst] == 1e9) return -1;\n        return dist[dst];\n    }\n};",
+          "timeComplexity": "O(E * K)",
+          "spaceComplexity": "O(V + E)"
+        }
+      ]
+    }
+  },
+  {
+  "day": 71,
+  "unit": "Unit V: Hash Table & Graph",
+  "question1": {
+    "title": "Hash Table Using Quadratic Probing",
+    "description": "Problem Statement\nImplement a hash table using quadratic probing with formula:\n\nh(k, i) = (h(k) + i*i) % m\n\nInput Format\nSame as previous.\n\nOutput Format\nResult of SEARCH operations.\n\nSample Input\n7\n4\nINSERT 49\nINSERT 56\nSEARCH 49\nSEARCH 15\n\nSample Output\nFOUND\nNOT FOUND\n\nExplanation\nCollisions resolved using i² jumps."
+  },
+  "question2": {
+    "name": "Min Cost to Connect All Points",
+    "link": "https://leetcode.com/problems/min-cost-to-connect-all-points/",
+    "difficulty": "Medium"
+  },
+  "topics": [
+    "Hashing",
+    "Quadratic Probing"
+  ],
+  "solutions": {
+    "question1": [
+      {
+        "type": "tutorial",
+        "explanation": "Quadratic probing resolves collisions using i² jumps.\n\nSteps:\n1. Compute hash index using key % table_size\n2. If collision occurs, move using quadratic probing formula\n3. Continue probing until empty slot is found or key is matched\n\nKey Points:\n- Reduces clustering compared to linear probing\n- Works best when table size is prime\n- Average search and insert time is constant",
+        "code": "#include &lt;stdio.h&gt;\n\n#define SIZE 7\n\nint table[SIZE];\n\nvoid init() {\n    for(int i = 0; i &lt; SIZE; i++) {\n        table[i] = -1;\n    }\n}\n\nvoid insert(int key) {\n    int h = key % SIZE;\n    int i = 0;\n\n    while(i &lt; SIZE) {\n        int index = (h + i*i) % SIZE;\n        if(table[index] == -1) {\n            table[index] = key;\n            return;\n        }\n        i++;\n    }\n}\n\nint search(int key) {\n    int h = key % SIZE;\n\n    for(int i = 0; i &lt; SIZE; i++) {\n        int index = (h + i*i) % SIZE;\n\n        if(table[index] == key)\n            return 1;\n\n        if(table[index] == -1)\n            return 0;\n    }\n    return 0;\n}",
+        "timeComplexity": "Average O(1)",
+        "spaceComplexity": "O(m)"
+      }
+    ],
+    "question2": [
+      {
+        "type": "video",
+        "label": "Min Cost to Connect All Points - Prim's Algorithm Explanation",
+        "link": "https://www.youtube.com/watch?v=f7JOBJIC-NA"
+      },
+      {
+        "type": "tutorial",
+        "explanation": "This problem is solved using Minimum Spanning Tree (Prim’s Algorithm).\n\nApproach:\n1. Treat each point as graph node\n2. Edge weight = Manhattan Distance\n3. Pick nearest unvisited node\n4. Continue until all nodes are connected\n\nKey Points:\n- Greedy algorithm\n- Ensures minimum connection cost\n- Efficient for dense graphs",
+        "code": "int manhattan(int* p1, int* p2) {\n    return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1]);\n}\n\nint minCostConnectPoints(int** points, int pointsSize, int* pointsColSize) {\n    int n = pointsSize;\n\n    int* key = (int*)malloc(n * sizeof(int));\n    int* mstSet = (int*)calloc(n, sizeof(int));\n\n    for(int i = 0; i &lt; n; i++) {\n        key[i] = INT_MAX;\n    }\n\n    key[0] = 0;\n    int totalCost = 0;\n\n    for(int count = 0; count &lt; n; count++) {\n\n        int u = -1;\n        for(int i = 0; i &lt; n; i++) {\n            if(!mstSet[i] &amp;&amp; (u == -1 || key[i] &lt; key[u])) {\n                u = i;\n            }\n        }\n\n        mstSet[u] = 1;\n        totalCost += key[u];\n\n        for(int v = 0; v &lt; n; v++) {\n            if(!mstSet[v]) {\n                int dist = manhattan(points[u], points[v]);\n                if(dist &lt; key[v]) {\n                    key[v] = dist;\n                }\n            }\n        }\n    }\n\n    free(key);\n    free(mstSet);\n\n    return totalCost;\n}",
+        "timeComplexity": "O(n^2)",
+        "spaceComplexity": "O(n)"
+      }
+    ]
+  }
+},
+ {
+  "day": 72,
+  "unit": "Unit V: Hash Table & Graph",
+  "question1": {
+    "title": "First Repeated Character",
+    "description": "Problem Statement\nGiven a string s consisting of lowercase letters, find the first repeated character in the string. A character is considered repeated if it appears more than once, and among all such characters, the one whose second occurrence has the smallest index should be returned.\n\nInput Format\nA single string s.\n\nOutput Format\nPrint the first repeated character. If no character is repeated, print -1.\n\nSample Input\ngeeksforgeeks\n\nSample Output\ne"
+  },
+  "question2": {
+    "name": "Travelling Salesman Problem",
+    "link": "https://www.geeksforgeeks.org/problems/travelling-salesman-problem2732/1",
+    "difficulty": "Hard"
+  },
+  "topics": [
+    "Adjacency Matrix",
+    "Graph Representation"
+  ],
+  "solutions": {
+    "question1": [
+      {
+        "type": "tutorial",
+        "explanation": "We use hashing to track frequency.\n\nSteps:\n1. Traverse string\n2. Store frequency of characters\n3. First character whose frequency becomes 2 is answer\n\nKey Points:\n- Uses frequency array\n- Single pass solution\n- Efficient for lowercase characters",
+        "code": "#include &lt;stdio.h&gt;\n#include &lt;string.h&gt;\n\nint main() {\n    char s[1000];\n    int freq[26] = {0};\n    int found = 0;\n\n    scanf(\"%s\", s);\n\n    for(int i = 0; s[i] != '\\0'; i++) {\n        int idx = s[i] - 'a';\n        freq[idx]++;\n\n        if(freq[idx] == 2) {\n            printf(\"%c\", s[i]);\n            found = 1;\n            break;\n        }\n    }\n\n    if(!found)\n        printf(\"-1\");\n\n    return 0;\n}",
+        "timeComplexity": "O(n)",
+        "spaceComplexity": "O(1)"
+      }
+    ],
+    "question2": [
+      {
+        "type": "video",
+        "label": "Travelling Salesman Problem DP + Bitmask Explanation",
+        "link": "https://www.youtube.com/watch?v=JE0JE8ce1V0"
+      },
+      {
+        "type": "tutorial",
+        "explanation": "Travelling Salesman Problem solved using DP + Bitmask.\n\nApproach:\n1. Use bitmask to track visited cities\n2. Use DP[mask][pos]\n3. Recursively compute minimum cost\n4. Return minimum Hamiltonian cycle cost\n\nKey Points:\n- Classic NP Hard problem\n- Efficient for small constraints\n- Uses memoization",
+        "code": "#include &lt;limits.h&gt;\n#include &lt;string.h&gt;\n\nint dp[15][1 &lt;&lt; 15];\n\nint min(int a, int b) {\n    return a &lt; b ? a : b;\n}\n\nint solve(int mask, int pos, int n, int cost[][20]) {\n\n    if(mask == (1 &lt;&lt; n) - 1)\n        return cost[pos][0];\n\n    if(dp[pos][mask] != -1)\n        return dp[pos][mask];\n\n    int ans = INT_MAX;\n\n    for(int city = 0; city &lt; n; city++) {\n        if((mask &amp; (1 &lt;&lt; city)) == 0) {\n\n            int newAns = cost[pos][city] +\n                         solve(mask | (1 &lt;&lt; city), city, n, cost);\n\n            ans = min(ans, newAns);\n        }\n    }\n\n    return dp[pos][mask] = ans;\n}\n\n/* GFG Expected Function */\nint total_cost(int cost[][20], int n) {\n    memset(dp, -1, sizeof(dp));\n    return solve(1, 0, n, cost);\n}",
+        "timeComplexity": "O(n * 2^n)",
+        "spaceComplexity": "O(n * 2^n)"
+      }
+    ]
+  }
+}
+,
+  {
+  "day": 73,
+  "unit": "Unit V: Hash Table & Graph",
+  "question1": {
+    "title": "First Non-Repeating Character",
+    "description": "Problem Statement\nGiven a string s consisting of lowercase English letters, find and return the first character that does not repeat in the string. If all characters repeat, return '$'.\n\nInput Format\nA single string s.\n\nOutput Format\nPrint the first non-repeating character or '$' if none exists.\n\nSample Input\ngeeksforgeeks\n\nSample Output\nf\n\nExplanation\nThe character 'f' occurs only once in the string and appears before any other non-repeating character."
+  },
+  "question2": {
+    "name": "Redundant Connection",
+    "link": "https://leetcode.com/problems/redundant-connection/",
+    "difficulty": "Medium"
+  },
+  "topics": ["Adjacency List", "Graph Representation"],
+  "solutions": {
+    "question1": [
+      {
+        "type": "tutorial",
+        "explanation": "We use hashing to count the frequency of each character.\n\nSteps:\n1. Traverse the string once and store frequency of each character\n2. Traverse the string again\n3. First character with frequency 1 is the answer\n4. If no such character exists, print '$'\n\nKey Points:\n- Uses frequency array of size 26\n- Two-pass solution\n- Efficient for lowercase English letters",
+        "code": "#include &lt;stdio.h&gt;\n#include &lt;string.h&gt;\n\nint main() {\n    char s[1000];\n    int freq[26] = {0};\n    int found = 0;\n\n    scanf(\"%s\", s);\n\n    for(int i = 0; s[i] != '\\0'; i++) {\n        freq[s[i] - 'a']++;\n    }\n\n    for(int i = 0; s[i] != '\\0'; i++) {\n        if(freq[s[i] - 'a'] == 1) {\n            printf(\"%c\", s[i]);\n            found = 1;\n            break;\n        }\n    }\n\n    if(!found)\n        printf(\"$\");\n\n    return 0;\n}",
+        "timeComplexity": "O(n)",
+        "spaceComplexity": "O(1)"
+      }
+    ],
+    "question2": [
+      {
+        "type": "video",
+        "label": "Redundant Connection - DSU Explanation",
+        "link": "https://www.youtube.com/watch?v=FXWRE67PLL0"
+      },
+      {
+        "type": "tutorial",
+        "explanation": "This problem is solved using Disjoint Set Union (Union-Find).\n\nApproach:\n1. Initially every node is in its own set\n2. For each edge, find parent of both nodes\n3. If both have same parent, that edge is redundant\n4. Otherwise union the sets\n\nKey Points:\n- Efficient cycle detection in undirected graph\n- Path compression improves performance\n- Union-Find is ideal here",
+        "code": "int parent[1005];\n\nint find(int x) {\n    if(parent[x] != x)\n        parent[x] = find(parent[x]);\n    return parent[x];\n}\n\nvoid unionSet(int a, int b) {\n    int pa = find(a);\n    int pb = find(b);\n    if(pa != pb)\n        parent[pa] = pb;\n}\n\nint* findRedundantConnection(int** edges, int edgesSize, int* edgesColSize, int* returnSize) {\n    static int ans[2];\n    *returnSize = 2;\n\n    for(int i = 1; i &lt;= edgesSize; i++)\n        parent[i] = i;\n\n    for(int i = 0; i &lt; edgesSize; i++) {\n        int u = edges[i][0];\n        int v = edges[i][1];\n\n        if(find(u) == find(v)) {\n            ans[0] = u;\n            ans[1] = v;\n            return ans;\n        }\n\n        unionSet(u, v);\n    }\n\n    return ans;\n}",
+        "timeComplexity": "O(n * alpha(n))",
+        "spaceComplexity": "O(n)"
+      }
+    ]
+  }
+},
+  {
+    "day": 74,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Winner of an Election",
+      "description": "Problem Statement\nGiven an array of candidate names where each name represents a vote cast for that candidate, determine the candidate who received the maximum number of votes. In case of a tie, return the lexicographically smallest candidate name.\n\nInput Format\nFirst line contains an integer n representing number of votes.\nSecond line contains n space-separated strings representing candidate names.\n\nOutput Format\nPrint the name of the winning candidate followed by the number of votes received.\n\nSample Input\n13\njohn johnny jackie johnny john jackie jamie jamie john johnny jamie johnny john\n\nSample Output\njohn 4\n\nExplanation\nBoth john and johnny receive 4 votes, but john is lexicographically smaller, so john is declared the winner."
+    },
+    "question2": {
+      "name": "Number of Connected Components in an Undirected Graph",
+      "link": "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/",
+      "difficulty": "Medium"
+    },
+    "topics": ["DFS", "Graph Traversal"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "We count the frequency of each candidate name and then choose the candidate with maximum votes. In case of tie, lexicographically smaller name is chosen.\n\nApproach:\n1. Store each candidate name and its vote count\n2. For every vote, either increment existing count or add new candidate\n3. Traverse all candidates to find maximum count\n4. If counts are equal, compare strings lexicographically\n\nKey Points:\n- Frequency counting problem\n- Tie handled using lexicographical comparison\n- Since C has no built-in hash map, array of structures is used",
+          "code": "#include &lt;stdio.h&gt;\n#include &lt;string.h&gt;\n\nstruct Candidate {\n    char name[100];\n    int count;\n};\n\nint main() {\n    int n;\n    scanf(\"%d\", &amp;n);\n\n    struct Candidate arr[1000];\n    int size = 0;\n\n    for(int i = 0; i &lt; n; i++) {\n        char temp[100];\n        scanf(\"%s\", temp);\n\n        int found = 0;\n        for(int j = 0; j &lt; size; j++) {\n            if(strcmp(arr[j].name, temp) == 0) {\n                arr[j].count++;\n                found = 1;\n                break;\n            }\n        }\n\n        if(!found) {\n            strcpy(arr[size].name, temp);\n            arr[size].count = 1;\n            size++;\n        }\n    }\n\n    char winner[100];\n    int maxVotes = -1;\n\n    for(int i = 0; i &lt; size; i++) {\n        if(arr[i].count &gt; maxVotes) {\n            maxVotes = arr[i].count;\n            strcpy(winner, arr[i].name);\n        }\n        else if(arr[i].count == maxVotes) {\n            if(strcmp(arr[i].name, winner) &lt; 0) {\n                strcpy(winner, arr[i].name);\n            }\n        }\n    }\n\n    printf(\"%s %d\", winner, maxVotes);\n    return 0;\n}",
+          "timeComplexity": "O(n*k)",
+          "spaceComplexity": "O(k)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Number of Connected Components in an Undirected Graph - Explanation",
+          "link": "https://www.youtube.com/watch?v=8f1XPm4WOUc"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Count connected components using DFS.\n\nApproach:\n1. Build adjacency list\n2. Maintain visited array\n3. For every unvisited node, run DFS\n4. Increment component count after each DFS start\n\nKey Points:\n- Each DFS covers one full component\n- Number of DFS calls from unvisited nodes gives answer",
+          "code": "struct Node {\n    int vertex;\n    struct Node* next;\n};\n\nvoid dfs(int node, struct Node* adj[], int visited[]) {\n    visited[node] = 1;\n    struct Node* temp = adj[node];\n\n    while(temp != NULL) {\n        if(!visited[temp-&gt;vertex])\n            dfs(temp-&gt;vertex, adj, visited);\n        temp = temp-&gt;next;\n    }\n}\n\nint countComponents(int n, int** edges, int edgesSize, int* edgesColSize) {\n    struct Node* adj[2005] = {NULL};\n    int visited[2005] = {0};\n\n    for(int i = 0; i &lt; edgesSize; i++) {\n        int u = edges[i][0];\n        int v = edges[i][1];\n    }\n\n    int count = 0;\n    for(int i = 0; i &lt; n; i++) {\n        if(!visited[i]) {\n            dfs(i, adj, visited);\n            count++;\n        }\n    }\n\n    return count;\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V + E)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 75,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Largest Subarray with Zero Sum",
+      "description": "Problem Statement\nGiven an array of integers containing both positive and negative values, find the length of the longest contiguous subarray whose sum is equal to zero.\n\nInput Format\nAn integer array arr[].\n\nOutput Format\nPrint the length of the longest subarray with sum equal to zero.\n\nSample Input\n15 -2 2 -8 1 7 10 23\n\nSample Output\n5\n\nExplanation\nThe subarray [-2, 2, -8, 1, 7] has a sum of 0 and is the longest such subarray."
+    },
+    "question2": {
+      "name": "Is Graph Bipartite?",
+      "link": "https://leetcode.com/problems/is-graph-bipartite/",
+      "difficulty": "Medium"
+    },
+    "topics": ["BFS", "Graph Traversal"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Use prefix sum to detect zero-sum subarrays.\n\nApproach:\n1. Maintain running prefix sum\n2. If prefix sum becomes 0, subarray from 0 to current index has sum 0\n3. If same prefix sum appears again, subarray between those indices has sum 0\n4. Store first occurrence of each prefix sum\n5. Track maximum length\n\nKey Points:\n- Prefix sum repetition implies zero-sum range\n- Efficient compared to brute force",
+          "code": "#include &lt;stdio.h&gt;\n\nint main() {\n    int n;\n    scanf(\"%d\", &amp;n);\n\n    int arr[1000];\n    for(int i = 0; i &lt; n; i++)\n        scanf(\"%d\", &amp;arr[i]);\n\n    int prefix[2000], index[2000], size = 0;\n    int sum = 0, maxLen = 0;\n\n    for(int i = 0; i &lt; n; i++) {\n        sum += arr[i];\n\n        if(sum == 0)\n            maxLen = i + 1;\n\n        int found = 0;\n        for(int j = 0; j &lt; size; j++) {\n            if(prefix[j] == sum) {\n                int len = i - index[j];\n                if(len &gt; maxLen)\n                    maxLen = len;\n                found = 1;\n                break;\n            }\n        }\n\n        if(!found) {\n            prefix[size] = sum;\n            index[size] = i;\n            size++;\n        }\n    }\n\n    printf(\"%d\", maxLen);\n    return 0;\n}",
+          "timeComplexity": "O(n^2)",
+          "spaceComplexity": "O(n)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Is Graph Bipartite? - BFS Coloring Explanation",
+          "link": "https://www.youtube.com/watch?v=KG5YFfR0j8A"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Use BFS coloring to check whether graph can be split into two sets.\n\nApproach:\n1. Maintain color array initialized to -1\n2. Start BFS from each unvisited node\n3. Assign alternate colors to adjacent nodes\n4. If adjacent nodes get same color, graph is not bipartite",
+          "code": "bool isBipartite(int** graph, int graphSize, int* graphColSize) {\n    int color[105];\n    for(int i = 0; i &lt; graphSize; i++)\n        color[i] = -1;\n\n    int queue[1000];\n\n    for(int i = 0; i &lt; graphSize; i++) {\n        if(color[i] != -1)\n            continue;\n\n        int front = 0, rear = 0;\n        queue[rear++] = i;\n        color[i] = 0;\n\n        while(front &lt; rear) {\n            int node = queue[front++];\n\n            for(int j = 0; j &lt; graphColSize[node]; j++) {\n                int next = graph[node][j];\n\n                if(color[next] == -1) {\n                    color[next] = 1 - color[node];\n                    queue[rear++] = next;\n                }\n                else if(color[next] == color[node]) {\n                    return false;\n                }\n            }\n        }\n    }\n\n    return true;\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 76,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Count Connected Components (Undirected Graph)",
+      "description": "Problem Statement\nUsing DFS or BFS, count number of connected components.\n\nInput Format\nn m\nedges\n\nOutput Format\nNumber of connected components.\n\nSample Input\n6 3\n1 2\n2 3\n5 6\n\nSample Output\n3\n\nExplanation\nComponents: {1,2,3}, {4}, {5,6}"
+    },
+    "question2": {
+      "name": "Clone Graph",
+      "link": "https://leetcode.com/problems/clone-graph/",
+      "difficulty": "Medium"
+    },
+    "topics": ["Connected Components", "DFS/BFS"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "A connected component is a set of vertices reachable from one another.\n\nApproach:\n1. Build adjacency list\n2. Maintain visited array\n3. Run DFS or BFS from each unvisited vertex\n4. Increase count for every new traversal start\n\nKey Points:\n- Every DFS/BFS covers one entire component\n- Works for disconnected graphs",
+          "code": "#include &lt;stdio.h&gt;\n#include &lt;stdlib.h&gt;\n\nstruct Node {\n    int vertex;\n    struct Node* next;\n};\n\nstruct Node* addNode(struct Node* head, int v) {\n    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));\n    newNode-&gt;vertex = v;\n    newNode-&gt;next = NULL;\n\n    if(head == NULL)\n        return newNode;\n\n    struct Node* temp = head;\n    while(temp-&gt;next != NULL)\n        temp = temp-&gt;next;\n    temp-&gt;next = newNode;\n    return head;\n}\n\nvoid dfs(int node, struct Node* adj[], int visited[]) {\n    visited[node] = 1;\n    struct Node* temp = adj[node];\n\n    while(temp != NULL) {\n        if(!visited[temp-&gt;vertex])\n            dfs(temp-&gt;vertex, adj, visited);\n        temp = temp-&gt;next;\n    }\n}\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &amp;n, &amp;m);\n\n    struct Node* adj[105] = {NULL};\n    for(int i = 0; i &lt; m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &amp;u, &amp;v);\n        adj[u] = addNode(adj[u], v);\n        adj[v] = addNode(adj[v], u);\n    }\n\n    int visited[105] = {0};\n    int count = 0;\n\n    for(int i = 1; i &lt;= n; i++) {\n        if(!visited[i]) {\n            dfs(i, adj, visited);\n            count++;\n        }\n    }\n\n    printf(\"%d\", count);\n    return 0;\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Clone Graph - DFS Explanation",
+          "link": "https://www.youtube.com/watch?v=mQeF6bN8hMk"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Clone each node and its neighbors using DFS.\n\nApproach:\n1. Use array/map to store already cloned nodes\n2. If node already cloned, return it\n3. Otherwise create clone\n4. Recursively clone all neighbors\n5. Attach cloned neighbors to current cloned node",
+          "code": "struct Node* visited[105];\n\nstruct Node* clone(struct Node* node) {\n    if(node == NULL)\n        return NULL;\n\n    if(visited[node-&gt;val] != NULL)\n        return visited[node-&gt;val];\n\n    struct Node* newNode = malloc(sizeof(struct Node));\n    newNode-&gt;val = node-&gt;val;\n    newNode-&gt;numNeighbors = node-&gt;numNeighbors;\n    newNode-&gt;neighbors = malloc(node-&gt;numNeighbors * sizeof(struct Node*));\n\n    visited[node-&gt;val] = newNode;\n\n    for(int i = 0; i &lt; node-&gt;numNeighbors; i++) {\n        newNode-&gt;neighbors[i] = clone(node-&gt;neighbors[i]);\n    }\n\n    return newNode;\n}\n\nstruct Node *cloneGraph(struct Node *s) {\n    for(int i = 0; i &lt; 105; i++)\n        visited[i] = NULL;\n    return clone(s);\n}",
+          "timeComplexity": "O(V + E)",
+          "spaceComplexity": "O(V)"
+        }
+      ]
+    }
+  },
+ {
+  "day": 77,
+  "unit": "Unit V: Hash Table & Graph",
+  "question1": {
+    "title": "Check if Graph is Connected",
+    "description": "Problem Statement\nUsing BFS or DFS, check if the entire graph is connected.\n\nInput Format\nn m\nedges\n\nOutput Format\nCONNECTED\nNOT CONNECTED\n\nSample Input\n4 2\n1 2\n3 4\n\nSample Output\nNOT CONNECTED"
+  },
+  "question2": {
+    "name": "Critical Connections in a Network",
+    "link": "https://leetcode.com/problems/critical-connections-in-a-network/",
+    "difficulty": "Hard"
+  },
+  "topics": ["Graph Connectivity", "DFS"],
+  "solutions": {
+    "question1": [
+      {
+        "type": "tutorial",
+        "explanation": "A graph is connected if all vertices are reachable from any one starting vertex.\n\nApproach:\n1. Build adjacency list\n2. Start DFS from node 1\n3. Mark all reachable nodes as visited\n4. Check whether every node is visited\n5. If yes, graph is connected\n\nKey Points:\n- Only one DFS is needed\n- If any node remains unvisited, graph is disconnected",
+        "code": "#include &lt;stdio.h&gt;\n#include &lt;stdlib.h&gt;\n\nstruct Node {\n    int vertex;\n    struct Node* next;\n};\n\nstruct Node* addNode(struct Node* head, int v) {\n    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));\n    newNode-&gt;vertex = v;\n    newNode-&gt;next = NULL;\n\n    if(head == NULL)\n        return newNode;\n\n    struct Node* temp = head;\n    while(temp-&gt;next != NULL)\n        temp = temp-&gt;next;\n    temp-&gt;next = newNode;\n    return head;\n}\n\nvoid dfs(int node, struct Node* adj[], int visited[]) {\n    visited[node] = 1;\n    struct Node* temp = adj[node];\n\n    while(temp != NULL) {\n        if(!visited[temp-&gt;vertex])\n            dfs(temp-&gt;vertex, adj, visited);\n        temp = temp-&gt;next;\n    }\n}\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &amp;n, &amp;m);\n\n    struct Node* adj[105] = {NULL};\n    for(int i = 0; i &lt; m; i++) {\n        int u, v;\n        scanf(\"%d %d\", &amp;u, &amp;v);\n        adj[u] = addNode(adj[u], v);\n        adj[v] = addNode(adj[v], u);\n    }\n\n    int visited[105] = {0};\n    dfs(1, adj, visited);\n\n    for(int i = 1; i &lt;= n; i++) {\n        if(!visited[i]) {\n            printf(\"NOT CONNECTED\");\n            return 0;\n        }\n    }\n\n    printf(\"CONNECTED\");\n    return 0;\n}",
+        "timeComplexity": "O(V + E)",
+        "spaceComplexity": "O(V)"
+      }
+    ],
+    "question2": [
+      {
+        "type": "video",
+        "label": "Critical Connections in a Network - Tarjan Algorithm Explanation",
+        "link": "https://www.youtube.com/watch?v=qrAub5z8FeA"
+      },
+      {
+        "type": "tutorial",
+        "explanation": "Critical connections are bridges in an undirected graph.\n\nApproach:\n1. Build adjacency list from given edges\n2. Run DFS and store discovery time of each node\n3. Maintain low array to track earliest reachable ancestor\n4. If low[child] &gt; disc[parent], then that edge is a bridge\n5. Store all such bridge edges in answer array\n\nKey Points:\n- Uses Tarjan's bridge-finding algorithm\n- DFS tree and back edges are the main idea\n- Very efficient for finding critical network edges",
+        "code": "/**\n * Return an array of arrays of size *returnSize.\n * The sizes of the arrays are returned as *returnColumnSizes array.\n * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().\n */\n\ntypedef struct Node {\n    int v;\n    struct Node* next;\n} Node;\n\nint timer;\n\nNode* addEdge(Node* head, int v) {\n    Node* newNode = (Node*)malloc(sizeof(Node));\n    newNode-&gt;v = v;\n    newNode-&gt;next = head;\n    return newNode;\n}\n\nvoid dfs(int node, int parent, Node** adj, int* visited, int* disc, int* low,\n         int** ans, int* count, int** returnColumnSizes) {\n    visited[node] = 1;\n    disc[node] = low[node] = timer++;\n\n    Node* temp = adj[node];\n    while(temp != NULL) {\n        int next = temp-&gt;v;\n\n        if(next == parent) {\n            temp = temp-&gt;next;\n            continue;\n        }\n\n        if(!visited[next]) {\n            dfs(next, node, adj, visited, disc, low, ans, count, returnColumnSizes);\n\n            if(low[next] &lt; low[node])\n                low[node] = low[next];\n\n            if(low[next] &gt; disc[node]) {\n                ans[*count] = (int*)malloc(2 * sizeof(int));\n                ans[*count][0] = node;\n                ans[*count][1] = next;\n                (*returnColumnSizes)[*count] = 2;\n                (*count)++;\n            }\n        }\n        else {\n            if(disc[next] &lt; low[node])\n                low[node] = disc[next];\n        }\n\n        temp = temp-&gt;next;\n    }\n}\n\nint** criticalConnections(int n, int** connections, int connectionsSize, int* connectionsColSize, int* returnSize, int** returnColumnSizes) {\n    Node** adj = (Node**)malloc(n * sizeof(Node*));\n    for(int i = 0; i &lt; n; i++) {\n        adj[i] = NULL;\n    }\n\n    for(int i = 0; i &lt; connectionsSize; i++) {\n        int u = connections[i][0];\n        int v = connections[i][1];\n        adj[u] = addEdge(adj[u], v);\n        adj[v] = addEdge(adj[v], u);\n    }\n\n    int* visited = (int*)calloc(n, sizeof(int));\n    int* disc = (int*)malloc(n * sizeof(int));\n    int* low = (int*)malloc(n * sizeof(int));\n\n    int** ans = (int**)malloc(connectionsSize * sizeof(int*));\n    *returnColumnSizes = (int*)malloc(connectionsSize * sizeof(int));\n    *returnSize = 0;\n    timer = 0;\n\n    for(int i = 0; i &lt; n; i++) {\n        if(!visited[i]) {\n            dfs(i, -1, adj, visited, disc, low, ans, returnSize, returnColumnSizes);\n        }\n    }\n\n    free(visited);\n    free(disc);\n    free(low);\n\n    for(int i = 0; i &lt; n; i++) {\n        Node* temp = adj[i];\n        while(temp != NULL) {\n            Node* next = temp-&gt;next;\n            free(temp);\n            temp = next;\n        }\n    }\n    free(adj);\n\n    return ans;\n}",
+        "timeComplexity": "O(V + E)",
+        "spaceComplexity": "O(V + E)"
+      }
+    ]
+  }
+},
+  {
+    "day": 78,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Minimum Spanning Tree using Prim’s Algorithm",
+      "description": "Problem Statement\nGiven weighted undirected graph, compute total weight of Minimum Spanning Tree using Prim’s algorithm.\n\nInput Format\nn m\nu v w\n...\n\nOutput Format\nTotal weight of MST.\n\nSample Input\n4 5\n1 2 3\n1 3 5\n2 3 1\n2 4 4\n3 4 2\n\nSample Output\n6\n\nExplanation\nOne possible MST edges: (2-3), (3-4), (1-2)"
+    },
+    "question2": {
+      "name": "Articulation Points (GFG)",
+      "link": "https://practice.geeksforgeeks.org/problems/articulation-point-1/1",
+      "difficulty": "Hard"
+    },
+    "topics": ["MST", "Prim’s Algorithm"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Prim’s algorithm builds MST greedily by always taking the minimum weight edge that connects a visited node to an unvisited node.\n\nApproach:\n1. Start from any node\n2. Mark it visited\n3. Repeatedly select minimum weight edge connecting visited and unvisited vertices\n4. Add its weight to total MST cost\n5. Continue until all vertices are included\n\nKey Points:\n- Greedy algorithm\n- Works for connected weighted undirected graph",
+          "code": "#include &lt;stdio.h&gt;\n#define INF 1000000000\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &amp;n, &amp;m);\n\n    int graph[105][105];\n    for(int i = 1; i &lt;= n; i++) {\n        for(int j = 1; j &lt;= n; j++) {\n            graph[i][j] = INF;\n        }\n    }\n\n    for(int i = 0; i &lt; m; i++) {\n        int u, v, w;\n        scanf(\"%d %d %d\", &amp;u, &amp;v, &amp;w);\n        graph[u][v] = w;\n        graph[v][u] = w;\n    }\n\n    int selected[105] = {0};\n    selected[1] = 1;\n    int edges = 0, total = 0;\n\n    while(edges &lt; n - 1) {\n        int min = INF, x = 0, y = 0;\n\n        for(int i = 1; i &lt;= n; i++) {\n            if(selected[i]) {\n                for(int j = 1; j &lt;= n; j++) {\n                    if(!selected[j] &amp;&amp; graph[i][j] &lt; min) {\n                        min = graph[i][j];\n                        x = i;\n                        y = j;\n                    }\n                }\n            }\n        }\n\n        selected[y] = 1;\n        total += graph[x][y];\n        edges++;\n    }\n\n    printf(\"%d\", total);\n    return 0;\n}",
+          "timeComplexity": "O(V^2)",
+          "spaceComplexity": "O(V^2)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Articulation Points - Tarjan Explanation",
+          "link": "https://www.youtube.com/watch?v=j1QDfU21iZk"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "An articulation point is a vertex whose removal increases the number of connected components.\n\nApproach:\n1. Run DFS and maintain discovery time and low time\n2. Root is articulation point if it has more than one DFS child\n3. Non-root is articulation point if low[child] &gt;= disc[node]\n\nKey Points:\n- Uses DFS tree properties\n- Important concept in network reliability",
+          "code": "int timer;\n\nvoid dfsAP(int node, int parent, int visited[], int disc[], int low[], int mark[], int adj[105][105], int n) {\n    visited[node] = 1;\n    disc[node] = low[node] = timer++;\n    int child = 0;\n\n    for(int v = 0; v &lt; n; v++) {\n        if(adj[node][v] == 0)\n            continue;\n\n        if(v == parent)\n            continue;\n\n        if(!visited[v]) {\n            dfsAP(v, node, visited, disc, low, mark, adj, n);\n            if(low[v] &lt; low[node])\n                low[node] = low[v];\n\n            if(low[v] &gt;= disc[node] &amp;&amp; parent != -1)\n                mark[node] = 1;\n\n            child++;\n        }\n        else {\n            if(disc[v] &lt; low[node])\n                low[node] = disc[v];\n        }\n    }\n\n    if(parent == -1 &amp;&amp; child &gt; 1)\n        mark[node] = 1;\n}",
+          "timeComplexity": "O(V^2)",
+          "spaceComplexity": "O(V)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 79,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Single Source Shortest Path using Dijkstra’s Algorithm",
+      "description": "Problem Statement\nFind shortest distances from source vertex in a weighted graph with non-negative weights.\n\nInput Format\nn m\nu v w\nsource\n\nOutput Format\nDistances to all vertices.\n\nSample Input\n5 6\n1 2 2\n1 3 4\n2 3 1\n2 4 7\n3 5 3\n4 5 1\n1\n\nSample Output\n0 2 3 9 6\n\nExplanation\nShortest distances computed via priority queue."
+    },
+    "question2": {
+      "name": "Strongly Connected Components",
+      "link": "https://practice.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1",
+      "difficulty": "Medium"
+    },
+    "topics": ["Dijkstra", "Shortest Path"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Dijkstra’s algorithm finds the shortest path from a source node to all other nodes in a graph with non-negative edge weights.\n\nApproach:\n1. Initialize all distances as infinity\n2. Set source distance to 0\n3. Repeatedly select unvisited vertex with minimum distance\n4. Relax all adjacent edges\n5. Continue until all vertices are processed\n\nKey Points:\n- Works only for non-negative weights\n- Greedy shortest path algorithm",
+          "code": "#include &lt;stdio.h&gt;\n#define INF 1000000000\n\nint main() {\n    int n, m;\n    scanf(\"%d %d\", &amp;n, &amp;m);\n\n    int graph[105][105];\n    for(int i = 1; i &lt;= n; i++) {\n        for(int j = 1; j &lt;= n; j++) {\n            graph[i][j] = INF;\n        }\n    }\n\n    for(int i = 0; i &lt; m; i++) {\n        int u, v, w;\n        scanf(\"%d %d %d\", &amp;u, &amp;v, &amp;w);\n        graph[u][v] = w;\n        graph[v][u] = w;\n    }\n\n    int source;\n    scanf(\"%d\", &amp;source);\n\n    int dist[105], visited[105] = {0};\n    for(int i = 1; i &lt;= n; i++)\n        dist[i] = INF;\n    dist[source] = 0;\n\n    for(int count = 1; count &lt;= n; count++) {\n        int u = -1, minDist = INF;\n        for(int i = 1; i &lt;= n; i++) {\n            if(!visited[i] &amp;&amp; dist[i] &lt; minDist) {\n                minDist = dist[i];\n                u = i;\n            }\n        }\n\n        if(u == -1)\n            break;\n\n        visited[u] = 1;\n\n        for(int v = 1; v &lt;= n; v++) {\n            if(graph[u][v] != INF &amp;&amp; !visited[v] &amp;&amp; dist[u] + graph[u][v] &lt; dist[v]) {\n                dist[v] = dist[u] + graph[u][v];\n            }\n        }\n    }\n\n    for(int i = 1; i &lt;= n; i++)\n        printf(\"%d \", dist[i]);\n\n    return 0;\n}",
+          "timeComplexity": "O(V^2)",
+          "spaceComplexity": "O(V^2)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Strongly Connected Components - Kosaraju Algorithm Explanation",
+          "link": "https://www.youtube.com/watch?v=R6uoSjZ2imo"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Kosaraju’s algorithm finds strongly connected components in a directed graph.\n\nApproach:\n1. Run DFS and store vertices in finishing order\n2. Reverse all graph edges\n3. Process vertices in reverse finishing order\n4. Each DFS in reversed graph gives one SCC\n\nKey Points:\n- Requires two DFS passes\n- Works on directed graphs",
+          "code": "void dfs1(int node, int visited[], int graph[105][105], int n, int stack[], int* top) {\n    visited[node] = 1;\n    for(int i = 0; i &lt; n; i++) {\n        if(graph[node][i] &amp;&amp; !visited[i])\n            dfs1(i, visited, graph, n, stack, top);\n    }\n    stack[(*top)++] = node;\n}\n\nvoid dfs2(int node, int visited[], int rev[105][105], int n) {\n    visited[node] = 1;\n    for(int i = 0; i &lt; n; i++) {\n        if(rev[node][i] &amp;&amp; !visited[i])\n            dfs2(i, visited, rev, n);\n    }\n}",
+          "timeComplexity": "O(V^2)",
+          "spaceComplexity": "O(V)"
+        }
+      ]
+    }
+  },
+  {
+    "day": 80,
+    "unit": "Unit V: Hash Table & Graph",
+    "question1": {
+      "title": "Floyd-Warshall Algorithm",
+      "description": "Problem: Given a weighted graph with n vertices, implement the Floyd-Warshall algorithm to compute the shortest distances between every pair of vertices. The graph may contain positive or negative edge weights, but it does not contain any negative weight cycles.\n\nInput:\n- First line: integer n representing the number of vertices\n- Next n lines: n space-separated integers representing the adjacency matrix of the graph\n  (use -1 to indicate no direct edge between two vertices)\n\nOutput:\n- Print the shortest distance matrix where the value at row i and column j represents the shortest distance from vertex i to vertex j\n\nExample:\nInput:\n4\n0 5 -1 10\n-1 0 3 -1\n-1 -1 0 1\n-1 -1 -1 0\n\nOutput:\n0 5 8 9\n-1 0 3 4\n-1 -1 0 1\n-1 -1 -1 0\n\nExplanation:\nThe Floyd-Warshall algorithm works by considering each vertex as an intermediate point and updating the shortest paths between all pairs of vertices. For example, the shortest path from vertex 1 to vertex 3 is improved via vertex 2 with total cost 8. This process is repeated for all vertices, resulting in the final shortest distance matrix."
+    },
+    "question2": {
+      "name": "Find the City With the Smallest Number of Neighbors",
+      "link": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/",
+      "difficulty": "Medium"
+    },
+    "topics": ["All-Pairs Shortest Path", "DP"],
+    "solutions": {
+      "question1": [
+        {
+          "type": "tutorial",
+          "explanation": "Floyd-Warshall computes shortest paths between all pairs of vertices by progressively allowing each vertex as an intermediate node.\n\nApproach:\n1. Initialize distance matrix from input\n2. Replace -1 with large infinity value except diagonal\n3. For every intermediate vertex k\n4. Update dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])\n5. Convert unreachable INF back to -1\n\nKey Points:\n- Dynamic programming based algorithm\n- Works for negative edges but not negative cycles",
+          "code": "#include &lt;stdio.h&gt;\n#define INF 1000000000\n\nint main() {\n    int n;\n    scanf(\"%d\", &amp;n);\n\n    int dist[105][105];\n\n    for(int i = 0; i &lt; n; i++) {\n        for(int j = 0; j &lt; n; j++) {\n            scanf(\"%d\", &amp;dist[i][j]);\n            if(dist[i][j] == -1 &amp;&amp; i != j)\n                dist[i][j] = INF;\n        }\n    }\n\n    for(int k = 0; k &lt; n; k++) {\n        for(int i = 0; i &lt; n; i++) {\n            for(int j = 0; j &lt; n; j++) {\n                if(dist[i][k] != INF &amp;&amp; dist[k][j] != INF &amp;&amp; dist[i][k] + dist[k][j] &lt; dist[i][j]) {\n                    dist[i][j] = dist[i][k] + dist[k][j];\n                }\n            }\n        }\n    }\n\n    for(int i = 0; i &lt; n; i++) {\n        for(int j = 0; j &lt; n; j++) {\n            if(dist[i][j] == INF)\n                printf(\"-1 \");\n            else\n                printf(\"%d \", dist[i][j]);\n        }\n        printf(\"\\n\");\n    }\n\n    return 0;\n}",
+          "timeComplexity": "O(n^3)",
+          "spaceComplexity": "O(n^2)"
+        }
+      ],
+      "question2": [
+        {
+          "type": "video",
+          "label": "Find the City With the Smallest Number of Neighbors - Floyd Warshall Explanation",
+          "link": "https://www.youtube.com/watch?v=PwMVNSJ5SLI"
+        },
+        {
+          "type": "tutorial",
+          "explanation": "Use Floyd-Warshall to compute shortest distance between all pairs, then count how many cities are reachable within the threshold.\n\nApproach:\n1. Build initial distance matrix\n2. Run Floyd-Warshall\n3. For each city, count cities with distance &lt;= threshold\n4. Return city with minimum count, and in tie choose greater index",
+          "code": "int findTheCity(int n, int** edges, int edgesSize, int* edgesColSize, int distanceThreshold) {\n    int dist[105][105];\n    int INF = 1000000000;\n\n    for(int i = 0; i &lt; n; i++) {\n        for(int j = 0; j &lt; n; j++) {\n            if(i == j)\n                dist[i][j] = 0;\n            else\n                dist[i][j] = INF;\n        }\n    }\n\n    for(int i = 0; i &lt; edgesSize; i++) {\n        int u = edges[i][0], v = edges[i][1], w = edges[i][2];\n        dist[u][v] = w;\n        dist[v][u] = w;\n    }\n\n    for(int k = 0; k &lt; n; k++) {\n        for(int i = 0; i &lt; n; i++) {\n            for(int j = 0; j &lt; n; j++) {\n                if(dist[i][k] + dist[k][j] &lt; dist[i][j])\n                    dist[i][j] = dist[i][k] + dist[k][j];\n            }\n        }\n    }\n\n    int city = -1, minCount = INF;\n    for(int i = 0; i &lt; n; i++) {\n        int count = 0;\n        for(int j = 0; j &lt; n; j++) {\n            if(dist[i][j] &lt;= distanceThreshold)\n                count++;\n        }\n\n        if(count &lt;= minCount) {\n            minCount = count;\n            city = i;\n        }\n    }\n\n    return city;\n}",
+          "timeComplexity": "O(n^3)",
+          "spaceComplexity": "O(n^2)"
+        }
+      ]
+    }
   }
 ]
